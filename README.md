@@ -11,11 +11,11 @@ ZNETBOOT reads an installation file and retrieves the kernel
 and initrd indicated. Other statements in the installation file
 are passed to the kernel as boot parameters. For example ...
 
-  # the following are used by ZNETBOOT EXEC
+  \# the following are used by ZNETBOOT EXEC
   ZNETBOOT_KERNEL=http://znetboot.casita.net/nord/image
   ZNETBOOT_INITRD=http://znetboot.casita.net/nord/ramdisk.gz
 
-  # the following are used by the bootstrap and vary from Linux to Linux
+  \# the following are used by the bootstrap and vary from Linux to Linux
   NORD_HOSTNAME=ltroth3.casita.net
   NORD_IPV4AD=148.100.88.35
   NORD_IPV4GW=148.100.88.1
