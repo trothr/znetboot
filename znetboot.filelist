@@ -1,0 +1,42 @@
+* Copyright © 2016, 2017, Richard M. Troth, all rights reserved.   <plaintext>
+*
+*         Name: ZNETBOOT FILELIST
+*         Date: 2015-Dec and following
+*               2017-Oct-21 (Sat) for RPH
+*               This is the package definition for ZNETBOOT,
+*               a one-shot command utility for booting Linux on z/VM.
+*
+      ZNETBOOT FILELIST *  -- this file
+      ZNETBOOT README   *  -- do what it says, read it
+      ZNETBOOT LICENSE  *  -- simplified legal stuff
+*
+      ZNETBOOT EXEC     *  -- the 'znetboot' command
+      ZNETBOOT HELPCMS  *  -- brief help
+      CURL     REXX     *  -- web retrieval helper stage
+*
+* boot params files for various Linux distributions
+      UBUNTU   ZNETBOOT *  -- example config for Ubuntu, requires z12
+      CLEFOS   ZNETBOOT *  -- example config for ClefOS installation
+      FEDORA   ZNETBOOT *  -- example config for Fedora
+      DEBIAN   ZNETBOOT *  -- example config for Debian
+      LTROTH3  ZNETBOOT *  -- a personal example
+* Note: kernels requiring z12 exhibit 0BADCCCC abend when IPLed on z10
+*
+* boot params files we would like to have
+*     CENTOS   ZNETBOOT *  -- wanted, dead or alive
+*     REDHAT   ZNETBOOT *  -- wanted, dead or alive
+*     SUSE     ZNETBOOT *  -- wanted, dead or alive
+*     OPENSUSE ZNETBOOT *  -- wanted, dead or alive
+*
+* supplemental files
+      CURL     EXEC     *  -- to run 'curl' from the Ready prompt
+      WGET     REXX     *  -- 'wget' workalike web retrieval stage
+      WGET     EXEC     *  -- to run 'wget' from the Ready prompt
+      ZNETBOOT CMSMAKE  *  -- simple 'make' rules for [re]packaging these files
+*     ZNETBOOT RTF      *  --
+*     SLACK390 ZNETBOOT *  -- need to verify
+      MORE     ZNETBOOT *  --
+      SAMPLE   ZNETBOOT *  --
+      CLEFOS2  ZNETBOOT *  --
+*
+*
