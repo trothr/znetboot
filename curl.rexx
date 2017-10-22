@@ -7,7 +7,7 @@
 
 Numeric Digits 20
 
-make_version = "2.0.34"
+make_version = "2.0.35"
 
 /* if no other output, attach console */
 'STREAMSTATE OUTPUT'
@@ -38,7 +38,17 @@ Do While Left(arg1,1) = "-"
     When Abbrev("--non-verbose",arg1,13) Then verbose = 0
     When Abbrev("--verbose",arg1,9) Then verbose = 1
     When Abbrev("--binary",arg1,5) Then trans = 0
+    When Abbrev("--use-binary",arg1,12) Then trans = 0
     When Abbrev("--ascii",arg1,5) Then trans = 1
+    When Abbrev("--use-ascii",arg1,11) Then trans = 1
+    When Abbrev("-B",arg1,2) Then trans = 1
+
+
+
+
+
+
+
     When Abbrev("--text",arg1,6) Then trans = 1
     When Abbrev("--output",arg1,8) Then Parse Var args outfile args
     When Abbrev("-h",arg1,2) | Abbrev("--help",arg1,6) Then Do
@@ -51,6 +61,19 @@ Do While Left(arg1,1) = "-"
         '| SPEC /CMS Make/ NW W 1 NW /' || argu || '/ NW | *.OUTPUT:'
       Exit 0
     End /* When .. Do */
+
+    When Abbrev("--insecure",arg1,10) ,
+       | Abbrev("--no-check-certificate",arg1,22) ,
+       | Abbrev("--cacert",arg1,8) ,
+       | Abbrev("--capath",arg1,8) ,
+       | Abbrev("--cert",arg1,6) ,
+       | Abbrev("-E",arg1,2) ,
+       | Abbrev("-k",arg1,2) Then Do
+      Address "COMMAND" 'XMITMSG 14 ARG1 (ERRMSG CALLER URL'
+      Say "CMS Pipelines needs SSL support"
+      Exit 24
+    End
+
     Otherwise Do
       Address "COMMAND" 'XMITMSG 3 ARG1 (ERRMSG CALLER URL'
       Exit 24
@@ -124,7 +147,9 @@ Exit
  */
 url_http: Procedure Expose tcp. ;  a2e = tcp.2 ;  e2a = tcp.3
 Parse Arg user,pass,host,port,file,outfile,trans,.
-Parse Var file file ";" .   /* might look for ";type=A" to mean ASCII */
+Parse Var file file ";" flag      /* look for ";type=A" to mean ASCII */
+Upper flag
+If flag = "TYPE=A" Then trans = 1
 
 /* add a stream for HTTP header handling if not already there */
 Trace Off
@@ -237,7 +262,9 @@ Return _rc
  */
 url_ftp: Procedure Expose tcp. ;  a2e = tcp.2 ;  e2a = tcp.3
 Parse Arg user,pass,host,port,file,outfile,trans,.
-Parse Var file file ";" .   /* might look for ";type=A" to mean ASCII */
+Parse Var file file ";" flag      /* look for ";type=A" to mean ASCII */
+Upper flag
+If flag = "TYPE=A" Then trans = 1
 
 If Verify(host,"0123456789.") > 0 Then Do
   /* 'CALLPIPE VAR HOST | HOSTBYNAME | VAR ADDR' */
@@ -261,7 +288,12 @@ If fn = "-" Then pipe = "*.OUTPUT:"
 If user = "" Then user = "anonymous"
 If pass = "" Then pass = Userid()
 If port = "" Then port = 21
-If outfile = "" Then outfile = file
+
+/* parse server-side file and directory */
+file = Reverse(file)
+Parse Var file file '/' dir
+dir = Reverse(dir)
+file = Reverse(file)
 
 temp = "temp.file"
 
@@ -270,6 +302,10 @@ Address "COMMAND" 'MAKEBUF'
   Queue user pass
   If trans Then Queue "TYPE A"
            Else Queue "TYPE I"
+  Do While dir ^= ""
+    Parse Var dir dir1 "/" dir
+    Queue "CD" dir1
+  End
   Queue "GET" file temp "(REPLACE"
   Queue "QUIT"
 
@@ -401,5 +437,21 @@ Select /* denom */
   When denom = "M" Then Return zo * 60           /* offset in minutes */
   Otherwise Return zo
 End /* Select denom */
+
+
+/*
+ * There are many more options defined for 'curl' and 'wget' than this
+ * implementation can support. Some which we should support soon are:
+ *
+ *     --connect-timeout SECONDS  Maximum time allowed for connection
+ *     --ftp-pasv      Use PASV/EPSV instead of PORT
+ * -d, --data DATA     HTTP POST data
+ * -G, --get           Send the -d data with a HTTP GET
+ *     --data-ascii DATA  HTTP POST ASCII data
+ *     --data-binary DATA  HTTP POST binary data
+ *     --data-urlencode DATA  HTTP POST data url encoded
+ * -n, --netrc         Must read .netrc for user name and password
+ * -I, --head          Show document info only
+ */
 
 

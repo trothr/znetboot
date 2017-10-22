@@ -17,8 +17,9 @@
 * boot params files for various Linux distributions
       UBUNTU   ZNETBOOT *  -- example config for Ubuntu, requires z12
       CLEFOS   ZNETBOOT *  -- example config for ClefOS installation
-      FEDORA   ZNETBOOT *  -- example config for Fedora
-      DEBIAN   ZNETBOOT *  -- example config for Debian
+      FEDORA   ZNETBOOT *  -- example config for Fedora installation
+      DEBIAN   ZNETBOOT *  -- example config for Debian installation
+      SLACK390 ZNETBOOT *  -- example config for Slack/390 installation
       LTROTH3  ZNETBOOT *  -- a personal example
 * Note: kernels requiring z12 exhibit 0BADCCCC abend when IPLed on z10
 *
@@ -34,7 +35,6 @@
       WGET     EXEC     *  -- to run 'wget' from the Ready prompt
       ZNETBOOT CMSMAKE  *  -- simple 'make' rules for [re]packaging these files
 *     ZNETBOOT RTF      *  --
-*     SLACK390 ZNETBOOT *  -- need to verify
       MORE     ZNETBOOT *  --
       SAMPLE   ZNETBOOT *  --
       CLEFOS2  ZNETBOOT *  --

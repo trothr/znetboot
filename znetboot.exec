@@ -25,6 +25,7 @@ If args ^= "" Then Parse Var args vmid .
 /* load those per-server variables from the config file */
 'pipe state' vmid 'znetboot *'
 If rc ^= 0 Then Do
+  Upper vmid
   Say "# you need a" vmid "ZNETBOOT file for boot parameters"
   Say "# Create it with XEDIT or upload from another system."
 End
