@@ -15,8 +15,8 @@
       CURL     REXX     *  -- web retrieval helper stage
 *
 * boot params files for various Linux distributions
-      UBUNTU   ZNETBOOT *  -- example config for Ubuntu, requires z12
       CLEFOS   ZNETBOOT *  -- example config for ClefOS installation
+      UBUNTU   ZNETBOOT *  -- example config for Ubuntu, requires z12
       FEDORA   ZNETBOOT *  -- example config for Fedora installation
       DEBIAN   ZNETBOOT *  -- example config for Debian installation
       SLACK390 ZNETBOOT *  -- example config for Slack/390 installation
@@ -35,8 +35,8 @@
       WGET     EXEC     *  -- to run 'wget' from the Ready prompt
       ZNETBOOT CMSMAKE  *  -- simple 'make' rules for [re]packaging these files
 *     ZNETBOOT RTF      *  --
-      MORE     ZNETBOOT *  --
-      SAMPLE   ZNETBOOT *  --
-      CLEFOS2  ZNETBOOT *  --
+*     MORE     ZNETBOOT *  --
+*     SAMPLE   ZNETBOOT *  --
+*     CLEFOS2  ZNETBOOT *  --
 *
 *
