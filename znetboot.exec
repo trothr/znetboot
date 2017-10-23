@@ -6,7 +6,7 @@
  */
 
 /* set some needed variables to default values */
-baseurl = "http://nordauto.casita.net/nord"
+baseurl = "http://znetboot.casita.net/znetboot"
 kfile = "image"
 rfile = "ramdisk.gz"
 check = "znetboot.exec curl.rexx"

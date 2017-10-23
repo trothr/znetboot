@@ -20,7 +20,7 @@
       FEDORA   ZNETBOOT *  -- example config for Fedora installation
       DEBIAN   ZNETBOOT *  -- example config for Debian installation
       SLACK390 ZNETBOOT *  -- example config for Slack/390 installation
-      LTROTH3  ZNETBOOT *  -- a personal example
+      NORD     ZNETBOOT *  -- example config for NORD installation
 * Note: kernels requiring z12 exhibit 0BADCCCC abend when IPLed on z10
 *
 * boot params files we would like to have
@@ -35,8 +35,5 @@
       WGET     EXEC     *  -- to run 'wget' from the Ready prompt
       ZNETBOOT CMSMAKE  *  -- simple 'make' rules for [re]packaging these files
 *     ZNETBOOT RTF      *  --
-*     MORE     ZNETBOOT *  --
-*     SAMPLE   ZNETBOOT *  --
-*     CLEFOS2  ZNETBOOT *  --
 *
 *
