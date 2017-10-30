@@ -107,13 +107,10 @@ favorite plain text editor and change the IP address, netmask, network,
 and DNS server accordingly. Some of the statements, for example … 
 
 
+    IPADDR=148.100.88.35     <<< your IP address goes here
+    NETMASK=255.255.255.0     <<< your IPv4 netmask goes here
+    GATEWAY=148.100.88.1     <<< your IPv4 gateway goes here
 
-
-
-
-IPADDR=148.100.88.35     <<< your IP address goes here
-NETMASK=255.255.255.0     <<< your IPv4 netmask goes here
-GATEWAY=148.100.88.1     <<< your IPv4 gateway goes here
 
  … and so forth. Save your changes to that file, then upload all three 
 files to your virtual machine. 
@@ -187,12 +184,6 @@ worked correctly, you can now SSH to your shiny new ClefOS mainframe
 virtual machine. 
 
 Have a lot of fun! 
-
-
-
-
-
-
 
 
 
