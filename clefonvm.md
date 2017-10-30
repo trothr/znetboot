@@ -1,4 +1,4 @@
-﻿# Clef-on-VM
+# Clef-on-VM
 
 
 ## Installing ClefOS on z/VM
@@ -80,7 +80,7 @@ in the PASSWORD field. (It will not be displayed.)
 
 [logon.png]
 
-Press <Enter>. 
+Press \<Enter\>. 
 
 Your virtual machine should boot CMS, quickly presenting a “Ready;” prompt. 
 (CMS does not take long to boot.) 
@@ -131,7 +131,7 @@ to enter it as lower case.) Similarly for curl.rexx and clefonvm.znetboot.
 
 When you have finished uploading the files, enter the following command: 
 
-znetboot clefonvm     
+    znetboot clefonvm     
 
 ZNETBOOT will read your CLEFONVM ZNETBOOT file and begin trying to 
 download the kernel and initrd. 
@@ -163,10 +163,10 @@ connected, but if you disconnect then z/VM will continue to run your
 virtual machine without any chance of network interruptions triggering 
 unwanted console signals. Enter the command: 
 
-\#cp disconn
+    \#cp disconn
 
 The hash/pound-sign is not a typo. The command is '#cp disconn' and 
-press <Enter>. (It's optional. You don't strictly have to disconnect.) 
+press \<Enter\>. (It's optional. You don't strictly have to disconnect.) 
 
 Use 'ssh' … 
 
