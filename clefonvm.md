@@ -1,20 +1,18 @@
 # Clef-on-VM
 
-
 ## Installing ClefOS on z/VM
 
 This document describes how to install ClefOS on z/VM using ZNETBOOT. 
-The target audience is those who are skilled at using and installing 
-Linux but not knowledgeable about z/VM or CMS. The purpose of this 
-document is to enable installation of ClefOS as quickly and painlessly 
-as possible by those who don't know CMS or z/VM. 
+The target audience is those who are skilled at using and installing Linux 
+but not knowledgeable about z/VM or CMS. The purpose of this document is 
+to enable installation of ClefOS as quickly and painlessly as possible 
+by those who don't know CMS or z/VM. 
 
-While this document was written specifically for ClefOS, it is applicable 
-for NORD, SUSE, OpenSUSE, CentOS, Debian, Fedora, or any other Linux 
-for IBM Z. In fact, it could theoretically be used for installing any 
-operating system capable of running on IBM Z as long as the OS kernel 
-can be retrieved from the web. 
-
+While this document was written specifically for ClefOS, 
+it is applicable for NORD, SUSE, OpenSUSE, CentOS, Debian, Fedora, 
+or any other Linux which can run on IBM Z architecture. In fact, it could 
+theoretically be used for installing any operating system capable of 
+running on IBM Z as long as the OS kernel can be retrieved from the web. 
 
 ## You Will Need
 
@@ -22,8 +20,7 @@ You will need a virtual machine. On z/VM, a virtual machine is a user
 and a user is a virtual machine. As a general purpose operating system, 
 z/VM provides interactive computing services by defining each user as a 
 virtual machine, typically running CMS. But being true virtual machines, 
-users of z/VM can run any operating system suitable for the IBM Z 
-architecture. 
+users of z/VM can run any operating system suitable for the IBM Z architecture. 
 
 Your virtual machine should be defined for at least 1G of memory 
 (RAM, “storage”) and have at least one disk of 5G or more (about 7000 
@@ -43,13 +40,12 @@ to serve as your “A disk”. You will of course need z/VM TCP/IP connectivity.
 (When running CMS, you should be able to run standard end-user internet 
 tools and client utilities.) 
 
-CMS is a single-user operating system available on z/VM for interactive 
-work. For installing Linux, CMS acts as a self-sacrificing loader: 
-It provides the underpinnings to do the uploads and run the ZNETBOOT 
-utility. (see next) Once the kernel and other requisite files have 
-been fetched and arranged, your virtual machine will perform the 
-rough equivalent of a kexec() function and CMS will vanish. 
-
+CMS is a single-user operating system available on z/VM for interactive work. 
+For installing Linux, CMS acts as a self-sacrificing loader: It provides 
+the underpinnings to do the uploads and run the ZNETBOOT utility. (see next) 
+Once the kernel and other requisite files have been fetched and arranged, 
+your virtual machine will perform the rough equivalent of a kexec() function 
+and CMS will vanish. 
 
 ## You Will Also Need
 
@@ -58,9 +54,9 @@ that package. Specifically, you will need ZNETBOOT EXEC and CURL REXX.
 (Filenames in CMS are two part, divided by blank space. Those files 
 would be “znetboot.exec” and “curl.rexx” on most other systems.) 
 
-Uploading via X3270 is explained. If you use some other means than 
-X3270 to connect with your z/VM host, your upload experience will 
-be different. 
+Uploading via X3270 is explained. If you use some other means 
+than X3270 to connect with your z/VM host, your upload experience 
+will be different. 
 
 A third required file is CLEFONVM ZNETBOOT (clefonvm.znetboot), 
 which will hold bootstrap parameters unique to your virtual machine. 
@@ -69,6 +65,10 @@ created on your desktop or laptop and then uploaded. There is an
 example included with the ZNETBOOT package and on the web, but the 
 example will not work for your virtual machine because you will 
 minimally have different network addresses. 
+
+
+
+
 
 
 ## Sign On
@@ -107,9 +107,9 @@ favorite plain text editor and change the IP address, netmask, network,
 and DNS server accordingly. Some of the statements, for example … 
 
 
-    IPADDR=148.100.88.35     <<< your IP address goes here
-    NETMASK=255.255.255.0     <<< your IPv4 netmask goes here
-    GATEWAY=148.100.88.1     <<< your IPv4 gateway goes here
+    IPADDR=148.100.88.35     \<\<\< your IP address goes here
+    NETMASK=255.255.255.0     \<\<\< your IPv4 netmask goes here
+    GATEWAY=148.100.88.1     \<\<\< your IPv4 gateway goes here
 
 
  … and so forth. Save your changes to that file, then upload all three 
@@ -125,7 +125,6 @@ Files in CMS are identified with a filename, a blank, and then a
 filetype. Therefore znetboot.exec must be named znetboot exec on the 
 “Host File Name” line. (This field is not case sensitive, so feel free 
 to enter it as lower case.) Similarly for curl.rexx and clefonvm.znetboot. 
-
 
 ## Run ZNETBOOT
 
