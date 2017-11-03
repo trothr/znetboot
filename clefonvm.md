@@ -115,9 +115,14 @@ and DNS server accordingly. Some of the statements, for example …
  … and so forth. Save your changes to that file, then upload all three 
 files to your virtual machine. 
 
-These are all plain text files, not binary. In the “File Transfer” 
-dialogue, select “Send to host”, “Host is VM/CMS”, and “Transfer 
-as ASCII file”. 
+These are all plain text files, not binary. 
+To upload, use the X3270 file transfer dialogue. 
+Hold down the left mouse button to bring up the "File" menu.
+Slide down to "File Transfer...".
+
+Within the “File Transfer” dialogue, select “Send to host”, 
+“Host is VM/CMS”, and “Transfer as ASCII file”. Then click 
+"Transfer File". 
 
 ![filetrans.png](images/filetrans.png)
 
