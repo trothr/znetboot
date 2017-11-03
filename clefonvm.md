@@ -78,14 +78,14 @@ present three fields: USERID, PASSWORD, and COMMAND. Ignore the latter.
 Enter your virtual machine name in the USERID field. Enter your password 
 in the PASSWORD field. (It will not be displayed.) 
 
-![logon.png](images/logon.jpg)
+![logon.jpg](images/logon.jpg)
 
 Press \<Enter\>. 
 
 Your virtual machine should boot CMS, quickly presenting a “Ready;” prompt. 
 (CMS does not take long to boot.) 
 
-[ready.png]
+![ready.png](images/ready.png)
 
 Look at the lower right corner of your X3270 window for a status indicator. 
 If you see “VM READ”, then press <Enter> again (just once). You should 
@@ -135,7 +135,7 @@ When you have finished uploading the files, enter the following command:
 ZNETBOOT will read your CLEFONVM ZNETBOOT file and begin trying to 
 download the kernel and initrd. 
 
-[znetboot.png]
+![znetboot.png](images/znetboot.png>
 
 Depending on network connectivity between your z/VM host and the 
 repository, the 'pipe' commands may take a while to run. Give it time. 
