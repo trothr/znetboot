@@ -10,9 +10,10 @@ by those who don't know CMS or z/VM.
 
 While this document was written specifically for ClefOS, 
 it is applicable for NORD, SUSE, OpenSUSE, CentOS, Debian, Fedora, 
-or any other Linux which can run on IBM Z architecture. In fact, it could 
-theoretically be used for installing any operating system capable of 
-running on IBM Z as long as the OS kernel can be retrieved from the web. 
+or any other Linux which can run on IBM Z architecture. In fact, 
+the ZNETBOOT utility could theoretically be used for installing 
+any operating system capable of running on IBM Z as long as 
+the OS kernel can be retrieved from the web. 
 
 ## You Will Need
 
@@ -20,7 +21,8 @@ You will need a virtual machine. On z/VM, a virtual machine is a user
 and a user is a virtual machine. As a general purpose operating system, 
 z/VM provides interactive computing services by defining each user as a 
 virtual machine, typically running CMS. But being true virtual machines, 
-users of z/VM can run any operating system suitable for the IBM Z architecture. 
+"users" of z/VM can run any operating system suitable for the IBM Z 
+architecture. 
 
 Your virtual machine should be defined for at least 1G of memory 
 (RAM, “storage”) and have at least one disk of 5G or more (about 7000 
