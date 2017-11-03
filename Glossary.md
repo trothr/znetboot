@@ -21,23 +21,75 @@ Distributed
 Mainframe
 - IBM's term for its Z, and P class server families
 
---- Z is a succession designs, originating from the early System/360
-instruction set (with that early subset of implemented Machine Language
-instructions still supported, and represented in a human-readible form in
-Basic Assembly Language ('BAL')) and surrounding 'ecosystem' of I/O Channel
-Co-Processor design (similarly programmed in a CCP language).  Those IO
-co-processors were designed to permit the central computation hardware and
-RAM store to be able to 'hand off any I/O task to the proper 'CCP'k, and
-then 'task switch' to another 'ready to go' computational task, and so to
-engage in multi-task processing.  This was used to have a very early (pre
-Unix) form of three seeming virtual but seperate task processor spaces
-(called BG, F1 and F2 -- the Background task, and Foreground 1 and 2 tasks)
-which was in use in the last 1960's, and has been extended ever since
+--- Z is a succession of mostly backward conmpatible designs, originating 
+from the early System/360 instruction set (with that early subset of 
+implemented binary Machine Language instructions still supported, and 
+represented in a human-readible form in Basic Assembly Language LINK 
+and surrounding 'ecosystem' of I/O Channel Co-Processor design 
+(similarly programmed in a CCP language).  An I/O co-processor is 
+designed to receive at high rate, commands and content data, and so to 
+permit 'off-loading' by the central computation hardware 
+and RAM store to be able to 'hand off substantially all I/O tasks to 
+the proper 'CCP', and then to 'task switch' to another 'ready to go' 
+computational job in its 'runnable' job queue.  
+
+The switch in context permitted a processor  to engage in multi-task 
+processing.  This was used in release 360/VM to have a very early 
+(pre Unix) form of three seeming virtual, but seperate task processor 
+spaces (called BG, F1 and F2 -- the Background task, and Foreground 1 
+and 2 tasks) which was in use in the late 1960's, and has been extended 
+ever since.
 
 --- P is the 'Power' RISC -- Reduced Instruction Set Computer --
-architecture redesign.  RISC epresented a trend in the hardware
+architecture redesign.  RISC represented a trend in the hardware
 'processing' the instructions, to 'shrink' the nunber of instruction
-primitives which given semiconductor needed to implement, and so, to get a
-net increase of speed, reduction of power needs, and so, more cost effective
-performance.
+primitives which given semiconductor die or processor chipset  needed to 
+implement, and so, to get a net increase of speed, reduction of power 
+needs, and so, more cost effective performance.
+
+----
+
+- Glossary
+/*  keep alpha */
+
+-- BAL: Basic Assembly Language 
+
+-- CMS: FIXME
+
+-- CURL: local convention, after the network file transfer utility; another
+example might be 'wget'
+
+-- DASD: Direct Access Ssytem <?> Device <?>
+
+-- EXEC: similar to Unix' _fork_, _exec_ and friends
+
+-- I/O: Input / output communucation outside of the given processor 
+chassis, as to a punch card reader (1402), line printer (1403), hard drive
+(3390), console device (3270).  FIXME -0- what is a network connection
+
+-- LPAR: Logical Partition
+
+-- REXX: a scripting language widely use by IBM products
+
+-- RISC: Reduced Instruction Set Computer
+
+-- SFS: FIXME
+
+-- X3270: a IP network console with a variant form of the 'telnet' type 
+of interface; As it dates from an earlier era, there are areas of the screen, 
+called 'fields' in which input mat be typed; the TAB key will advance to the 
+next available field (some fields may be 'display only') after the present 
+cursor position. ENTER customarily submits all of the 'fill-in' fields to 
+the remote server for processing as a transaction.  Until ENTER is selected, 
+one may cycle and wrap around through all editable fields, and either 
+over-type, or use minimal in-field edit commands
+
+-- wget: see: CURL
+
+-- XEDIT: FIXME
+
+-- z/VM: FIXME discuss the prediliction of IBM to renaming the same product 
+over time, and so causing confusion
+
+-- Z: a shorthand way to rever to the 's390x' hardware processor architure
 
