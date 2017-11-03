@@ -52,7 +52,14 @@ needs, and so, more cost effective performance.
 - Glossary
 /*  keep alpha */
 
+-- ASCII: see: EBCDIC, infra
+
 -- BAL: Basic Assembly Language 
+
+-- BCD: Binary Coded Decimal -- a character set use by IBM on their 1401 series
+predecessor (discrete transistors and plugboards based), proposed to 
+transition off of Hollerith 'tab' cards encoding a 12 rows, 
+called: A B, and 0 through 9 
 
 -- CMS: FIXME
 
@@ -60,6 +67,11 @@ needs, and so, more cost effective performance.
 example might be 'wget'
 
 -- DASD: Direct Access Ssytem <?> Device <?>
+
+-- EBCDIC: IBM's preferred character set for s/390. Extended Binary Coded 
+Decimal Interhange Code; a 'not invented here' response to ASCII, which was 
+was the alternative character set encoding conpetition of the era; successor to 
+BCD encoding on the 1401 series
 
 -- EXEC: similar to Unix' _fork_, _exec_ and friends
 
@@ -74,6 +86,10 @@ chassis, as to a punch card reader (1402), line printer (1403), hard drive
 -- RISC: Reduced Instruction Set Computer
 
 -- SFS: FIXME
+
+-- Unit Record equipment; 'tab' card based computing; 026 keypunch, 029 
+key verified, 082 sorter, 5xx series plugboard and patch cable' programmed 
+relay based electronic computing devices; successor was the 1401 family and BCD
 
 -- X3270: a IP network console with a variant form of the 'telnet' type 
 of interface; As it dates from an earlier era, there are areas of the screen, 
