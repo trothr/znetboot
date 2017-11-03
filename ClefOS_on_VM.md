@@ -10,9 +10,10 @@ by those who don't know CMS or z/VM.
 
 While this document was written specifically for ClefOS, 
 it is applicable for NORD, SUSE, OpenSUSE, CentOS, Debian, Fedora, 
-or any other Linux which can run on IBM Z architecture. In fact, it could 
-theoretically be used for installing any operating system capable of 
-running on IBM Z as long as the OS kernel can be retrieved from the web. 
+or any other Linux which can run on IBM Z architecture. In fact, 
+the ZNETBOOT utility could theoretically be used for installing 
+any operating system capable of running on IBM Z as long as 
+the OS kernel can be retrieved from the web. 
 
 ## You Will Need
 
@@ -20,7 +21,8 @@ You will need a virtual machine. On z/VM, a virtual machine is a user
 and a user is a virtual machine. As a general purpose operating system, 
 z/VM provides interactive computing services by defining each user as a 
 virtual machine, typically running CMS. But being true virtual machines, 
-users of z/VM can run any operating system suitable for the IBM Z architecture. 
+"users" of z/VM can run any operating system suitable for the IBM Z 
+architecture. 
 
 Your virtual machine should be defined for at least 1G of memory 
 (RAM, “storage”) and have at least one disk of 5G or more (about 7000 
@@ -78,14 +80,14 @@ present three fields: USERID, PASSWORD, and COMMAND. Ignore the latter.
 Enter your virtual machine name in the USERID field. Enter your password 
 in the PASSWORD field. (It will not be displayed.) 
 
-[logon.png]
+![logon.jpg](images/logon.jpg)
 
 Press \<Enter\>. 
 
 Your virtual machine should boot CMS, quickly presenting a “Ready;” prompt. 
 (CMS does not take long to boot.) 
 
-[ready.png]
+![ready.png](images/ready.png)
 
 Look at the lower right corner of your X3270 window for a status indicator. 
 If you see “VM READ”, then press <Enter> again (just once). You should 
@@ -107,19 +109,24 @@ favorite plain text editor and change the IP address, netmask, network,
 and DNS server accordingly. Some of the statements, for example … 
 
 
-    IPADDR=148.100.88.35     \<\<\< your IP address goes here
-    NETMASK=255.255.255.0     \<\<\< your IPv4 netmask goes here
-    GATEWAY=148.100.88.1     \<\<\< your IPv4 gateway goes here
+    IPADDR=148.100.88.35     <<< your IP address goes here
+    NETMASK=255.255.255.0    <<< your IPv4 netmask goes here
+    GATEWAY=148.100.88.1     <<< your IPv4 gateway goes here
 
 
  … and so forth. Save your changes to that file, then upload all three 
 files to your virtual machine. 
 
-These are all plain text files, not binary. In the “File Transfer” 
-dialogue, select “Send to host”, “Host is VM/CMS”, and “Transfer 
-as ASCII file”. 
+These are all plain text files, not binary. 
+To upload, use the X3270 file transfer dialogue. 
+Hold down the left mouse button to bring up the "File" menu.
+Slide down to "File Transfer...".
 
-[upload.png]
+Within the “File Transfer” dialogue, select “Send to host”, 
+“Host is VM/CMS”, and “Transfer as ASCII file”. Then click 
+"Transfer File". 
+
+![filetrans.png](images/filetrans.png)
 
 Files in CMS are identified with a filename, a blank, and then a 
 filetype. Therefore znetboot.exec must be named znetboot exec on the 
@@ -135,7 +142,7 @@ When you have finished uploading the files, enter the following command:
 ZNETBOOT will read your CLEFONVM ZNETBOOT file and begin trying to 
 download the kernel and initrd. 
 
-[znetboot.png]
+![znetboot.png](images/znetboot.png>
 
 Depending on network connectivity between your z/VM host and the 
 repository, the 'pipe' commands may take a while to run. Give it time. 
