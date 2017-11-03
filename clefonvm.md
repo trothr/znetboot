@@ -78,7 +78,7 @@ present three fields: USERID, PASSWORD, and COMMAND. Ignore the latter.
 Enter your virtual machine name in the USERID field. Enter your password 
 in the PASSWORD field. (It will not be displayed.) 
 
-![logon.png](images/logon.png)
+![logon.png](images/logon.jpg)
 
 Press \<Enter\>. 
 
