@@ -119,7 +119,7 @@ These are all plain text files, not binary. In the “File Transfer”
 dialogue, select “Send to host”, “Host is VM/CMS”, and “Transfer 
 as ASCII file”. 
 
-[upload.png]
+![upload.png](images/upload.png)
 
 Files in CMS are identified with a filename, a blank, and then a 
 filetype. Therefore znetboot.exec must be named znetboot exec on the 
