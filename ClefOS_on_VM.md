@@ -129,7 +129,7 @@ Within the “File Transfer” dialogue, select “Send to host”,
 ![filetrans.png](images/filetrans.png)
 
 Files in CMS are identified with a filename, a blank, and then a 
-filetype. Therefore znetboot.exec must be named znetboot exec on the 
+filetype. Therefore znetboot.exec must be named "znetboot exec" on the 
 “Host File Name” line. (This field is not case sensitive, so feel free 
 to enter it as lower case.) Similarly for curl.rexx and clefonvm.znetboot. 
 
@@ -142,7 +142,7 @@ When you have finished uploading the files, enter the following command:
 ZNETBOOT will read your CLEFONVM ZNETBOOT file and begin trying to 
 download the kernel and initrd. 
 
-![znetboot.png](images/znetboot.png>
+![znetboot.png](images/znetboot.png)
 
 Depending on network connectivity between your z/VM host and the 
 repository, the 'pipe' commands may take a while to run. Give it time. 
