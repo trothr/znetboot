@@ -40,6 +40,7 @@ If rc /= 0 Then Exit rc
 /* parse the stuff we loaded from that config file */
 kfile = baseurl || "/" || kfile
 rfile = baseurl || "/" || rfile
+nc.0 = 0
 Do i = 1 to na.0
   Parse Var na.i vn "=" vv
   Select
@@ -48,10 +49,18 @@ Do i = 1 to na.0
     When vn = "ZNETBOOT_INITRD" Then rfile = vv
     When vn = "ZNETBOOT_BOOTPARMS" Then bparm = vv
     When vn = "ZNETBOOT_NICADDR" Then naddr = vv
-    Otherwise nopt
+
+    When vn = "ZNETBOOT_TOFILE" Then Do
+      j = nc.0 + 1
+      nc.j = vv
+      nc.0 = j
+    End
+
+    Otherwise nop
   End
 End
 bparm = bparm parms
+
 
 /* check CMS support files for consistency -- this is ONLY a check */
 Do While check /= ""
@@ -70,6 +79,17 @@ Do While check /= ""
     Say "# CMS support file" fn ft "mismatch; consider updating; continuing ..."
     Leave
   End
+End
+
+
+/* conditionally save a CMS "conffile" and set boot parms for it */
+If nc.0 > 0 Then Do
+  Say "# creating" vmid "CONFFILE for supplemental parameters"
+  'vmlink * 191 (w invoke' ,
+    'pipe stem nc. 1 | >' vmid 'CONFFILE .fm1'
+  If rc /= 0 Then Exit rc
+  bparm = bparm "CMSDASD=191" ,
+    "CMSCONFFILE=" || vmid || ".CONFFILE"
 End
 
 
