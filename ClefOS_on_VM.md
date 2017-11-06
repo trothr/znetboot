@@ -43,7 +43,7 @@ to serve as your “A disk”. You will of course need z/VM TCP/IP connectivity.
 tools and client utilities.) 
 
 CMS is a single-user operating system available on z/VM for interactive work. 
-For installing Linux, CMS acts as a self-sacrificing loader: It provides 
+When installing Linux, CMS acts as a self-sacrificing loader: It provides 
 the underpinnings to do the uploads and run the ZNETBOOT utility. (see next) 
 Once the kernel and other requisite files have been fetched and arranged, 
 your virtual machine will perform the rough equivalent of a kexec() function 
@@ -52,26 +52,21 @@ and CMS will vanish.
 ## You Will Also Need
 
 You will also need the ZNETBOOT tool, or at least two files from 
-that package. Specifically, you will need ZNETBOOT EXEC and CURL REXX. 
+that package. Specifically, you will need "ZNETBOOT EXEC" and "CURL REXX". 
 (Filenames in CMS are two part, divided by blank space. Those files 
-would be “znetboot.exec” and “curl.rexx” on most other systems.) 
+would be "znetboot.exec" and "curl.rexx" on most other systems.) 
 
 Uploading via X3270 is explained. If you use some other means 
 than X3270 to connect with your z/VM host, your upload experience 
 will be different. 
 
-A third required file is CLEFONVM ZNETBOOT (clefonvm.znetboot), 
+A third required file is "CLEFONVM ZNETBOOT" (aka "clefonvm.znetboot"), 
 which will hold bootstrap parameters unique to your virtual machine. 
 It must either be created with the CMS text editor 'xedit' or must be 
 created on your desktop or laptop and then uploaded. There is an 
 example included with the ZNETBOOT package and on the web, but the 
 example will not work for your virtual machine because you will 
 minimally have different network addresses. 
-
-
-
-
-
 
 ## Sign On
 
@@ -109,9 +104,9 @@ favorite plain text editor and change the IP address, netmask, network,
 and DNS server accordingly. Some of the statements, for example … 
 
 
-    IPADDR=148.100.88.35     <<< your IP address goes here
+    IPADDR=192.168.0.100     <<< your IP address goes here
     NETMASK=255.255.255.0    <<< your IPv4 netmask goes here
-    GATEWAY=148.100.88.1     <<< your IPv4 gateway goes here
+    GATEWAY=192.168.0.1      <<< your IPv4 gateway goes here
 
 
  … and so forth. Save your changes to that file, then upload all three 
