@@ -23,11 +23,15 @@
       NORD     ZNETBOOT *  -- example config for NORD installation
 * Note: kernels requiring z12 exhibit 0BADCCCC abend when IPLed on z10
 *
+      CLEFONVM ZNETBOOT *  -- a demo specific to ClefOS, with documentation
+*     CLEFONVM MD       *  -- markdown document for installing  ClefOS
+*
 * boot params files we would like to have
+*     OPENSUSE ZNETBOOT *  -- wanted, dead or alive
+*     SUSE     ZNETBOOT *  -- wanted, dead or alive
 *     CENTOS   ZNETBOOT *  -- wanted, dead or alive
 *     REDHAT   ZNETBOOT *  -- wanted, dead or alive
-*     SUSE     ZNETBOOT *  -- wanted, dead or alive
-*     OPENSUSE ZNETBOOT *  -- wanted, dead or alive
+*     GENTOO   ZNETBOOT *  -- wanted, dead or alive
 *
 * supplemental files
       CURL     EXEC     *  -- to run 'curl' from the Ready prompt

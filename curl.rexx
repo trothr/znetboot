@@ -14,7 +14,7 @@ make_version = "2.0.35"
 If rc = 4 Then rc = 0
 If rc = 8 Then rc = 0
 If rc = 12 Then 'ADDPIPE *.OUTPUT: | CONSOLE'
-If rc ^= 0 Then Exit rc
+If rc /= 0 Then Exit rc
 
 verbose = 0
 outfile = ""
@@ -87,12 +87,12 @@ If argu = "CURL" & outfile = "" Then outfile = "-"
 'CALLPIPE STATE POSIX TCPXLBIN'
 If rc = 28 Then Address "COMMAND" 'EXEC VMLINK TCPMAINT 592'
 'CALLPIPE < POSIX TCPXLBIN | STEM TCP.'
-If rc ^= 0 Then Return rc ;  a2e = tcp.2 ;  e2a = tcp.3
+If rc /= 0 Then Return rc ;  a2e = tcp.2 ;  e2a = tcp.3
 
 /* get essential config info - like the stack name */
 'CALLPIPE < TCPIP DATA | STRIP' ,
   '| NLOCATE 1.1 /;/ | STEM TCF.'
-If rc ^= 0 Then Return rc
+If rc /= 0 Then Return rc
 tcp.id = "TCPIP"
 Do i = 1 to tcf.0
   Parse Upper Var tcf.i cf c1 .
@@ -103,7 +103,7 @@ Do i = 1 to tcf.0
 End /* Do For */
 
 /* step through command line list-o-URLs */
-Do While args ^= ""
+Do While args /= ""
   Parse Var args furl args
   Parse Var furl mode '://' host '/' file
   port = ""
@@ -136,7 +136,7 @@ Do While args ^= ""
       Exit 24 ;  End
   End /* Select */
 
-  If rc ^= 0 Then Exit rc
+  If rc /= 0 Then Exit rc
 
 End
 
@@ -161,7 +161,7 @@ If Verify(host,"0123456789.") > 0 Then Do
   /* 'CALLPIPE VAR HOST | HOSTBYNAME | VAR ADDR' */
   /* a fix from phsiii */
   'CALLPIPE VAR HOST | HOSTBYNAME | SPECS w1 1 | VAR ADDR'
-  If rc ^= 0 Then Return rc
+  If rc /= 0 Then Return rc
 End /* If .. Do */
 Else addr = host
 
@@ -191,14 +191,14 @@ e2ax = "X" || C2X(e2a)
     '*.OUTPUT.HTTP: | TCPCLIENT' addr port ,
                       'LINGER 7 USERID' tcp.id 'DEBLOCK LINEND 0A' ,
                    '| *.INPUT.HTTP:'
-If rc ^= 0 Then Return rc
+If rc /= 0 Then Return rc
 
 /* send the request header then read the response header */
 'CALLPIPE (END !) STEM REQ.' ,
   '| E2A: XLATE | SPEC 1-* 1 x0D0A N' ,
   '| *.OUTPUT.HTTP:',
   '! STRLITERAL' e2ax '| E2A:'
-If rc ^= 0 Then Return rc
+If rc /= 0 Then Return rc
 
 /* consume the response header */
 'SELECT INPUT HTTP'
@@ -207,7 +207,7 @@ i = 0
 lm = ""
 Do Forever
   'PEEKTO RECORD'
-  If rc ^= 0 Then Leave
+  If rc /= 0 Then Leave
   Parse Var record record '0D'x
   If record = "" Then Leave
   i = i + 1 ; h.i = Translate(record,a2e)
@@ -217,7 +217,7 @@ Do Forever
   'READTO'
 End
 If rc = 12 Then rc = 0
-If rc ^= 0 Then Do
+If rc /= 0 Then Do
   _rc = rc
   'SELECT INPUT 0'
   Return _rc
@@ -230,7 +230,7 @@ h.0 = i
 If h.0 > 0 Then Do
   Parse Var h.1 . _rc rs
   If _rc = 200 Then _rc = 0
-  If _rc ^= 0 Then Do
+  If _rc /= 0 Then Do
     'SELECT INPUT 0'
     Return _rc rs
   End
@@ -252,8 +252,8 @@ _rc = rc
 
 /* 'CALLPIPE STEM H. | > WGET HEAD A' */
 /* stamp time on file if a file was written */
-If fn ^= "-" & lm ^= "" Then lm = _lm2full(lm)
-If fn ^= "-" & lm ^= "" Then Address "COMMAND" 'DMSPLU' fn ft 'A' lm
+If fn /= "-" & lm /= "" Then lm = _lm2full(lm)
+If fn /= "-" & lm /= "" Then Address "COMMAND" 'DMSPLU' fn ft 'A' lm
 
 Return _rc
 
@@ -270,7 +270,7 @@ If Verify(host,"0123456789.") > 0 Then Do
   /* 'CALLPIPE VAR HOST | HOSTBYNAME | VAR ADDR' */
   /* a fix from phsiii */
   'CALLPIPE VAR HOST | HOSTBYNAME | SPECS w1 1 | VAR ADDR'
-  If rc ^= 0 Then Return rc
+  If rc /= 0 Then Return rc
 End /* If .. Do */
 Else addr = host
 
@@ -302,7 +302,7 @@ Address "COMMAND" 'MAKEBUF'
   Queue user pass
   If trans Then Queue "TYPE A"
            Else Queue "TYPE I"
-  Do While dir ^= ""
+  Do While dir /= ""
     Parse Var dir dir1 "/" dir
     Queue "CD" dir1
   End
@@ -314,7 +314,7 @@ Address "COMMAND" 'MAKEBUF'
 
 Address "COMMAND" 'DROPBUF'
 
-If ftprc ^= 0 Then Return ftprc
+If ftprc /= 0 Then Return ftprc
 
 /* pipeline fixup here */
 Parse Upper Var temp tfn '.' tft '.' .
@@ -381,7 +381,7 @@ lmdt = dd mon yyyy time
 /* convert to POSIX for easier arithmetic */
 Address "COMMAND" ,
 'PIPE VAR LMDT | DATECONVERT NORMAL POSIX | VAR PDATE'
-If rc ^= 0 Then Return ""
+If rc /= 0 Then Return ""
 
 /* apply time zone offset */
 zdate = C2D(pdate) + tzoffset("S")
@@ -390,7 +390,7 @@ zdate = D2C(zdate,8)
 /* convert back to FULLDATE and include time */
 Address "COMMAND" ,
 'PIPE VAR ZDATE | DATECONVERT POSIX FULLDATE TIMEOUT | VAR RS'
-If rc ^= 0 Then Return ""
+If rc /= 0 Then Return ""
 
 /* slice off fractional time and return usable stamp */
 Parse Var rs rd rt .

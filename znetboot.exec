@@ -20,26 +20,27 @@ naddr = ""
 /* get the VM ID we're running as as the default config file name */
 Parse Value Diag(08,'QUERY USERID') With vmid . node . '15'x .
 Parse Upper Arg args "(" . ")" .
-If args ^= "" Then Parse Var args vmid .
+If args /= "" Then Parse Var args vmid .
 
 /* load those per-server variables from the config file */
 'pipe state' vmid 'znetboot *'
-If rc ^= 0 Then Do
+If rc /= 0 Then Do
   Upper vmid
   Say "# you need a" vmid "ZNETBOOT file for boot parameters"
   Say "# Create it with XEDIT or upload from another system."
 End
-If rc ^= 0 Then Exit rc
+If rc /= 0 Then Exit rc
 Say "# reading" vmid "ZNETBOOT for boot parameters"
 'pipe (end !) <' vmid 'znetboot | strip' ,
   '| nlocate 1.1 /#/ | na: nlocate 1.9 /ZNETBOOT_/' ,
   '| append strliteral # # | join * / / | strip | var parms' ,
   '! na: | stem na.'
-If rc ^= 0 Then Exit rc
+If rc /= 0 Then Exit rc
 
 /* parse the stuff we loaded from that config file */
 kfile = baseurl || "/" || kfile
 rfile = baseurl || "/" || rfile
+nc.0 = 0
 Do i = 1 to na.0
   Parse Var na.i vn "=" vv
   Select
@@ -48,20 +49,28 @@ Do i = 1 to na.0
     When vn = "ZNETBOOT_INITRD" Then rfile = vv
     When vn = "ZNETBOOT_BOOTPARMS" Then bparm = vv
     When vn = "ZNETBOOT_NICADDR" Then naddr = vv
-    Otherwise nopt
+
+    When vn = "ZNETBOOT_TOFILE" Then Do
+      j = nc.0 + 1
+      nc.j = vv
+      nc.0 = j
+    End
+
+    Otherwise nop
   End
 End
 bparm = bparm parms
 
+
 /* check CMS support files for consistency -- this is ONLY a check */
-Do While check ^= ""
+Do While check /= ""
   Parse Var check cfile check
   wfile = baseurl || "/" || cfile
   'pipe curl --text' wfile '| strip | stem c0.'
-  If rc ^= 0 Then Iterate
+  If rc /= 0 Then Iterate
   Parse Upper Var cfile fn "." ft
   'pipe <' fn ft '| strip | stem c1.'
-  If c1.0 ^= c0.0 Then Do
+  If c1.0 /= c0.0 Then Do
     Say "# CMS support file" fn ft "mismatch; consider updating; continuing ..."
     Iterate
   End
@@ -73,16 +82,27 @@ Do While check ^= ""
 End
 
 
+/* conditionally save a CMS "conffile" and set boot parms for it */
+If nc.0 > 0 Then Do
+  Say "# creating" vmid "CONFFILE for supplemental parameters"
+  'vmlink * 191 (w invoke' ,
+    'pipe stem nc. 1 | >' vmid 'CONFFILE .fm1'
+  If rc /= 0 Then Exit rc
+  bparm = bparm "CMSDASD=191" ,
+    "CMSCONFFILE=" || vmid || ".CONFFILE"
+End
+
+
 /* optionally check that we have a NIC at the expected I/O address */
-If naddr ^= "" Then Do
+If naddr /= "" Then Do
   Parse Value DiagRC(08,'Q V NIC' naddr) With 1 rc 10 . 17 rs '15'x .
   If rc = 40 Then Do
     Say "# you need a NIC at" naddr
     Say "# Define it with 'CP DEF NIC" naddr "TYPE QDIO'"
     Say "# and then 'CP COUPLE' it to the appropriate VSwitch."
   End
-  If rs ^= "" Then Say rs
-  If rc ^= 0 Then Exit rc
+  If rs /= "" Then Say rs
+  If rc /= 0 Then Exit rc
 End
 
 
@@ -104,7 +124,7 @@ Say "+" 'pipe curl --binary' kfile '| fblock 80 00 | punch'
         'pipe curl --binary' kfile '| fblock 80 00 | punch' ,
           '| count bytes | var kbytes'
 Call Diag 08, 'CLOSE' paddr
-If rc ^= 0 Then Do
+If rc /= 0 Then Do
   Call Diag 08, 'SP' raddr 'CL' rcl rcont rhold rkeep
   Call Diag 08, 'SP' paddr 'CL' pcl pcont phold pkeep tofor ptarg
   Exit rc
@@ -116,7 +136,7 @@ Say "+" 'pipe var bparm | fblock 80 00 | punch'
         'pipe var bparm | fblock 80 00 | punch' ,
           '| count bytes | var pbytes'
 Call Diag 08, 'CLOSE' paddr
-If rc ^= 0 Then Do
+If rc /= 0 Then Do
   Call Diag 08, 'SP' raddr 'CL' rcl rcont rhold rkeep
   Call Diag 08, 'SP' paddr 'CL' pcl pcont phold pkeep tofor ptarg
   Exit rc
@@ -128,7 +148,7 @@ Say "+" 'pipe curl --binary' rfile '| fblock 80 00 | punch'
         'pipe curl --binary' rfile '| fblock 80 00 | punch' ,
           '| count bytes | var rbytes'
 Call Diag 08, 'CLOSE' paddr
-If rc ^= 0 Then Do
+If rc /= 0 Then Do
   Call Diag 08, 'SP' raddr 'CL' rcl rcont rhold rkeep
   Call Diag 08, 'SP' paddr 'CL' pcl pcont phold pkeep tofor ptarg
   Exit rc
