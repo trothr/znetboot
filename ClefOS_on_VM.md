@@ -3,7 +3,7 @@
 ## Installing ClefOS on z/VM
 
 This document describes how to install ClefOS on z/VM using ZNETBOOT. 
-The target audience is those who are skilled at using and installing Linux 
+The target audience is those who may be skilled at using and installing Linux 
 but not knowledgeable about z/VM or CMS. The purpose of this document is 
 to enable installation of ClefOS as quickly and painlessly as possible 
 by those who don't know CMS or z/VM. 
@@ -17,10 +17,11 @@ the OS kernel can be retrieved from the web.
 
 ## You Will Need
 
-You will need a virtual machine. On z/VM, a virtual machine is a user 
-and a user is a virtual machine. As a general purpose operating system, 
+You will need a virtual machine. On z/VM, a virtual machine is also referred 
+to as a user,  
+and a user is assigned to a particular virtual machine. As a general purpose operating system, 
 z/VM provides interactive computing services by defining each user as a 
-virtual machine, typically running CMS. But being true virtual machines, 
+virtual machine, typically running CMS.  But being true virtual machines, 
 "users" of z/VM can run any operating system suitable for the IBM Z 
 architecture. 
 
@@ -28,13 +29,34 @@ Your virtual machine should be defined for at least 1G of memory
 (RAM, “storage”) and have at least one disk of 5G or more (about 7000 
 “cylinders” of 3390 type disk). The example here has two disks, 1B0 
 and 1B1, both 10000 cylinders. The addresses and sizes of your disks 
-will vary. Your virtual machine should also have a virtual NIC. 
+will vary, but are by convention a three or four hexidecimal digit 
+numner (here, '180', as a leading zero is conventionally dropped). 
+
+Your virtual machine should also have a virtual NIC. 
 The z/VM sysadmin will determine whether your NIC is set for Layer 2 
-or Layer 3 and you will need to adjust installation accordingly. 
-The NIC will likely be coupled to a virtual switch. (No changes needed 
+or Layer 3 (of the sevel layer ISO networking stack) and you will 
+need to adjust the installation accordingly. 
+The NIC will likely be coupled to routed network to a virtual switch. (No changes needed 
 for virtual switch versus other connectivity modes.) In this example, 
 the virtual NIC is defined at 340. The address of your NIC will probably 
 be different. 
+
+If DHCP (central IP address, routing, and nameserver assignment) is present, all one usually needs to know is the device name, and 
+the system handles setting up off-host connectivity; If DHCP is not present, one 
+should gather the following information:
+
+`
+1. Device name: (form: enccw0.0.0340):
+1. IP v4:       (form: 192.168.0.5):
+1. Netmask:     (form: 255.255.255.0):
+1. IP gateway:  (form: 192.168.0.1):  
+
+1. Nameserver:  (form: 8.8.8.8):
+`
+
+... Google notes there there is no purpose to also adding the `8.8.4.4` 
+alternative nameserver, as there is a load-balancer in play which sends 
+a request to either IP to the same backend
 
 Additionally, your virtual machine should have standard CMS requirements, 
 either an SFS space to serve as “filemode A” or (better) a 191 minidisk 
@@ -43,11 +65,11 @@ to serve as your “A disk”. You will of course need z/VM TCP/IP connectivity.
 tools and client utilities.) 
 
 CMS is a single-user operating system available on z/VM for interactive work. 
-When installing Linux, CMS acts as a self-sacrificing loader: It provides 
+For installing Linux, CMS acts as a self-sacrificing [chained] loader: It provides 
 the underpinnings to do the uploads and run the ZNETBOOT utility. (see next) 
 Once the kernel and other requisite files have been fetched and arranged, 
-your virtual machine will perform the rough equivalent of a kexec() function 
-and CMS will vanish. 
+control is handed off to your virtual machine, whch will perform the rough equivalent of a kexec() function 
+and then, CMS will step aside and vanish (thus: 'self-sacrificing')
 
 ## You Will Also Need
 
@@ -101,7 +123,7 @@ You can use any web retrieval tool or method. 'wget' will do nicely.
 
 clefonvm.znetboot must be tailored to your virtual machine. Use your 
 favorite plain text editor and change the IP address, netmask, network, 
-and DNS server accordingly. Some of the statements, for example … 
+and DNS server accordingly. Some of the statements, for example ...
 
 
     IPADDR=192.168.0.100     <<< your IP address goes here
@@ -109,13 +131,14 @@ and DNS server accordingly. Some of the statements, for example …
     GATEWAY=192.168.0.1      <<< your IPv4 gateway goes here
 
 
- … and so forth. Save your changes to that file, then upload all three 
+... and so forth. Save your changes to that file, then upload all three 
 files to your virtual machine. 
 
 These are all plain text files, not binary. 
+
 To upload, use the X3270 file transfer dialogue. 
 Hold down the left mouse button to bring up the "File" menu.
-Slide down to "File Transfer...".
+Slide down to "File Transfer ...".
 
 Within the “File Transfer” dialogue, select “Send to host”, 
 “Host is VM/CMS”, and “Transfer as ASCII file”. Then click 
@@ -124,9 +147,9 @@ Within the “File Transfer” dialogue, select “Send to host”,
 ![filetrans.png](images/filetrans.png)
 
 Files in CMS are identified with a filename, a blank, and then a 
-filetype. Therefore znetboot.exec must be named "znetboot exec" on the 
+filetype. Therefore `znetboot.exec` must be named `znetboot exec` on the 
 “Host File Name” line. (This field is not case sensitive, so feel free 
-to enter it as lower case.) Similarly for curl.rexx and clefonvm.znetboot. 
+to enter it as lower case.) Similarly for `curl.rexx` and `clefonvm.znetboot` 
 
 ## Run ZNETBOOT
 
@@ -135,20 +158,21 @@ When you have finished uploading the files, enter the following command:
     znetboot clefonvm     
 
 ZNETBOOT will read your CLEFONVM ZNETBOOT file and begin trying to 
-download the kernel and initrd. 
+download the kernel and initrd (and as optionally specified in the 
+kernel command line, a remote 'kickstart.cfg' file)
 
 ![znetboot.png](images/znetboot.png)
 
 Depending on network connectivity between your z/VM host and the 
-repository, the 'pipe' commands may take a while to run. Give it time. 
+repository, the CMS ?? 'pipe' commands may take a while to run. Give it time. 
 
-ZNETBOOT will queue-up the Linux files in your virtual reader and 
-then tell z/VM to boot from the reader. You should see dozens, even 
+ZNETBOOT will cache and queue-up the Linux files in your virtual reader and 
+then once all are present, tell z/VM to boot (transfer input control) from the reader. You should see dozens, even 
 hundreds, of lines of Linux console output. z/VM will pause the output 
 one screen at a time. (Be patient. There is a way to speed that up, 
-but it's much easier just to let it ride.) 
+but it is much easier just to let it ride.) 
 
-Once the installer has been brought up, you should see … 
+Once the installer has been brought up, you should see ...
 
 [dracut.png]
 
@@ -156,8 +180,11 @@ Once the installer has been brought up, you should see …
 ## Install ClefOS
 
 Congratulations! 
+
 At this point you are finished with the X3270 part of the task. 
 The rest should be very familiar. 
+
+*** seemingly not a very good idea, without somehow locking access
 
 Disconnect from the virtual console. This is optional. You can remain 
 connected, but if you disconnect then z/VM will continue to run your 
@@ -169,7 +196,10 @@ unwanted console signals. Enter the command:
 The hash/pound-sign is not a typo. The command is '#cp disconn' and 
 press \<Enter\>. (It's optional. You don't strictly have to disconnect.) 
 
-Use 'ssh' … 
+*** we need to hand in a SSH credneital, similar to that used for VNC 
+installs, to secure the installation against highjacking
+
+Use 'ssh' ...
 
 [details to be gathered]
 
@@ -178,14 +208,13 @@ Use 'ssh' …
 
 The ClefOS installer will automatically reboot. You do not need to be 
 attached to your virtual console for this to happen. If you are 
-connected then you will again see many screens of Linux console output. 
+connected then you will again see many screens of Linux console output scroll by. 
 
 If your networking parameters are correct and the installation 
 worked correctly, you can now SSH to your shiny new ClefOS mainframe 
 virtual machine. 
 
+Recovery is sometimes doable; other times re-installing to fix a typo seems 
+easier
+
 Have a lot of fun! 
-
-
-
-
