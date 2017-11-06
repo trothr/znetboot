@@ -29,7 +29,8 @@ Your virtual machine should be defined for at least 1G of memory
 (RAM, “storage”) and have at least one disk of 5G or more (about 7000 
 “cylinders” of 3390 type disk). The example here has two disks, 1B0 
 and 1B1, both 10000 cylinders. The addresses and sizes of your disks 
-will vary, but are by convention a three or four hexidecimal digit numher ('180', as a leading zero is conventionally dropped). 
+will vary, but are by convention a three or four hexidecimal digit 
+numner (here, '180', as a leading zero is conventionally dropped). 
 
 Your virtual machine should also have a virtual NIC. 
 The z/VM sysadmin will determine whether your NIC is set for Layer 2 
@@ -44,7 +45,8 @@ If DHCP (central IP address, routing, and nameserver assignment) is present, all
 the system handles setting up off-host connectivity; If DHCP is not present, one 
 should gather the following information:
 
-`1. Device name: (form: enccw0.0.0340):
+`
+1. Device name: (form: enccw0.0.0340):
 1. IP v4:       (form: 192.168.0.5):
 1. Netmask:     (form: 255.255.255.0):
 1. IP gateway:  (form: 192.168.0.1):  
@@ -61,6 +63,7 @@ tools and client utilities.)
 
 CMS is a single-user operating system available on z/VM for interactive work. 
 For installing Linux, CMS acts as a self-sacrificing [chained] loader: It provides 
+When installing Linux, CMS acts as a self-sacrificing loader: It provides 
 the underpinnings to do the uploads and run the ZNETBOOT utility. (see next) 
 Once the kernel and other requisite files have been fetched and arranged, 
 control is handed off to your virtual machine, whch will perform the rough equivalent of a kexec() function 
@@ -69,26 +72,21 @@ and then, CMS will step aside and vanish (thus: 'self-sacrificing')
 ## You Will Also Need
 
 You will also need the ZNETBOOT tool, or at least two files from 
-that package. Specifically, you will need ZNETBOOT EXEC and CURL REXX. 
+that package. Specifically, you will need "ZNETBOOT EXEC" and "CURL REXX". 
 (Filenames in CMS are two part, divided by blank space. Those files 
-would be “znetboot.exec” and “curl.rexx” on most other systems.) 
+would be "znetboot.exec" and "curl.rexx" on most other systems.) 
 
 Uploading via X3270 is explained. If you use some other means 
 than X3270 to connect with your z/VM host, your upload experience 
 will be different. 
 
-A third required file is CLEFONVM ZNETBOOT (clefonvm.znetboot), 
+A third required file is "CLEFONVM ZNETBOOT" (aka "clefonvm.znetboot"), 
 which will hold bootstrap parameters unique to your virtual machine. 
 It must either be created with the CMS text editor 'xedit' or must be 
 created on your desktop or laptop and then uploaded. There is an 
 example included with the ZNETBOOT package and on the web, but the 
 example will not work for your virtual machine because you will 
 minimally have different network addresses. 
-
-
-
-
-
 
 ## Sign On
 
@@ -97,7 +95,7 @@ present three fields: USERID, PASSWORD, and COMMAND. Ignore the latter.
 Enter your virtual machine name in the USERID field. Enter your password 
 in the PASSWORD field. (It will not be displayed.) 
 
-![logon.jpg](images/logon.jpg)
+![logon.png](images/logon.png)
 
 Press \<Enter\>. 
 
@@ -126,9 +124,9 @@ favorite plain text editor and change the IP address, netmask, network,
 and DNS server accordingly. Some of the statements, for example ...
 
 
-    IPADDR=148.100.88.35     <<< your IP address goes here
+    IPADDR=192.168.0.100     <<< your IP address goes here
     NETMASK=255.255.255.0    <<< your IPv4 netmask goes here
-    GATEWAY=148.100.88.1     <<< your IPv4 gateway goes here
+    GATEWAY=192.168.0.1      <<< your IPv4 gateway goes here
 
 
 ... and so forth. Save your changes to that file, then upload all three 
@@ -161,7 +159,7 @@ ZNETBOOT will read your CLEFONVM ZNETBOOT file and begin trying to
 download the kernel and initrd (and as optionally specified in the 
 kernel command line, a remote 'kickstart.cfg' file)
 
-![znetboot.png](images/znetboot.png>
+![znetboot.png](images/znetboot.png)
 
 Depending on network connectivity between your z/VM host and the 
 repository, the CMS ?? 'pipe' commands may take a while to run. Give it time. 
