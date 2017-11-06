@@ -52,8 +52,11 @@ should gather the following information:
 1. IP gateway:  (form: 192.168.0.1):  
 
 1. Nameserver:  (form: 8.8.8.8):
-1. Nameserver:  (form: 8.8.4.4):
 `
+
+... Google notes there there is no purpose to also adding the `8.8.4.4` 
+alternative nameserver, as there is a load-balancer in play which sends 
+a request to either IP to the same backend
 
 Additionally, your virtual machine should have standard CMS requirements, 
 either an SFS space to serve as “filemode A” or (better) a 191 minidisk 
@@ -63,7 +66,6 @@ tools and client utilities.)
 
 CMS is a single-user operating system available on z/VM for interactive work. 
 For installing Linux, CMS acts as a self-sacrificing [chained] loader: It provides 
-When installing Linux, CMS acts as a self-sacrificing loader: It provides 
 the underpinnings to do the uploads and run the ZNETBOOT utility. (see next) 
 Once the kernel and other requisite files have been fetched and arranged, 
 control is handed off to your virtual machine, whch will perform the rough equivalent of a kexec() function 
