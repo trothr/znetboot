@@ -14,6 +14,8 @@ CP commands can be abbreviated.
 The hypervisor will recognize the shortest unique value
 of any command and its arguments.
 
+Some common CP commands of use with Linux follow. 
+
 # define storage
 
 Use the `define storage` command to change the size of
@@ -39,4 +41,16 @@ your virtual machine. The devices themselves may be virtual or real.
 
     vmcp q v all
 
+# ipl
+
+Use the `ipl` command (Initial Program Load) to boot your virtual machine. 
+
+    vmcp ipl 1b0 clear
+
+This command WILL reset your virtual machine so should be issued
+when you have access to the virtual console if there is any likelihood
+that it will fail to work as expected. 
+
+In this example `1B0` is the address of a bootable disk
+and `clear` means to also reset memory before performing the load.
 
