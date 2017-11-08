@@ -54,3 +54,14 @@ that it will fail to work as expected.
 In this example `1B0` is the address of a bootable disk
 and `clear` means to also reset memory before performing the load.
 
+On z/VM one can boot from a "named saved system" (NSS).
+This is akin to the direct kernel load function of other hypervisors.
+An example is:
+
+    vmcp ipl linux
+
+In this example, if there is no NSS named LINUX, then the command
+results in an error and your virtual machine continues to run whatever
+kernel it was running when the command was issued.
+
+
