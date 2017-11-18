@@ -1,4 +1,4 @@
-* Copyright © 2016, 2017, Richard M. Troth, all rights reserved.   <plaintext>
+* Copyright © 2016, 2017, Richard M. Troth, all rights reserved.   <plaintext>                                                                                                                                     "width holder" because this is a wide file *
 *
 *         Name: ZNETBOOT FILELIST
 *         Date: 2015-Dec and following
@@ -24,7 +24,7 @@
 * Note: kernels requiring z12 exhibit 0BADCCCC abend when IPLed on z10
 *
       CLEFONVM ZNETBOOT *  -- a demo specific to ClefOS, with documentation
-*     CLEFONVM MD       *  -- markdown document for installing  ClefOS
+      CLEFONVM MD       *  -- markdown document for installing ClefOS via ZNETBOOT
 *
 * boot params files we would like to have
 *     OPENSUSE ZNETBOOT *  -- wanted, dead or alive
