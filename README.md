@@ -1,12 +1,12 @@
 # znetboot
 
 ZNETBOOT makes it easy to bring up Linux on z/VM.
-Just enter the command 'znetboot' from the CMS "Ready;" prompt.
+Just enter the command `znetboot` from the CMS "Ready;" prompt.
 
 ZNETBOOT is intended to reduce the number of manual steps required
 to boot Linux on a VM/CMS system. It should make things much easier
 for non-VM and non-mainframe users. After nearly two decades of Linux
-on z/VM, it should be at least this easy.
+on z/VM, mainframe Linux should be at least this easy.
 
 ZNETBOOT reads an installation file and retrieves the kernel
 and initrd indicated. Other statements in the installation file
@@ -21,6 +21,6 @@ are passed to the kernel as boot parameters. For example ...
     IPADDR=192.168.0.64
     GATEWAY=192.168.0.1
 
-Then enter 'znetboot' from the CMS "Ready;" prompt. Next stop, Linux.
+Then enter `znetboot` from the CMS "Ready;" prompt. Next stop, Linux.
 
 
