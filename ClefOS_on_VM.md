@@ -217,4 +217,43 @@ virtual machine.
 Recovery is sometimes doable; other times re-installing to fix a typo seems 
 easier
 
+## Other Voices
+
+IBM has an enormous library of freely available documention.  The underlying
+z/VM environment is approachable described in: 
+
+     Getting Started with z/VM for Linux
+
+     http://publibz.boulder.ibm.com/epubs/pdf/hcsx0c31.pdf
+
+Which is IBM document  SC24-6194-06 (August 2017)
+
+In one of the discussion and community (and professional but free) support
+mailing lists, that work was described as: 
+
+> One of the simplest is the Getting Started with z/VM for Linux manual that
+> is part of the z/VM library.  It was intended as a basic fishing lesson,
+> as opposed to just handing you fishing
+
+
+     In IBM documentation idenfication, the last two digits indicate the 
+revision level of the document, here: -06 and was released, not unexpectedly, in 
+Augist 2017
+
+There is something of acquiring a new skill in reading IBM documentation. 
+They were said to be the third largest publisher of originally authored
+document in the US, behind the US Department of Defense, and the Boy Scouts
+of America.  Not surprising, each of the three is in the buisness of
+training people from wholly ignorant of a field, to full competence. 
+Reading the (fine manual) documentation is to learn from professionally
+designed, and maintained training materials.  That said, as the
+documentation cannot assay your particular level of competence in an area,
+it has to have parts that you 'already know', and may safely skip over
+
+As intimated, there are several mailing lists to whoch one may freely
+subscribe, read, watch discussion between professionals, and so to learn.
+
+FIXME -- add s390 list first
+
+
 Have a lot of fun! 
