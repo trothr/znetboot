@@ -164,7 +164,7 @@ kernel command line, a remote 'kickstart.cfg' file)
 ![znetboot.png](images/znetboot.png)
 
 Depending on network connectivity between your z/VM host and the 
-repository, the CMS ?? 'pipe' commands may take a while to run. Give it time. 
+repository, the CMS 'pipe' commands may take a while to run. Give it time. 
 
 ZNETBOOT will cache and queue-up the Linux files in your virtual reader and 
 then once all are present, tell z/VM to boot (transfer input control) from the reader. You should see dozens, even 
@@ -172,9 +172,9 @@ hundreds, of lines of Linux console output. z/VM will pause the output
 one screen at a time. (Be patient. There is a way to speed that up, 
 but it is much easier just to let it ride.) 
 
-Once the installer has been brought up, you should see ...
+Once the installer has been brought up, you should see "Please ssh" ...
 
-[dracut.png]
+[anaconda.png](images/anaconda.png)
 
 
 ## Install ClefOS
@@ -191,7 +191,7 @@ connected, but if you disconnect then z/VM will continue to run your
 virtual machine without any chance of network interruptions triggering 
 unwanted console signals. Enter the command: 
 
-    \#cp disconn
+    #cp disconn
 
 The hash/pound-sign is not a typo. The command is '#cp disconn' and 
 press \<Enter\>. (It's optional. You don't strictly have to disconnect.) 
