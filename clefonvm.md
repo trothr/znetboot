@@ -280,11 +280,11 @@ in the body to:
 
     IBMVM-request@LISTSERV.UARK.EDU
 
---  Fedoraproject 's390' mailing list
+--  Fedoraproject 's390x' mailing list
 
 Archive (open, with email addresses obscured)
 
-    https://lists.fedoraproject.org/archives/list/s390x@lists.fedoraproject.org/message/FKG4KTYU6UOKSB7Q6TUV4IXR5W74RV2R/
+    https://lists.fedoraproject.org/archives/list/s390x@lists.fedoraproject.org/
 
 Or send an email with the word:
 
@@ -293,6 +293,21 @@ Or send an email with the word:
 in the body to:
 
     s390x-request@lists.fedoraproject.org
+
+-- Debian
+
+Archive (open, with email addresses plaintext)
+
+    https://lists.debian.org/debian-s390/
+
+Or send an email with the word:
+
+    subscribe
+
+in the subject line to:
+
+    mailto:debian-s390-request@lists.debian.org
+
 
 # Have a lot of fun! 
 
