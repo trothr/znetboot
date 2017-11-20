@@ -174,7 +174,7 @@ but it is much easier just to let it ride.)
 
 Once the installer has been brought up, you should see "Please ssh" ...
 
-[anaconda.png](images/anaconda.png)
+![anaconda.png](images/anaconda.png)
 
 
 ## Install ClefOS
