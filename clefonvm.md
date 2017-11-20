@@ -222,9 +222,9 @@ easier
 IBM has an enormous library of freely available documention.  The underlying
 z/VM environment is approachable described in: 
 
-     Getting Started with z/VM for Linux
+    Getting Started with z/VM for Linux
 
-     http://publibz.boulder.ibm.com/epubs/pdf/hcsx0c31.pdf
+    http://publibz.boulder.ibm.com/epubs/pdf/hcsx0c31.pdf
 
 Which is IBM document  SC24-6194-06 (August 2017)
 
@@ -237,9 +237,9 @@ freely available mailing lists thus:
 > as opposed to just handing you fishing
 
 
-     In IBM documentation idenfication, the last two digits indicate the 
-revision level of the document, here: -06 and was released, not unexpectedly, in 
-Augist 2017
+    In IBM documentation idenfication, the last two digits indicate the
+revision level of the document, here: -06 and was released, not
+unexpectedly, in Augist 2017
 
 There is something of acquiring a new skill in reading IBM documentation. 
 They were said to be the third largest publisher of originally authored
@@ -251,48 +251,48 @@ designed, and maintained training materials.  That said, as the
 documentation cannot assay your particular level of competence in an area,
 it has to have parts that you 'already know', and may safely skip over
 
+## Mailing lists
+
 As intimated, there are several mailing lists to whoch one may freely
 subscribe, read, watch discussion between professionals, and so to learn.
 
 FIXME -- add s390 list first
 
-1. UARK 's390' list
+-- UARK 's390' list
 
 Description
 
-     http://listserv.uark.edu/cgi-bin/wa?LIST=IBMVM
+    http://listserv.uark.edu/cgi-bin/wa?LIST=IBMVM
 
 Archive (authentication requires to prevent mailing list 'spam address farming)
 
-     http://listserv.uark.edu/cgi-bin/wa?LIST=IBMVM
+    http://listserv.uark.edu/cgi-bin/wa?LIST=IBMVM
 
 Or send an email with the word:
 
-     help
+    help
 
 or
 
-     subscribe
+    subscribe
 
 in the body to: 
 
-     IBMVM-request@LISTSERV.UARK.EDU
+    IBMVM-request@LISTSERV.UARK.EDU
 
-1. Fedoraproject 's390' mailing list
+--  Fedoraproject 's390' mailing list
 
 Archive (open, with email addresses obscured)
 
-     https://lists.fedoraproject.org/archives/list/s390x@lists.fedoraproject.org/message/FKG4KTYU6UOKSB7Q6TUV4IXR5W74RV2R/
+    https://lists.fedoraproject.org/archives/list/s390x@lists.fedoraproject.org/message/FKG4KTYU6UOKSB7Q6TUV4IXR5W74RV2R/
 
 Or send an email with the word:
 
-     subscribe
+    subscribe
 
 in the body to:
 
-     s390x-request@lists.fedoraproject.org
+    s390x-request@lists.fedoraproject.org
 
-=======
-
-Have a lot of fun! 
+# Have a lot of fun! 
 
