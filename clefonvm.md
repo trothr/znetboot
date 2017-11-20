@@ -229,7 +229,8 @@ z/VM environment is approachable described in:
 Which is IBM document  SC24-6194-06 (August 2017)
 
 In one of the discussion and community (and professional but free) support
-mailing lists, that work was described as: 
+mailing lists, that work was described by an IBM professional on one the
+freely available mailing lists thus:
 
 > One of the simplest is the Getting Started with z/VM for Linux manual that
 > is part of the z/VM library.  It was intended as a basic fishing lesson,
@@ -255,6 +256,43 @@ subscribe, read, watch discussion between professionals, and so to learn.
 
 FIXME -- add s390 list first
 
+1. UARK 's390' list
+
+Description
+
+     http://listserv.uark.edu/cgi-bin/wa?LIST=IBMVM
+
+Archive (authentication requires to prevent mailing list 'spam address farming)
+
+     http://listserv.uark.edu/cgi-bin/wa?LIST=IBMVM
+
+Or send an email with the word:
+
+     help
+
+or
+
+     subscribe
+
+in the body to: 
+
+     IBMVM-request@LISTSERV.UARK.EDU
+
+1. Fedoraproject 's390' mailing list
+
+Archive (open, with email addresses obscured)
+
+     https://lists.fedoraproject.org/archives/list/s390x@lists.fedoraproject.org/message/FKG4KTYU6UOKSB7Q6TUV4IXR5W74RV2R/
+
+Or send an email with the word:
+
+     subscribe
+
+in the body to:
+
+     s390x-request@lists.fedoraproject.org
+
+=======
 
 Have a lot of fun! 
 
