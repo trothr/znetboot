@@ -29,12 +29,12 @@ Your virtual machine should be defined for at least 1G of memory
 (RAM, “storage”) and have at least one disk of 5G or more (about 7000 
 “cylinders” of 3390 type disk). The example here has two disks, 1B0 
 and 1B1, both 10000 cylinders. The addresses and sizes of your disks 
-will vary, but are by convention a three or four hexidecimal digit 
-numner (here, '180', as a leading zero is conventionally dropped). 
+will vary, but are by convention a three or four hexadecimal digit 
+number (here, '180', as a leading zero is conventionally dropped). 
 
 Your virtual machine should also have a virtual NIC. 
 The z/VM sysadmin will determine whether your NIC is set for Layer 2 
-or Layer 3 (of the sevel layer ISO networking stack) and you will 
+or Layer 3 (of the seven layer ISO networking stack) and you will 
 need to adjust the installation accordingly. 
 The NIC will likely be coupled to routed network to a virtual switch. (No changes needed 
 for virtual switch versus other connectivity modes.) In this example, 
@@ -68,7 +68,7 @@ CMS is a single-user operating system available on z/VM for interactive work.
 For installing Linux, CMS acts as a self-sacrificing [chained] loader: It provides 
 the underpinnings to do the uploads and run the ZNETBOOT utility. (see next) 
 Once the kernel and other requisite files have been fetched and arranged, 
-control is handed off to your virtual machine, whch will perform the rough equivalent of a kexec() function 
+control is handed off to your virtual machine, which will perform the rough equivalent of a kexec() function 
 and then, CMS will step aside and vanish (thus: 'self-sacrificing')
 
 ## You Will Also Need
@@ -196,8 +196,8 @@ unwanted console signals. Enter the command:
 The hash/pound-sign is not a typo. The command is '#cp disconn' and 
 press \<Enter\>. (It's optional. You don't strictly have to disconnect.) 
 
-*** we need to hand in a SSH credneital, similar to that used for VNC 
-installs, to secure the installation against highjacking
+*** we need to hand in a SSH credential, similar to that used for VNC 
+installs, to secure the installation against session high-jacking
 
 Use 'ssh' ...
 
@@ -219,42 +219,95 @@ easier
 
 ## Other Voices
 
-IBM has an enormous library of freely available documention.  The underlying
+IBM has an enormous library of freely available documentation.  The underlying
 z/VM environment is approachable described in: 
 
-     Getting Started with z/VM for Linux
+    Getting Started with z/VM for Linux
 
-     http://publibz.boulder.ibm.com/epubs/pdf/hcsx0c31.pdf
+    http://publibz.boulder.ibm.com/epubs/pdf/hcsx0c31.pdf
 
 Which is IBM document  SC24-6194-06 (August 2017)
 
 In one of the discussion and community (and professional but free) support
-mailing lists, that work was described as: 
+mailing lists, that work was described by an IBM professional on one the
+freely available mailing lists thus:
 
 > One of the simplest is the Getting Started with z/VM for Linux manual that
 > is part of the z/VM library.  It was intended as a basic fishing lesson,
 > as opposed to just handing you fishing
 
 
-     In IBM documentation idenfication, the last two digits indicate the 
-revision level of the document, here: -06 and was released, not unexpectedly, in 
-Augist 2017
+    In IBM documentation identification, the last two digits indicate the
+revision level of the document, here: -06 and was released, not
+unexpectedly, in August 2017
 
 There is something of acquiring a new skill in reading IBM documentation. 
 They were said to be the third largest publisher of originally authored
 document in the US, behind the US Department of Defense, and the Boy Scouts
-of America.  Not surprising, each of the three is in the buisness of
+of America.  Not surprising, each of the three is in the business of
 training people from wholly ignorant of a field, to full competence. 
 Reading the (fine manual) documentation is to learn from professionally
 designed, and maintained training materials.  That said, as the
 documentation cannot assay your particular level of competence in an area,
 it has to have parts that you 'already know', and may safely skip over
 
-As intimated, there are several mailing lists to whoch one may freely
+## Mailing lists
+
+As intimated, there are several mailing lists to which one may freely
 subscribe, read, watch discussion between professionals, and so to learn.
 
 FIXME -- add s390 list first
 
+-- UARK 's390' list
 
-Have a lot of fun! 
+Description
+
+    http://listserv.uark.edu/cgi-bin/wa?LIST=IBMVM
+
+Archive (authentication requires to prevent mailing list 'spam address farming)
+
+    http://listserv.uark.edu/cgi-bin/wa?LIST=IBMVM
+
+Or send an email with the word:
+
+    help
+
+or
+
+    subscribe
+
+in the body to: 
+
+    IBMVM-request@LISTSERV.UARK.EDU
+
+--  Fedoraproject 's390x' mailing list
+
+Archive (open, with email addresses obscured)
+
+    https://lists.fedoraproject.org/archives/list/s390x@lists.fedoraproject.org/
+
+Or send an email with the word:
+
+    subscribe
+
+in the body to:
+
+    s390x-request@lists.fedoraproject.org
+
+-- Debian
+
+Archive (open, with email addresses plaintext)
+
+    https://lists.debian.org/debian-s390/
+
+Or send an email with the word:
+
+    subscribe
+
+in the subject line to:
+
+    mailto:debian-s390-request@lists.debian.org
+
+
+# Have a lot of fun! 
 
