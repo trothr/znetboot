@@ -176,6 +176,8 @@ Once the installer has been brought up, you should see "Please ssh" ...
 
 ![anaconda.png](images/anaconda.png)
 
+You should now do just that, use SSH to connect and finish the installation.
+
 
 ## Install ClefOS
 
