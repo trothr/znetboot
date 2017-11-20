@@ -1,4 +1,4 @@
-# Clef-on-VM
+# ClefOS-on-VM
 
 ## Installing ClefOS on z/VM
 
@@ -257,3 +257,4 @@ FIXME -- add s390 list first
 
 
 Have a lot of fun! 
+
