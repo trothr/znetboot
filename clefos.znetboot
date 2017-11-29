@@ -18,24 +18,20 @@ ramdisk_size=40000 cio_ignore=all,!condev
 # see http://download.sinenomine.net/clefos/7.4/images/generic.prm
 
 # additional ClefOS boot params ...
-NETTYPE=qeth
-SUBCHANNELS=0.0.0340,0.0.0341,0.0.0342
-IPADDR=148.100.88.35
-NETWORK=148.100.88.0
-NETMASK=255.255.255.0
-BROADCAST=148.100.88.255
-GATEWAY=148.100.88.1
-DNS=8.8.8.8
-SEARCHDNS=sinenomine.net:lf-dev.marist.edu:casita.net
-HOSTNAME=ltroth3.casita.net
-LAYER2=1
-VSWITCH=1
-MTU=1492
-DASD=1B0-1B1
-
-# You can optionally put most parameters into a secondary file ...
-#CMSDASD=191
-#CMSCONFFILE=CLEFOS.CONFFILE
-# ... but ZNETBOOT will not presently fetch that file for you.
+ZNETBOOT_TOFILE=NETTYPE=qeth
+ZNETBOOT_TOFILE=SUBCHANNELS=0.0.0340,0.0.0341,0.0.0342
+ZNETBOOT_TOFILE=IPADDR=148.100.88.35
+ZNETBOOT_TOFILE=NETWORK=148.100.88.0
+ZNETBOOT_TOFILE=NETMASK=255.255.255.0
+ZNETBOOT_TOFILE=BROADCAST=148.100.88.255
+ZNETBOOT_TOFILE=GATEWAY=148.100.88.1
+ZNETBOOT_TOFILE=DNS=8.8.8.8
+ZNETBOOT_TOFILE=SEARCHDNS=sinenomine.net:lf-dev.marist.edu:casita.net
+ZNETBOOT_TOFILE=HOSTNAME=ltroth3.casita.net
+ZNETBOOT_TOFILE=LAYER2=1
+ZNETBOOT_TOFILE=VSWITCH=1
+ZNETBOOT_TOFILE=MTU=1492
+ZNETBOOT_TOFILE=DASD=1B0-1B1
+# above statements are stashed into a supplemental parameters file
 
 
