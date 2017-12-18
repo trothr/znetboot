@@ -120,9 +120,9 @@ Retrieve the following files and upload them to z/VM.
 * http://www.casita.net/pub/znetboot/curl.rexx     
 * http://www.casita.net/pub/znetboot/clefonvm.znetboot     
 
-You can use any web retrieval tool or method. 'wget' will do nicely. 
+You can use any web retrieval tool or method. `wget` will do nicely. 
 
-clefonvm.znetboot must be tailored to your virtual machine. Use your 
+`clefonvm.znetboot` must be tailored to your virtual machine. Use your 
 favorite plain text editor and change the IP address, netmask, network, 
 and DNS server accordingly. Some of the statements, for example ...
 
@@ -165,13 +165,14 @@ kernel command line, a remote 'kickstart.cfg' file)
 ![znetboot.png](images/znetboot.png)
 
 Depending on network connectivity between your z/VM host and the 
-repository, the CMS 'pipe' commands may take a while to run. Give it time. 
+repository, the CMS `pipe` commands may take a while to run. Give it time. 
 
-ZNETBOOT will cache and queue-up the Linux files in your virtual reader and 
-then once all are present, tell z/VM to boot (transfer input control) from the reader. You should see dozens, even 
-hundreds, of lines of Linux console output. z/VM will pause the output 
-one screen at a time. (Be patient. There is a way to speed that up, 
-but it is much easier just to let it ride.) 
+ZNETBOOT will cache and queue-up the Linux files in your virtual reader 
+and then once all are present, tell z/VM to boot (transfer input control) 
+from the reader. You should see dozens, even hundreds, of lines 
+of Linux console output. z/VM will pause the output one screen at a time. 
+(Be patient. There is a way to speed that up, but it is much easier 
+just to let it ride.) 
 
 Once the installer has been brought up, you should see "Please ssh" ...
 
@@ -210,15 +211,15 @@ Use 'ssh' ...
 ## Reboot
 
 The ClefOS installer will automatically reboot. You do not need to be 
-attached to your virtual console for this to happen. If you are 
-connected then you will again see many screens of Linux console output scroll by. 
+attached to your virtual console for this to happen. If you are connected 
+then you will again see many screens of Linux console output scroll by. 
 
 If your networking parameters are correct and the installation 
 worked correctly, you can now SSH to your shiny new ClefOS mainframe 
 virtual machine. 
 
-Recovery is sometimes doable; other times re-installing to fix a typo seems 
-easier
+Recovery is sometimes doable; 
+other times re-installing to fix a typo seems easier. 
 
 ## Other Voices
 
@@ -313,4 +314,5 @@ in the subject line to:
 
 
 # Have a lot of fun! 
+
 
