@@ -17,13 +17,12 @@ the OS kernel can be retrieved from the web.
 
 ## You Will Need
 
-You will need a virtual machine. On z/VM, a virtual machine is also referred 
-to as a user,  
-and a user is assigned to a particular virtual machine. As a general purpose operating system, 
-z/VM provides interactive computing services by defining each user as a 
-virtual machine, typically running CMS.  But being true virtual machines, 
-"users" of z/VM can run any operating system suitable for the IBM Z 
-architecture. 
+You will need a virtual machine. On z/VM, a virtual machine is also 
+referred to as a user, and a user is assigned to a particular virtual machine. 
+As a general purpose operating system, z/VM provides interactive computing 
+services by defining each user as a virtual machine, typically running CMS. 
+But being true virtual machines, "users" of z/VM can run any operating 
+system suitable for the IBM Z architecture. 
 
 Your virtual machine should be defined for at least 1G of memory 
 (RAM, “storage”) and have at least one disk of 5G or more (about 7000 
@@ -36,14 +35,15 @@ Your virtual machine should also have a virtual NIC.
 The z/VM sysadmin will determine whether your NIC is set for Layer 2 
 or Layer 3 (of the seven layer ISO networking stack) and you will 
 need to adjust the installation accordingly. 
-The NIC will likely be coupled to routed network to a virtual switch. (No changes needed 
-for virtual switch versus other connectivity modes.) In this example, 
-the virtual NIC is defined at 340. The address of your NIC will probably 
-be different. 
+The NIC will likely be coupled to routed network to a virtual switch. 
+(No changes needed for virtual switch versus other connectivity modes.) 
+In this example, the virtual NIC is defined at 340. The address of 
+your NIC will probably be different. 
 
-If DHCP (central IP address, routing, and nameserver assignment) is present, all one usually needs to know is the device name, and 
-the system handles setting up off-host connectivity; If DHCP is not present, one 
-should gather the following information:
+If DHCP (central IP address, routing, and nameserver assignment) is present, 
+all one usually needs to know is the device name, and the system handles 
+setting up off-host connectivity; If DHCP is not present, one should 
+gather the following information:
 
 `
 1. Device name: (form: enccw0.0.0340):
@@ -54,7 +54,7 @@ should gather the following information:
 1. Nameserver:  (form: 8.8.8.8):
 `
 
-... Google notes there there is no purpose to also adding the `8.8.4.4` 
+Google notes there there is no purpose to also adding the `8.8.4.4` 
 alternative nameserver, as there is a load-balancer in play which sends 
 a request to either IP to the same backend
 
@@ -65,11 +65,12 @@ to serve as your “A disk”. You will of course need z/VM TCP/IP connectivity.
 tools and client utilities.) 
 
 CMS is a single-user operating system available on z/VM for interactive work. 
-For installing Linux, CMS acts as a self-sacrificing [chained] loader: It provides 
-the underpinnings to do the uploads and run the ZNETBOOT utility. (see next) 
-Once the kernel and other requisite files have been fetched and arranged, 
-control is handed off to your virtual machine, which will perform the rough equivalent of a kexec() function 
-and then, CMS will step aside and vanish (thus: 'self-sacrificing')
+For installing Linux, CMS acts as a self-sacrificing [chained] loader: 
+It provides the underpinnings to do the uploads and run the ZNETBOOT utility. 
+(see next) Once the kernel and other requisite files have been fetched 
+and arranged, control is handed off to your virtual machine, which will 
+perform the rough equivalent of a kexec() function and then, 
+CMS will step aside and vanish (thus: 'self-sacrificing')
 
 ## You Will Also Need
 
