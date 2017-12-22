@@ -183,24 +183,19 @@ Congratulations!
 At this point you are finished with the X3270 part of the task. 
 The rest should be very familiar. 
 
-*** seemingly not a very good idea, without somehow locking access
-
-Disconnect from the virtual console. This is optional. You can remain 
-connected, but if you disconnect then z/VM will continue to run your 
-virtual machine without any chance of network interruptions triggering 
-unwanted console signals. Enter the command: 
+You **may** disconnect from the virtual console. This is optional. 
+You can remain connected, but if you disconnect then z/VM will continue 
+to run your virtual machine without any chance of network interruptions 
+triggering unwanted console signals. Enter the command: 
 
     #cp disconn
 
-The hash/pound-sign is not a typo. The command is '#cp disconn' and 
+The hash/pound-sign is not a typo. The command is `#cp disconn` and 
 press \<Enter\>. (It's optional. You don't strictly have to disconnect.) 
 
-*** we need to hand in a SSH credential, similar to that used for VNC 
-installs, to secure the installation against session high-jacking
-
-Use 'ssh' ...
-
-[details to be gathered]
+Whether you disconnect the virtual console or not, 
+use 'ssh' to connect and drive the rest of the installation. 
+This part will be very familiar to experience Linux users. 
 
 
 ## Reboot
