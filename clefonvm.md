@@ -127,6 +127,12 @@ and DNS server accordingly. Some of the statements, for example ...
 ... and so forth. Save your changes to that file, then upload all three 
 files to your virtual machine. 
 
+Note that the installer often requires more boot parameters
+than can fit on a standard boot parm line, so you may need to
+prefix statements with `ZNETBOOT_TOFILE=`. This will direct
+ZNETBOOT to store those statements in an auxiliary CMS file.
+(More on that some other time.)
+
 These are all plain text files, not binary. 
 
 To upload, use the X3270 file transfer dialogue. 
