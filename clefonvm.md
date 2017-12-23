@@ -34,7 +34,6 @@ number (here, '180', as a leading zero is conventionally dropped).
 Your virtual machine should also have a virtual NIC. 
 The z/VM sysadmin will determine whether your NIC is set for Layer 2 
 or Layer 3 (of the seven layer ISO networking stack) and you will 
-<<<<<<< HEAD
 need to adjust the installation accordingly. The NIC will likely be 
 coupled to routed network to a virtual switch. (No changes needed 
 for virtual switch versus other connectivity modes.) In this example, 
@@ -46,14 +45,12 @@ and nameserver assignment. In that case, all one usually needs to know
 is the device name, and the system handles setting up network connectivity. 
 If DHCP is not present, one should gather the following information:
 
-`
 1. Device name: (form: enccw0.0.0340):
 1. IP v4:       (form: 192.168.0.5):
 1. Netmask:     (form: 255.255.255.0):
 1. IP gateway:  (form: 192.168.0.1):  
 
 1. Nameserver:  (form: 8.8.8.8):
-`
 
 Additionally, your virtual machine should have standard CMS requirements, 
 either an SFS space to serve as “filemode A” or (better) a 191 minidisk 
@@ -194,7 +191,7 @@ The hash/pound-sign is not a typo. The command is `#cp disconn` and
 press \<Enter\>. (It's optional. You don't strictly have to disconnect.) 
 
 Whether you disconnect the virtual console or not, 
-use 'ssh' to connect and drive the rest of the installation. 
+use `ssh` to connect and drive the rest of the installation. 
 This part will be very familiar to experience Linux users. 
 
 
