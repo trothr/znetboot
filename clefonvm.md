@@ -46,7 +46,7 @@ is the device name, and the system handles setting up network connectivity.
 If DHCP is not present, one should gather the following information:
 
 1. Device name: (form: enccw0.0.0340):
-1. IP v4:       (form: 192.168.0.5):
+1. IP v4:       (form: 192.168.0.100):
 1. Netmask:     (form: 255.255.255.0):
 1. IP gateway:  (form: 192.168.0.1):
 
