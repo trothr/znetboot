@@ -264,15 +264,14 @@ freely available mailing lists thus:
 
 > One of the simplest is the Getting Started with z/VM for Linux manual that
 > is part of the z/VM library.  It was intended as a basic fishing lesson,
-> as opposed to just handing you fishing
-
+> as opposed to just handing you fishing [tackle]
 
 In IBM documentation identification, the last two digits indicate the 
 revision level of the document, here: -06 and was released, not 
 unexpectedly, in August 2017
 
 There is something of acquiring a new skill in reading IBM documentation. 
-They were said to be the third largest publisher of originally authored
+At one time, IBM was said to be the third largest publisher of originally authored
 document in the US, behind the US Department of Defense, and the Boy Scouts
 of America.  Not surprising, each of the three is in the business of
 training people from wholly ignorant of a field, to full competence. 
