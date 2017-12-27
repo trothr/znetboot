@@ -119,7 +119,7 @@ Retrieve the following files and upload them to z/VM.
 * http://www.casita.net/pub/znetboot/curl.rexx     
 * http://www.casita.net/pub/znetboot/clefonvm.znetboot     
 
-You can use any web retrieval tool or method. The 'wget' command line tool will do nicely. 
+You can use any web retrieval tool or method to make local copies of these files. The 'wget' command line tool will do nicely. 
 In the latter case, it may make sense to make a local directory to store such: 
 \< mkdir s390x \> and then move into it: \< cd s390x \>
 Then retrieve each of the three files:
@@ -131,7 +131,7 @@ Then retrieve each of the three files:
     $ wget -O clefonvm.znetboot  http://www.casita.net/pub/znetboot/clefonvm.znetboot
 
 
-\< clefonvm.znetboot \> is a teplate file, and will need to be tailored to the specifics assigned by your provider for your virtual machine. Use your 
+\< clefonvm.znetboot \> is a template file, and will need to be tailored to the specifics assigned by your provider for your virtual machine. Use your 
 favorite plain text editor and amend the IP address, netmask, network, 
 and DNS server accordingly. Some of the statements, for example ...
 
