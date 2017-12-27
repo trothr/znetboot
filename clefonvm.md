@@ -214,6 +214,7 @@ Use 'ssh' ...
 [details to be gathered]
 
 
+
 ## Reboot
 
 The ClefOS installer will automatically reboot when it normally completes. You do not need to be 
@@ -222,8 +223,29 @@ still connected then you will again see many screens of Linux console boot messa
 
 If your networking parameters are correct and the installation 
 worked correctly, you can now open a separate terminal, and use a SSH binary to connect your shiny new ClefOS mainframe 
-virtual machine.   If not previously set, please set a `root` account password now; 
+virtual machine.   If not previously set during the installation, please immediately set a `root` account password now; 
+
 Optionally, setting up `keyed SSH access` may be done as well
+
+basically:
+
+    $ umask 077
+    $ mkdir .ssh
+    $ cd .ssh
+    $ touch authorized_keys
+    $ vi authorized_keys
+
+and assuming the PUBLIC half of the key is on the clipboard,, the key sequence:
+
+    A \<paste\> :w!:q!
+
+and then see that it was cleanly saved:
+
+    $ wc -l authorized_keys
+    ## should return 1 line
+
+    $ cat authorized_keys
+    ## should contain that PUBLIC key
 
 Recovery is sometimes possible; other times it seems more expedient to re-installing to fix a typo.
 
