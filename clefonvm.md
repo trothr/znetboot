@@ -267,8 +267,8 @@ freely available mailing lists thus:
 > as opposed to just handing you fishing
 
 
-    In IBM documentation identification, the last two digits indicate the
-revision level of the document, here: -06 and was released, not
+In IBM documentation identification, the last two digits indicate the 
+revision level of the document, here: -06 and was released, not 
 unexpectedly, in August 2017
 
 There is something of acquiring a new skill in reading IBM documentation. 
