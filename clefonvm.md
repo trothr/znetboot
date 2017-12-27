@@ -119,7 +119,7 @@ Retrieve the following files and upload them to z/VM.
 
 You can use any web retrieval tool or method to make local copies of these files. The 'wget' command line tool will do nicely. 
 In the latter case, it may make sense to make a local directory to store such: 
-\< mkdir s390x \> and then move into it: \< cd s390x \>
+`$ mkdir s390x ` and then move into it: `$ cd s390x `
 Then retrieve each of the three files:
 
     $ wget -O znetboot.exec  http://www.casita.net/pub/znetboot/znetboot.exec
@@ -129,7 +129,7 @@ Then retrieve each of the three files:
     $ wget -O clefonvm.znetboot  http://www.casita.net/pub/znetboot/clefonvm.znetboot
 
 
-\< clefonvm.znetboot \> is a template file, and will need to be tailored to the specifics assigned by your provider for your virtual machine. Use your 
+`clefonvm.znetboot` is a template file, and will need to be tailored to the specifics assigned by your provider for your virtual machine. Use your 
 favorite plain text editor and amend the IP address, netmask, network, 
 and DNS server accordingly. Some of the statements, for example ...
 
@@ -201,11 +201,13 @@ unwanted console signals. Enter the command:
 
     \#cp disconn
 
-The hash/pound-sign is not a typo. The command is '#cp disconn' and 
-press \<Enter\>. (It's optional. You don't strictly have to disconnect.) 
+*** query: the backslash is being rendered ... intended?
 
-*** we need to hand in a SSH credential, similar to that used for VNC 
-installs, to secure the installation against session high-jacking
+The hash/pound-sign is not a typo. The command is `#cp disconn` and 
+press \<Enter\>. (It's optional to disconnect. You don't strictly have to disconnect.) 
+
+*** session hijacking matter: we need to hand in a SSH credential, similar to that used for VNC 
+installs, to secure the installation against session hijacking
 
 Use 'ssh' ...
 
@@ -214,7 +216,7 @@ Use 'ssh' ...
 
 ## Reboot
 
-The ClefOS installer will automatically reboot. You do not need to be 
+The ClefOS installer will automatically reboot when it normally completes. You do not need to be 
 attached to your virtual console for this to happen. As a bonus for remaining connected, if you are 
 still connected then you will again see many screens of Linux console boot message output scroll by. 
 
