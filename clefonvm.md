@@ -93,13 +93,13 @@ minimally have different network addresses.
 ## Sign On
 
 Using 'x3270', connect to your z/VM host. The z/VM logon screen will 
-present three fields: USERID, PASSWORD, and COMMAND. Ignore the latter. 
-Enter your virtual machine name in the USERID field. Enter your password 
-in the PASSWORD field. (It will not be displayed.) 
+present three fields: USERID, PASSWORD, and COMMAND. Ignore the last one: COMMAND. 
+Type your virtual machine name in the USERID field and advance the cursor by typing: \<Enter\> . Type your password 
+in the PASSWORD field. (As the field has a display masking for such a field, the plain text of the password  will not be displayed.) 
 
 ![logon.png](images/logon.png)
 
-Press \<Enter\>. 
+Again, press \<Enter\>. 
 
 Your virtual machine should boot CMS, quickly presenting a “Ready;” prompt. 
 (CMS does not take long to boot.) 
@@ -107,8 +107,8 @@ Your virtual machine should boot CMS, quickly presenting a “Ready;” prompt.
 ![ready.png](images/ready.png)
 
 Look at the lower right corner of your X3270 window for a status indicator. 
-If you see “VM READ”, then press <Enter> again (just once). You should 
-see “RUNNING”. 
+If you see “VM READ”, then press \<Enter\> again (just one more time). You should 
+then see “RUNNING”. 
 
 
 ## Upload ZNETBOOT
@@ -119,10 +119,20 @@ Retrieve the following files and upload them to z/VM.
 * http://www.casita.net/pub/znetboot/curl.rexx     
 * http://www.casita.net/pub/znetboot/clefonvm.znetboot     
 
-You can use any web retrieval tool or method. 'wget' will do nicely. 
+You can use any web retrieval tool or method. The 'wget' command line tool will do nicely. 
+In the latter case, it may make sense to make a local directory to store such: 
+\< mkdir s390x \> and then move into it: \< cd s390x \>
+Then retrieve each of the three files:
 
-clefonvm.znetboot must be tailored to your virtual machine. Use your 
-favorite plain text editor and change the IP address, netmask, network, 
+    $ wget -O znetboot.exec  http://www.casita.net/pub/znetboot/znetboot.exec
+
+    $ wget -O curl.rexx  http://www.casita.net/pub/znetboot/curl.rexx
+
+    $ wget -O clefonvm.znetboot  http://www.casita.net/pub/znetboot/clefonvm.znetboot
+
+
+\< clefonvm.znetboot \> is a teplate file, and will need to be tailored to the specifics assigned by your provider for your virtual machine. Use your 
+favorite plain text editor and amend the IP address, netmask, network, 
 and DNS server accordingly. Some of the statements, for example ...
 
 
