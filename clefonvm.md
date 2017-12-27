@@ -45,14 +45,12 @@ If DHCP (central IP address, routing, and nameserver assignment) is present, all
 the system handles setting up off-host connectivity; If DHCP is not present, one 
 should gather the following information:
 
-`
 1. Device name: (form: enccw0.0.0340):
 1. IP v4:       (form: 192.168.0.5):
 1. Netmask:     (form: 255.255.255.0):
 1. IP gateway:  (form: 192.168.0.1):  
 
 1. Nameserver:  (form: 8.8.8.8):
-`
 
 ... Google notes there there is no purpose to also adding the `8.8.4.4` 
 alternative nameserver, as there is a load-balancer in play which sends 
