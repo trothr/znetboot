@@ -41,7 +41,7 @@ for virtual switch versus other connectivity modes.) In this example,
 the virtual NIC is defined at 340. The address of your NIC will probably 
 be different. 
 
-If DHCP (central IP address, routing, and nameserver assignment) is present, all one usually needs to know is the device name, and 
+If DHCP (central IP address, routing, and nameserver assignment) is present, all one usually needs to know is the network device name, and 
 the system handles setting up off-host connectivity; If DHCP is not present, one 
 should gather the following information:
 
