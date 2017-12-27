@@ -119,7 +119,13 @@ Retrieve the following files and upload them to z/VM.
 
 You can use any web retrieval tool or method to make local copies of these files. The 'wget' command line tool will do nicely. 
 In the latter case, it may make sense to make a local directory to store such: 
-`$ mkdir s390x ` and then move into it: `$ cd s390x `
+
+    $ mkdir s390x 
+
+and then move into it: 
+
+    $ cd s390x 
+
 Then retrieve each of the three files:
 
     $ wget -O znetboot.exec  http://www.casita.net/pub/znetboot/znetboot.exec
