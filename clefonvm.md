@@ -9,7 +9,7 @@ to enable installation of ClefOS as quickly and painlessly as possible
 by those who don't know CMS or z/VM. 
 
 While this document was written specifically for ClefOS, 
-it is applicable for NORD, SUSE, OpenSUSE, CentOS, Debian, Fedora, 
+it is applicable for NORD, SUSE, OpenSUSE, Debian, Fedora, 
 or any other Linux which can run on IBM Z architecture. In fact, 
 the ZNETBOOT utility could theoretically be used for installing 
 any operating system capable of running on IBM Z as long as 
