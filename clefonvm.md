@@ -48,7 +48,7 @@ should gather the following information:
 1. Device name: (form: `enccw0.0.0340` ):
 1. IP v4:       (form: `192.168.0.5`):
 1. Netmask:     (form: `255.255.255.0` ):
-1. IP gateway:  (form: `192.168.0.1 ):  
+1. IP gateway:  (form: `192.168.0.1` ):  
 
 1. Nameserver:  (form: `8.8.8.8` ):
 
@@ -72,17 +72,17 @@ and then, CMS will step aside and vanish (thus: 'self-sacrificing')
 ## You Will Also Need
 
 You will also need the ZNETBOOT tool, or at least two files from 
-that package. Specifically, you will need "ZNETBOOT EXEC" and "CURL REXX". 
+that package. Specifically, you will need `ZNETBOOT EXEC` and `CURL REXX` . 
 (Filenames in CMS are two part, divided by blank space. Those files 
-would be "znetboot.exec" and "curl.rexx" on most other systems.) 
+would be `znetboot.exec` and `curl.rexx` on most other systems.  CMS is indifferent as to capitalization) 
 
 Uploading via X3270 is explained. If you use some other means 
 than X3270 to connect with your z/VM host, your upload experience 
 will be different. 
 
-A third required file is "CLEFONVM ZNETBOOT" (aka "clefonvm.znetboot"), 
+A third required file is `CLEFONVM ZNETBOOT` (aka `clefonvm.znetboot` ), 
 which will hold bootstrap parameters unique to your virtual machine. 
-It must either be created with the CMS text editor 'xedit' or must be 
+It must either be created with the CMS text editor `xedit` or must be 
 created on your desktop or laptop and then uploaded. There is an 
 example included with the ZNETBOOT package and on the web, but the 
 example will not work for your virtual machine because you will 
@@ -90,23 +90,23 @@ minimally have different network addresses.
 
 ## Sign On
 
-Using 'x3270', connect to your z/VM host. The z/VM logon screen will 
-present three fields: USERID, PASSWORD, and COMMAND. Ignore the last one: COMMAND. 
-Type your virtual machine name in the USERID field and advance the cursor by typing: \<Enter\> . Type your password 
-in the PASSWORD field. (As the field has a display masking for such a field, the plain text of the password  will not be displayed.) 
+Using the local `x3270` binary, connect to your z/VM host. The z/VM logon screen will 
+present three fields: `USERID` , `PASSWORD` , and `COMMAND` . Ignore the last one: `COMMAND` . 
+Type your virtual machine name in the `USERID` field and advance the cursor by typing: \<Enter\> . Type your password 
+in the `PASSWORD` field. (The field has a display 'masking' for that class of a field, so the plain text of the password will not be displayed.) 
 
 ![logon.png](images/logon.png)
 
 Again, press \<Enter\>. 
 
-Your virtual machine should boot CMS, quickly presenting a “Ready;” prompt. 
+Your virtual machine should boot CMS, quickly presenting `RUNNING` , which is the “Ready for input” prompt. 
 (CMS does not take long to boot.) 
 
 ![ready.png](images/ready.png)
 
 Look at the lower right corner of your X3270 window for a status indicator. 
-If you see “VM READ”, then press \<Enter\> again (just one more time). You should 
-then see “RUNNING”. 
+If you see `VM READ` , then press \<Enter\> again (just one more time). You should 
+then see `RUNNING` . 
 
 
 ## Upload ZNETBOOT
@@ -154,7 +154,7 @@ Within the “File Transfer” dialogue, select “Send to host”,
 
 ![filetrans.png](images/filetrans.png)
 
-Files in CMS are identified with a filename, a blank, and then a 
+Files in CMS are identified with a filename, a single blank character, and then a 
 filetype. Therefore `znetboot.exec` must be named `znetboot exec` on the 
 “Host File Name” line. (This field is not case sensitive, so feel free 
 to enter it as lower case.) Similarly for `curl.rexx` and `clefonvm.znetboot` 
@@ -192,7 +192,7 @@ Congratulations!
 At this point you are finished with the X3270 part of the task. 
 The rest should be very familiar. 
 
-*** seemingly not a very good idea, without somehow locking access
+*** The next section is seemingly not a very good idea, without somehow locking access
 
 Disconnect from the virtual console. This is optional. You can remain 
 connected, but if you disconnect then z/VM will continue to run your 
@@ -215,24 +215,22 @@ Use 'ssh' ...
 ## Reboot
 
 The ClefOS installer will automatically reboot. You do not need to be 
-attached to your virtual console for this to happen. If you are 
-connected then you will again see many screens of Linux console output scroll by. 
+attached to your virtual console for this to happen. As a bonus for remaining connected, if you are 
+still connected then you will again see many screens of Linux console boot message output scroll by. 
 
 If your networking parameters are correct and the installation 
-worked correctly, you can now SSH to your shiny new ClefOS mainframe 
-virtual machine. 
+worked correctly, you can now open a separate terminal, and use a SSH binary to connect your shiny new ClefOS mainframe 
+virtual machine.   If not previously set, please set a `root` account password now; 
+Optionally, setting up `keyed SSH access` may be done as well
 
-Recovery is sometimes doable; other times re-installing to fix a typo seems 
-easier
+Recovery is sometimes possible; other times it seems more expedient to re-installing to fix a typo.
 
 ## Other Voices
 
 IBM has an enormous library of freely available documentation.  The underlying
 z/VM environment is approachable described in: 
 
-    Getting Started with z/VM for Linux
-
-    http://publibz.boulder.ibm.com/epubs/pdf/hcsx0c31.pdf
+    [Getting Started with z/VM for Linux](http://publibz.boulder.ibm.com/epubs/pdf/hcsx0c31.pdf) 
 
 Which is IBM document  SC24-6194-06 (August 2017)
 
