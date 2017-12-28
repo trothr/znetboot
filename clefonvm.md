@@ -9,7 +9,7 @@ to enable installation of ClefOS as quickly and painlessly as possible
 by those who don't know CMS or z/VM. 
 
 While this document was written specifically for ClefOS, 
-it is applicable for NORD, SUSE, OpenSUSE, CentOS, Debian, Fedora, 
+it is applicable for NORD, SUSE, OpenSUSE, Debian, Fedora, 
 or any other Linux which can run on IBM Z architecture. In fact, 
 the ZNETBOOT utility could theoretically be used for installing 
 any operating system capable of running on IBM Z as long as 
@@ -41,18 +41,16 @@ for virtual switch versus other connectivity modes.) In this example,
 the virtual NIC is defined at 340. The address of your NIC will probably 
 be different. 
 
-If DHCP (central IP address, routing, and nameserver assignment) is present, all one usually needs to know is the device name, and 
+If DHCP (central IP address, routing, and nameserver assignment) is present, all one usually needs to know is the network device name, and 
 the system handles setting up off-host connectivity; If DHCP is not present, one 
 should gather the following information:
 
-`
-1. Device name: (form: enccw0.0.0340):
-1. IP v4:       (form: 192.168.0.5):
-1. Netmask:     (form: 255.255.255.0):
-1. IP gateway:  (form: 192.168.0.1):  
+1. Device name: (form: `enccw0.0.0340` ):
+1. IP v4:       (form: `192.168.0.5`):
+1. Netmask:     (form: `255.255.255.0` ):
+1. IP gateway:  (form: `192.168.0.1` ):  
 
-1. Nameserver:  (form: 8.8.8.8):
-`
+1. Nameserver:  (form: `8.8.8.8` ):
 
 ... Google notes there there is no purpose to also adding the `8.8.4.4` 
 alternative nameserver, as there is a load-balancer in play which sends 
@@ -74,17 +72,17 @@ and then, CMS will step aside and vanish (thus: 'self-sacrificing')
 ## You Will Also Need
 
 You will also need the ZNETBOOT tool, or at least two files from 
-that package. Specifically, you will need "ZNETBOOT EXEC" and "CURL REXX". 
+that package. Specifically, you will need `ZNETBOOT EXEC` and `CURL REXX` . 
 (Filenames in CMS are two part, divided by blank space. Those files 
-would be "znetboot.exec" and "curl.rexx" on most other systems.) 
+would be `znetboot.exec` and `curl.rexx` on most other systems.  CMS is indifferent as to capitalization) 
 
 Uploading via X3270 is explained. If you use some other means 
 than X3270 to connect with your z/VM host, your upload experience 
 will be different. 
 
-A third required file is "CLEFONVM ZNETBOOT" (aka "clefonvm.znetboot"), 
+A third required file is `CLEFONVM ZNETBOOT` (aka `clefonvm.znetboot` ), 
 which will hold bootstrap parameters unique to your virtual machine. 
-It must either be created with the CMS text editor 'xedit' or must be 
+It must either be created with the CMS text editor `xedit` or must be 
 created on your desktop or laptop and then uploaded. There is an 
 example included with the ZNETBOOT package and on the web, but the 
 example will not work for your virtual machine because you will 
@@ -92,23 +90,23 @@ minimally have different network addresses.
 
 ## Sign On
 
-Using 'x3270', connect to your z/VM host. The z/VM logon screen will 
-present three fields: USERID, PASSWORD, and COMMAND. Ignore the latter. 
-Enter your virtual machine name in the USERID field. Enter your password 
-in the PASSWORD field. (It will not be displayed.) 
+Using the local `x3270` binary, connect to your z/VM host. The z/VM logon screen will 
+present three fields: `USERID` , `PASSWORD` , and `COMMAND` . Ignore the last one: `COMMAND` . 
+Type your virtual machine name in the `USERID` field and advance the cursor by typing: \<Enter\> . Type your password 
+in the `PASSWORD` field. (The field has a display 'masking' for that class of a field, so the plain text of the password will not be displayed.) 
 
 ![logon.png](images/logon.png)
 
-Press \<Enter\>. 
+Again, press \<Enter\>. 
 
-Your virtual machine should boot CMS, quickly presenting a “Ready;” prompt. 
+Your virtual machine should boot CMS, quickly presenting `RUNNING` , which is the “Ready for input” prompt. 
 (CMS does not take long to boot.) 
 
 ![ready.png](images/ready.png)
 
 Look at the lower right corner of your X3270 window for a status indicator. 
-If you see “VM READ”, then press <Enter> again (just once). You should 
-see “RUNNING”. 
+If you see `VM READ` , then press \<Enter\> again (just one more time). You should 
+then see `RUNNING` . 
 
 
 ## Upload ZNETBOOT
@@ -119,10 +117,26 @@ Retrieve the following files and upload them to z/VM.
 * http://www.casita.net/pub/znetboot/curl.rexx     
 * http://www.casita.net/pub/znetboot/clefonvm.znetboot     
 
-You can use any web retrieval tool or method. 'wget' will do nicely. 
+You can use any web retrieval tool or method to make local copies of these files. The 'wget' command line tool will do nicely. 
+In the latter case, it may make sense to make a local directory to store such: 
 
-clefonvm.znetboot must be tailored to your virtual machine. Use your 
-favorite plain text editor and change the IP address, netmask, network, 
+    $ mkdir s390x 
+
+and then move into it: 
+
+    $ cd s390x 
+
+Then retrieve each of the three files:
+
+    $ wget -O znetboot.exec  http://www.casita.net/pub/znetboot/znetboot.exec
+
+    $ wget -O curl.rexx  http://www.casita.net/pub/znetboot/curl.rexx
+
+    $ wget -O clefonvm.znetboot  http://www.casita.net/pub/znetboot/clefonvm.znetboot
+
+
+`clefonvm.znetboot` is a template file, and will need to be tailored to the specifics assigned by your provider for your virtual machine. Use your 
+favorite plain text editor and amend the IP address, netmask, network, 
 and DNS server accordingly. Some of the statements, for example ...
 
 
@@ -146,7 +160,7 @@ Within the “File Transfer” dialogue, select “Send to host”,
 
 ![filetrans.png](images/filetrans.png)
 
-Files in CMS are identified with a filename, a blank, and then a 
+Files in CMS are identified with a filename, a single blank character, and then a 
 filetype. Therefore `znetboot.exec` must be named `znetboot exec` on the 
 “Host File Name” line. (This field is not case sensitive, so feel free 
 to enter it as lower case.) Similarly for `curl.rexx` and `clefonvm.znetboot` 
@@ -186,7 +200,7 @@ Congratulations!
 At this point you are finished with the X3270 part of the task. 
 The rest should be very familiar. 
 
-*** seemingly not a very good idea, without somehow locking access
+*** The next section is seemingly not a very good idea, without somehow locking access
 
 Disconnect from the virtual console. This is optional. You can remain 
 connected, but if you disconnect then z/VM will continue to run your 
@@ -195,38 +209,60 @@ unwanted console signals. Enter the command:
 
     #cp disconn
 
-The hash/pound-sign is not a typo. The command is '#cp disconn' and 
-press \<Enter\>. (It's optional. You don't strictly have to disconnect.) 
+*** query: the backslash is being rendered ... intended?
 
-*** we need to hand in a SSH credential, similar to that used for VNC 
-installs, to secure the installation against session high-jacking
+The hash/pound-sign is not a typo. The command is `#cp disconn` and 
+press \<Enter\>. (It's optional to disconnect. You don't strictly have to disconnect.) 
+
+*** session hijacking matter: we need to hand in a SSH credential, similar to that used for VNC 
+installs, to secure the installation against session hijacking
 
 Use 'ssh' ...
 
 [details to be gathered]
 
 
+
 ## Reboot
 
-The ClefOS installer will automatically reboot. You do not need to be 
-attached to your virtual console for this to happen. If you are 
-connected then you will again see many screens of Linux console output scroll by. 
+The ClefOS installer will automatically reboot when it normally completes. You do not need to be 
+attached to your virtual console for this to happen. As a bonus for remaining connected, if you are 
+still connected then you will again see many screens of Linux console boot message output scroll by. 
 
 If your networking parameters are correct and the installation 
-worked correctly, you can now SSH to your shiny new ClefOS mainframe 
-virtual machine. 
+worked correctly, you can now open a separate terminal, and use a SSH binary to connect your shiny new ClefOS mainframe 
+virtual machine.   If not previously set during the installation, please immediately set a `root` account password now; 
 
-Recovery is sometimes doable; other times re-installing to fix a typo seems 
-easier
+Optionally, setting up `keyed SSH access` may be done as well
+
+basically:
+
+    $ umask 077
+    $ mkdir .ssh
+    $ cd .ssh
+    $ touch authorized_keys
+    $ vi authorized_keys
+
+and assuming the PUBLIC half of the key is on the clipboard,, the key sequence:
+
+    A \<paste\> :w!:q!
+
+and then see that it was cleanly saved:
+
+    $ wc -l authorized_keys
+    ## should return 1 line
+
+    $ cat authorized_keys
+    ## should contain that PUBLIC key
+
+Recovery is sometimes possible; other times it seems more expedient to re-installing to fix a typo.
 
 ## Other Voices
 
 IBM has an enormous library of freely available documentation.  The underlying
 z/VM environment is approachable described in: 
 
-    Getting Started with z/VM for Linux
-
-    http://publibz.boulder.ibm.com/epubs/pdf/hcsx0c31.pdf
+    [Getting Started with z/VM for Linux](http://publibz.boulder.ibm.com/epubs/pdf/hcsx0c31.pdf) 
 
 Which is IBM document  SC24-6194-06 (August 2017)
 
@@ -236,15 +272,14 @@ freely available mailing lists thus:
 
 > One of the simplest is the Getting Started with z/VM for Linux manual that
 > is part of the z/VM library.  It was intended as a basic fishing lesson,
-> as opposed to just handing you fishing
+> as opposed to just handing you fishing [tackle]
 
-
-    In IBM documentation identification, the last two digits indicate the
-revision level of the document, here: -06 and was released, not
+In IBM documentation identification, the last two digits indicate the 
+revision level of the document, here: -06 and was released, not 
 unexpectedly, in August 2017
 
 There is something of acquiring a new skill in reading IBM documentation. 
-They were said to be the third largest publisher of originally authored
+At one time, IBM was said to be the third largest publisher of originally authored
 document in the US, behind the US Department of Defense, and the Boy Scouts
 of America.  Not surprising, each of the three is in the business of
 training people from wholly ignorant of a field, to full competence. 
