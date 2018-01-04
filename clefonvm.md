@@ -222,7 +222,7 @@ press \<Enter\>. (It's optional. You don't strictly have to disconnect.)
 
 Whether you disconnect the virtual console or not,
 use `ssh` to connect and drive the rest of the installation.
-This part will be very familiar to experience Linux users.
+This part will be very familiar to experienced Linux users.
 
 
 ## Reboot
