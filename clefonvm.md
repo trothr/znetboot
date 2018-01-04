@@ -99,7 +99,7 @@ so the plain text of the password will not be displayed.)
 
 ![logon.png](images/logon.png)
 
-Again, press \<Enter\>.
+After you have typed your userid and password, press \<Enter\>.
 
 Your virtual machine should boot CMS, quickly presenting a "Ready;"
 prompt. (CMS does not take long to boot.)
@@ -108,7 +108,7 @@ prompt. (CMS does not take long to boot.)
 
 Look at the lower right corner of your X3270 window for a status indicator.
 If you see `VM READ`, then press \<Enter\> again (just one more time).
-You should then see `RUNNING`.
+You should then see `RUNNING` in the status area.
 
 
 ## Upload ZNETBOOT
