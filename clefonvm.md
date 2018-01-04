@@ -91,9 +91,9 @@ minimally have different network addresses.
 
 Using the local `x3270` command, connect to your z/VM host.
 The z/VM logon screen will present three fields: `USERID`, `PASSWORD`,
-and `COMMAND`. Ignore the last one, `COMMAND`. Enter your virtual
+and `COMMAND`. Ignore the last one, `COMMAND`. Type your virtual
 machine name in the `USERID` field. Advance the cursor by pressing
-\<Tab\>. Enter your password in the `PASSWORD` field.
+\<Tab\>. Type your password in the `PASSWORD` field.
 (The field has a display 'masking' for that class of a field,
 so the plain text of the password will not be displayed.)
 
