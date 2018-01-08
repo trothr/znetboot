@@ -91,15 +91,15 @@ minimally have different network addresses.
 
 Using the local `x3270` command, connect to your z/VM host.
 The z/VM logon screen will present three fields: `USERID`, `PASSWORD`,
-and `COMMAND`. Ignore the last one, `COMMAND`. Enter your virtual
+and `COMMAND`. Ignore the last one, `COMMAND`. Type your virtual
 machine name in the `USERID` field. Advance the cursor by pressing
-\<Tab\>. Enter your password in the `PASSWORD` field.
+\<Tab\>. Type your password in the `PASSWORD` field.
 (The field has a display 'masking' for that class of a field,
 so the plain text of the password will not be displayed.)
 
 ![logon.png](images/logon.png)
 
-Again, press \<Enter\>.
+After you have typed your userid and password, press \<Enter\>.
 
 Your virtual machine should boot CMS, quickly presenting a "Ready;"
 prompt. (CMS does not take long to boot.)
@@ -108,7 +108,7 @@ prompt. (CMS does not take long to boot.)
 
 Look at the lower right corner of your X3270 window for a status indicator.
 If you see `VM READ`, then press \<Enter\> again (just one more time).
-You should then see `RUNNING`.
+You should then see `RUNNING` in the status area.
 
 
 ## Upload ZNETBOOT
@@ -222,7 +222,7 @@ press \<Enter\>. (It's optional. You don't strictly have to disconnect.)
 
 Whether you disconnect the virtual console or not,
 use `ssh` to connect and drive the rest of the installation.
-This part will be very familiar to experience Linux users.
+This part will be very familiar to experienced Linux users.
 
 
 ## Reboot
