@@ -14,6 +14,17 @@ CP commands can be abbreviated.
 The hypervisor will recognize the shortest unique value
 of any command and its arguments.
 
+# `vmcp` versus `#cp`
+
+From a privileged shell, you can issue CP commands using the `vmcp`
+command. From the virtual console of a 3270 session, you can issue
+CP commands using the `#cp` prefix. (3270 console input is otherwise
+delivered to Linux for processing.) In this document, CP commands are
+presented both ways.
+
+Conveniently, "`#cp`" is rejected by BASH so you'll know you aren't
+at a 3270 console in case you forget.
+
 Some common CP commands of use with Linux follow. 
 
 # define storage
@@ -22,6 +33,7 @@ Use the `define storage` command to change the size of
 your virtual machines memory (internal storage, RAM).
 
     vmcp def stor 1G
+    #cp def stor 1G
 
 This command may reset your virtual machine so should be issued
 when you have access to the virtual console or should be stacked with
@@ -33,6 +45,7 @@ Use the `q v stor` command to show the memory presently defined for
 your virtual machine.
 
     vmcp q v stor
+    #cp q v stor
 
 # query virtual all
 
@@ -40,12 +53,34 @@ Use the `q v all` command to show all devices associated with
 your virtual machine. The devices themselves may be virtual or real.
 
     vmcp q v all
+    #cp q v all
+
+The output of `q v all` shows all virtual devices of your virtual machine.
+Some of those devices will be bootable, including bootable disks
+but also tape drives or your virtual card reader.
+
+# query userid
+
+In case you lose track of which virtual machine you're on, use the
+`q userid` command to interrogate CP for your virtual machine name.
+
+    vmcp q userid
+    #cp q userid
+
+# query names
+
+z/VM is a community system. Find out the names of other virtual
+machines on the same z/VM host with the `q names` command.
+
+    vmcp q names
+    #cp q names
 
 # ipl
 
 Use the `ipl` command (Initial Program Load) to boot your virtual machine. 
 
     vmcp ipl 1b0 clear
+    #cp ipl 1b0 clear
 
 This command WILL reset your virtual machine so should be issued
 when you have access to the virtual console if there is any likelihood
@@ -59,9 +94,27 @@ This is akin to the direct kernel load function of other hypervisors.
 An example is:
 
     vmcp ipl linux
+    #cp ipl linux
 
 In this example, if there is no NSS named LINUX, then the command
 results in an error and your virtual machine continues to run whatever
 kernel it was running when the command was issued.
+
+# disconnect
+
+Use the `disconnect` command to release your virtual console
+without logging off (and destroying your virtual machine).
+This is essential at some point if you have been working from
+a 3270 session because the session will eventually break due to
+network interruptions or other disruptions, but you'll no doubt
+want your Linux virtual machine to continue running.
+
+    vmcp disc
+    #cp disc
+
+
+
+
+
 
 
