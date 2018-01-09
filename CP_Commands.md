@@ -22,8 +22,9 @@ CP commands using the `#cp` prefix. (3270 console input is otherwise
 delivered to Linux for processing.) In this document, CP commands are
 presented both ways.
 
-Conveniently, "`#cp`" is rejected by BASH so you'll know you aren't
-at a 3270 console in case you forget.
+Keep in mind that the shell treats any word starting with "`#`"
+as a comment. If you enter the "`#cp`" form of these commands
+from a shell, nothing will happen.
 
 Some common CP commands of use with Linux follow. 
 
