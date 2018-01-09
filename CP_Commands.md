@@ -8,7 +8,7 @@ of this document, so only the most relevant for Linux are listed.
 
 Some CP commands are distruptive, rebooting your virtual machine
 or placing it into a state needing manual attention. Some CP commands
-are harmless. Query commands are generally all save.
+are harmless. Query commands are generally all safe.
 
 CP commands can be abbreviated.
 The hypervisor will recognize the shortest unique value
