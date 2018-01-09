@@ -1,6 +1,7 @@
 # CP Commands
 
-z/VM "Control Program" commands for use with Linux
+This document discusses
+z/VM "Control Program" commands for use with Linux.
 
 Linux on z/VM can issue "CP commands" by way of the `vmcp` utility.
 The number and nature of all CP commands is far beyond scope
@@ -112,5 +113,10 @@ want your Linux virtual machine to continue running.
 
     vmcp disc
     #cp disc
+
+You can reconnect by logging back onto z/VM.
+When you logon to z/VM, your virtual machine is instantiated.
+If it was already instantiated, you are reconnected to its virtual console.
+
 
 
