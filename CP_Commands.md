@@ -14,7 +14,7 @@ CP commands can be abbreviated.
 The hypervisor will recognize the shortest unique value
 of any command and its arguments.
 
-# `vmcp` versus `#cp`
+## `vmcp` versus `#cp`
 
 From a privileged shell, you can issue CP commands using the `vmcp`
 command. From the virtual console of a 3270 session, you can issue
@@ -27,7 +27,7 @@ at a 3270 console in case you forget.
 
 Some common CP commands of use with Linux follow. 
 
-# define storage
+## define storage
 
 Use the `define storage` command to change the size of
 your virtual machines memory (internal storage, RAM).
@@ -39,7 +39,7 @@ This command may reset your virtual machine so should be issued
 when you have access to the virtual console or should be stacked with
 an IPL command.
 
-# query virtual storage
+## query virtual storage
 
 Use the `q v stor` command to show the memory presently defined for
 your virtual machine.
@@ -47,7 +47,7 @@ your virtual machine.
     vmcp q v stor
     #cp q v stor
 
-# query virtual all
+## query virtual all
 
 Use the `q v all` command to show all devices associated with
 your virtual machine. The devices themselves may be virtual or real.
@@ -59,7 +59,7 @@ The output of `q v all` shows all virtual devices of your virtual machine.
 Some of those devices will be bootable, including bootable disks
 but also tape drives or your virtual card reader.
 
-# query userid
+## query userid
 
 In case you lose track of which virtual machine you're on, use the
 `q userid` command to interrogate CP for your virtual machine name.
@@ -67,7 +67,7 @@ In case you lose track of which virtual machine you're on, use the
     vmcp q userid
     #cp q userid
 
-# query names
+## query names
 
 z/VM is a community system. Find out the names of other virtual
 machines on the same z/VM host with the `q names` command.
@@ -75,7 +75,7 @@ machines on the same z/VM host with the `q names` command.
     vmcp q names
     #cp q names
 
-# ipl
+## ipl
 
 Use the `ipl` command (Initial Program Load) to boot your virtual machine. 
 
@@ -100,7 +100,7 @@ In this example, if there is no NSS named LINUX, then the command
 results in an error and your virtual machine continues to run whatever
 kernel it was running when the command was issued.
 
-# disconnect
+## disconnect
 
 Use the `disconnect` command to release your virtual console
 without logging off (and destroying your virtual machine).
@@ -111,10 +111,5 @@ want your Linux virtual machine to continue running.
 
     vmcp disc
     #cp disc
-
-
-
-
-
 
 
