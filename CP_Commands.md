@@ -29,6 +29,14 @@ from a shell, nothing will happen.
 
 Some common CP commands of use with Linux follow. 
 
+## query virtual storage
+
+Use the `q v stor` command to show the memory presently defined for
+your virtual machine. The size can be changed. (see next)
+
+    vmcp q v stor
+    #cp q v stor
+
 ## define storage
 
 Use the `define storage` command to change the size of
@@ -40,14 +48,6 @@ your virtual machines memory (internal storage, RAM).
 This command may reset your virtual machine so should be issued
 when you have access to the virtual console or should be stacked with
 an IPL command.
-
-## query virtual storage
-
-Use the `q v stor` command to show the memory presently defined for
-your virtual machine.
-
-    vmcp q v stor
-    #cp q v stor
 
 ## query virtual all
 
@@ -76,6 +76,25 @@ machines on the same z/VM host with the `q names` command.
 
     vmcp q names
     #cp q names
+
+## message
+
+Use the `message` command to send an interactive message to another
+virtual machine. `message` can be abbreviated `msg` or just `m`.
+
+    vmcp msg otherguy want to go get lunch?
+    #cp msg otherguy want to go get lunch?
+
+If the receiving virtual machine is connected, your message might be
+presented on its virtual console (in the output area). If the target
+virtual machine is not connected and it has no listener then you'll get
+
+    HCPMFS057I OTHERGUY not receiving; disconnected
+
+Sending interactive messages to other virtual machines is unique to z/VM
+and not found with other hypervisors. The feature is inherently related
+to the z/VM idea of a user being a virtual machine and a virtual machine
+being a user.
 
 ## ipl
 
