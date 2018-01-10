@@ -25,7 +25,7 @@ presented both ways.
 
 Keep in mind that the shell treats any word starting with "`#`"
 as a comment. If you enter the "`#cp`" form of these commands
-from a shell, nothing will happen.
+from a shell, nothing will happen. (Also see advanced tricks below.)
 
 Some common CP commands of use with Linux follow. 
 
@@ -69,6 +69,21 @@ In case you lose track of which virtual machine you're on, use the
     vmcp q userid
     #cp q userid
 
+## query terminal
+
+Use the `q term` command to show z/VM session terminal settiings,
+including 3270-specific settings.
+
+    vmcp q term
+    #cp q term
+
+`vmcp q term` is not very informative when you are connected
+to Linux using SSH because the z/VM terminal session settings
+have no effect on your SSH session or pseudo-terminal TTY.
+
+See below for discussion of the `terminal` command 
+(not prefixed with `query`).
+
 ## query names
 
 z/VM is a community system. Find out the names of other virtual
@@ -110,6 +125,9 @@ that it will fail to work as expected.
 In this example `1B0` is the address of a bootable disk
 and `clear` means to also reset memory before performing the load.
 
+`clear` is optional. The kernel will likely clear memory on its own.
+Many use `clear` when booting from a device as a matter of hygiene.
+
 On z/VM one can boot from a "named saved system" (NSS).
 This is akin to the direct kernel load function of other hypervisors.
 An example is:
@@ -120,6 +138,19 @@ An example is:
 In this example, if there is no NSS named LINUX, then the command
 results in an error and your virtual machine continues to run whatever
 kernel it was running when the command was issued.
+
+You cannot add the `clear` option when booting a named system.
+
+You can invoke a CMS environment by IPLing CMS.
+
+    vmcp ipl cms
+    #cp ipl cms
+
+CMS is an efficient environment standard with z/VM which is actually
+an operating system in its own right. CMS cannot be used simultaneously
+with Linux. Recommend you only do this when you have access to the
+virtual console because CMS is only useable from there.
+This command WILL reset your virtual machine.
 
 ## disconnect
 
@@ -136,6 +167,71 @@ want your Linux virtual machine to continue running.
 You can reconnect by logging back onto z/VM.
 When you logon to z/VM, your virtual machine is instantiated.
 If it was already instantiated, you are reconnected to its virtual console.
+
+## logoff
+
+Use the `logoff` command to de-instantiate your virtual machine.
+This is similar to the "destroy" operation in other hypervisors.
+Your virtual machine ceases to exist, though its disks and configuration
+remain intact.
+
+    vmcp logoff
+    #cp logoff
+
+Recommend you NOT use `logoff` without first shutting down Linux.
+(Which means that the `vmcp logoff` variant is of questionable value.)
+It has the same effect as pulling the plug on a physical computer.
+Filesystems will be left in an unknown state.
+
+## indicate
+
+Use the `indicate` command to indicate system or virtual machine status.
+
+    vmcp ind
+    #cp ind
+
+`indicate` without arguments displays very simplistic z/VM status,
+such as (physical) processor utilization, host system paging, etc.
+
+    vmcp ind user
+    #cp ind user
+
+`indicate user` displays the status of your virtual machine
+(the status of the "user" from z/VM's perspective),
+such as (virtual) processor consumption, working set size, etc.
+
+## terminal
+
+Use the `term` command to modify z/VM virtual console settings.
+
+The complete list of z/VM terminal settings is beyond the scope
+of this document.
+
+You can change the output hold and scroll settings,
+the "`more`" values, with the command
+
+    vmcp term more 10 10
+    #cp term more 10 10
+
+This affects how long z/VM will pause output before it clears the screen 
+and displays further output. The first "10" is the number of seconds
+to wait before audible alert (beep). The second "1" is the number of
+additinal seconds to wait before z/VM will proceed.
+
+If you anticipate a lot of output, like when booting Linux,
+you might enter the command
+
+    vmcp term more 1 1
+    #cp term more 1 1
+
+If you really don't want to wait AT ALL for output to be held
+
+    vmcp term 0 0
+    #cp term 0 0
+
+By default, z/VM uses very different reserved characters
+for terminal entry. "#" as seeen in `#cp` is actually line end.
+Escape is double quote ("). These can be changed
 
 
 
