@@ -171,12 +171,20 @@ If it was already instantiated, you are reconnected to its virtual console.
 ## logoff
 
 Use the `logoff` command to de-instantiate your virtual machine.
-This is similar to the "destroy" operation in other hypervisors.
+It is equivalent to a `virsh destroy` except that you're destroying
+your own virtual machine. (there is no "target domain" argument)
+
 Your virtual machine ceases to exist, though its disks and configuration
-remain intact.
+remain intact. ("destroy" is such a harsh word)
 
     vmcp logoff
     #cp logoff
+
+"Immediately terminate the [virtual machine].
+This doesn't give the [guest] OS any chance to react, and it's
+the equivalent of ripping the power cord out on a physical machine."
+
+The `logoff` command will usually also terminate your 3270 session.
 
 Recommend you NOT use `logoff` without first shutting down Linux.
 (Which means that the `vmcp logoff` variant is of questionable value.)
