@@ -174,6 +174,9 @@ Use the `logoff` command to de-instantiate your virtual machine.
 It is equivalent to a `virsh destroy` except that you're destroying
 your own virtual machine. (there is no "target domain" argument)
 
+Note: if you're in the middle of installing Linux and get interrupted
+you can safely `#cp logoff` from the virtual console (3270 session).
+
 Your virtual machine ceases to exist, though its disks and configuration
 remain intact. ("destroy" is such a harsh word)
 
