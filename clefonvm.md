@@ -285,6 +285,8 @@ and then see that it was cleanly saved:
     $ cat authorized_keys
     ## should contain that PUBLIC key
 
+## done
+
 Recovery is sometimes possible;
 other times it seems more expedient to re-install to fix a typo.
 
