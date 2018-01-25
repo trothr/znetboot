@@ -64,7 +64,7 @@ interactive work. When installing Linux, CMS acts as a self-sacrificing
 and run the ZNETBOOT utility. (see next) Once the kernel and other
 requisite files have been fetched and arranged, control is handed off
 to your virtual machine, which will perform the rough equivalent of a
-kexec() function and then, CMS will step aside and vanish.
+`kexec()` function and then, CMS will step aside and vanish.
 (thus: 'self-sacrificing')
 
 ## You Will Also Need
@@ -86,6 +86,9 @@ created on your desktop or laptop and then uploaded. There is an
 example included with the ZNETBOOT package and on the web, but the
 example will not work for your virtual machine because you will
 minimally have different network addresses.
+
+Note: if you're in the middle of installing Linux and get interrupted
+you can safely `#cp logoff` from the virtual console (3270 session).
 
 ## Sign On
 
@@ -109,7 +112,6 @@ prompt. (CMS does not take long to boot.)
 Look at the lower right corner of your X3270 window for a status indicator.
 If you see `VM READ`, then press \<Enter\> again (just one more time).
 You should then see `RUNNING` in the status area.
-
 
 ## Upload ZNETBOOT
 
@@ -202,7 +204,6 @@ Once the installer has been brought up, you should see "Please ssh" ...
 You should now do just that,
 use SSH to connect and finish the installation.
 
-
 ## Install ClefOS
 
 Congratulations!
@@ -224,7 +225,6 @@ Whether you disconnect the virtual console or not,
 use `ssh` to connect and drive the rest of the installation.
 This part will be very familiar to experienced Linux users.
 
-
 ## Reboot
 
 The ClefOS installer will automatically reboot after normal completion.
@@ -239,9 +239,32 @@ SSH client to connect your shiny new ClefOS mainframe virtual machine.
 If not previously set during the installation, please immediately set
 a `root` account password now.
 
-Optionally, setting up "keyed SSH access" may be done as well
+## Hardening
 
-basically:
+Always set a unique and strong root password.
+
+If an end user account is set up, a strong password there too.
+
+Apply updates immediately:
+
+    yum clean all
+    yum -y updates
+
+Add SElinux policy and netwrok descrption convenience packages:
+
+    yum install policycoreutils net-tools
+
+Trigger an SElinux relabel:
+
+    touch /.autorelabel
+
+The presence of this file will trigger SElinux relabel next boot.
+
+## Reboot again
+
+SElinux relabel will take effect.
+
+Optionally set up "keyed SSH access":
 
     $ umask 077
     $ mkdir .ssh
@@ -249,10 +272,10 @@ basically:
     $ touch authorized_keys
     $ vi authorized_keys
 
-and assuming the PUBLIC half of the key is on the clipboard,
+Assuming the PUBLIC half of the key is on the clipboard,
 the key sequence:
 
-    A \<paste\> :w!:q!
+    A <paste> :w!:q!
 
 and then see that it was cleanly saved:
 
@@ -262,6 +285,9 @@ and then see that it was cleanly saved:
     $ cat authorized_keys
     ## should contain that PUBLIC key
 
+## done
+
 Recovery is sometimes possible;
-other times it seems more expedient to re-installing to fix a typo.
+other times it seems more expedient to re-install to fix a typo.
+
 
