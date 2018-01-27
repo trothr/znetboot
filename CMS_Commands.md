@@ -45,7 +45,34 @@ then you would enter
 `filelist` is a full-screen utility, commandeering your 3270 session
 and obviating the usual z/VM screen layout.
 
+`filelist` can be abbreviated `fl`.
+
 Within most CMS full-screen utilities, \<PF3\> exits to the command line.
+
+## listfile
+
+`listfile` is a standard CMS utility for listing files interactively.
+It is the operational equivalent of the `ls` command in Unix nd Linux.
+
+Files in CMS are multi-token. There is a filename and a filetype.
+There is also a filemode which combines a drive letter or directory
+letter with a numeric modifier. The letter is strictly related to where
+the disk or directory is accessed, sort of like where a filesystem is
+mounted in Linux and Unix. The number can affect the behavior of the
+system when handling the file. Discussion of filemode numbers is beyond
+the scope of this document.
+
+`listfile` can be abbreviated `list`.
+
+An example use of `listfile` is the listing of your ZNETBOOT files.
+
+    list * znetboot
+
+or
+
+    list * znetboot a
+
+Either form lists all files on your "A disk" with a filetype of ZNETBOOT.
 
 ## rdrlist
 

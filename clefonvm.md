@@ -24,6 +24,10 @@ computing services by defining each user as a virtual machine, typically
 running CMS. But being true virtual machines, "users" of z/VM can run
 any operating system suitable for the IBM Z architecture.
 
+On z/VM, users (virtual machines) are also commonly referred to
+as "guests". The operating system you run in your virtual machine
+is called a "guest operating system" and z/VM is the "host".
+
 Your virtual machine should be defined for at least 1G of memory
 (RAM, "storage") and have at least one disk of 5G or more (about 7000
 "cylinders" of 3390 type disk). The example here has two disks, 1B0
