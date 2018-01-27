@@ -1,0 +1,33 @@
+#                                                                                                                                                                                                                  "width holder" because this is a wide file #
+#         Name: ALPINE ZNETBOOT
+#         Date: 2018-Jan-14 (Sun) for TMH
+#               This is the ZNETBOOT file for Alpine Linux on z/VM.
+#               Put this file on your 191 A disk before booting.
+#
+#         NOTE: this is developmental, not ready for general use
+#
+
+# where to find the kernel and INITRD ...
+ZNETBOOT_KERNEL=http://znetboot.casita.net/nord/image
+ZNETBOOT_INITRD=http://znetboot.casita.net/nord/ramdisk.gz
+
+# network parameters used by the installer ...
+HOSTNAME=alpine.mydomain.com
+NETTYPE=qeth
+SUBCHANNELS=0.0.0340,0.0.0341,0.0.0342
+LAYER2=1
+IPADDR=192.168.0.100
+NETMASK=255.255.255.0
+NETWORK=192.168.0.0
+BROADCAST=192.168.0.255
+GATEWAY=192.168.0.1
+MTU=1492
+DNS=8.8.8.8
+SEARCHDNS=sinenomine.net:lf-dev.marist.edu:casita.net
+
+# other details
+dasd=1b0-1b3,91b0-91b3 
+root=/dev/ram0 ro 
+init=/sbin/nordinst.sh
+
+
