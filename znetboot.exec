@@ -41,6 +41,7 @@ If rc /= 0 Then Exit rc
 kfile = baseurl || "/" || kfile
 rfile = baseurl || "/" || rfile
 nc.0 = 0
+pstat = ""
 Do i = 1 to na.0
   Parse Var na.i vn "=" vv
   Select
@@ -55,6 +56,8 @@ Do i = 1 to na.0
       nc.j = vv
       nc.0 = j
     End
+
+    When vn = "ZNETBOOT_PROGRESS" Then pstat = vv
 
     Otherwise nop
   End
@@ -81,7 +84,6 @@ Do While check /= ""
   End
 End
 
-
 /* conditionally save a CMS "conffile" and set boot parms for it */
 If nc.0 > 0 Then Do
   Say "# creating" vmid "CONFFILE for supplemental parameters"
@@ -92,6 +94,30 @@ If nc.0 > 0 Then Do
     "CMSCONFFILE=" || vmid || ".CONFFILE"
 End
 
+/* optionally construct and append a progress status reporter */
+If pstat /= "" Then Do
+  Upper pstat
+  psbs = 1
+  Select /* blocksize */
+    When Right(pstat,1) = "M" Then Do ; psbs = 1048576
+      pstat = Left(pstat,Length(pstat)-1) ; End
+    When Right(pstat,1) = "P" Then Do ; psbs = 4096
+      pstat = Left(pstat,Length(pstat)-1) ; End
+    When Right(pstat,1) = "K" Then Do ; psbs = 1024
+      pstat = Left(pstat,Length(pstat)-1) ; End
+    When Right(pstat,1) = "B" Then Do ; psbs = 1
+      pstat = Left(pstat,Length(pstat)-1) ; End
+    When Datatype(pstat,"W") Then psbs = 1
+    Otherwise psbs = 0
+  End /* Select blocksize */
+  If psbs = 0 Then pstat = "" ; Else Do
+    pstat = '| FBLOCK' psbs ,
+      '| SPEC RECNO FROM' psbs 'BY' psbs 'NW' ,
+      '| SPEC /#/ NW W1 NW /bytes received/ NW' ,
+      '| DROP LAST' ,
+      '| CONSOLE'
+  End
+End
 
 /* optionally check that we have a NIC at the expected I/O address */
 If naddr /= "" Then Do
@@ -104,8 +130,6 @@ If naddr /= "" Then Do
   If rs /= "" Then Say rs
   If rc /= 0 Then Exit rc
 End
-
-
 
 /* query current reader and punch settings */
 Parse Value Diag(08,'Q V' raddr) ,
@@ -121,8 +145,8 @@ Parse Value Diag(08,'Q V' paddr) ,
 /* pull the kernel directly to spool space */
 Say "# fetching kernel and punching it"
 Say "+" 'pipe curl --binary' kfile '| fblock 80 00 | punch'
-        'pipe curl --binary' kfile '| fblock 80 00 | punch' ,
-          '| count bytes | var kbytes'
+        'pipe curl --binary' kfile '| fblock 80 00 | punch' pstat
+/*        '| count bytes | var kbytes'                                */
 Call Diag 08, 'CLOSE' paddr
 If rc /= 0 Then Do
   Call Diag 08, 'SP' raddr 'CL' rcl rcont rhold rkeep
@@ -133,8 +157,8 @@ End
 /* punch a boot parm line */
 Say "# punching boot parm line"
 Say "+" 'pipe var bparm | fblock 80 00 | punch'
-        'pipe var bparm | fblock 80 00 | punch' ,
-          '| count bytes | var pbytes'
+        'pipe var bparm | fblock 80 00 | punch'
+/*        '| count bytes | var pbytes'                                */
 Call Diag 08, 'CLOSE' paddr
 If rc /= 0 Then Do
   Call Diag 08, 'SP' raddr 'CL' rcl rcont rhold rkeep
@@ -145,8 +169,8 @@ End
 /* pull the root FS directly to spool space */
 Say "# fetching root FS and punching it"
 Say "+" 'pipe curl --binary' rfile '| fblock 80 00 | punch'
-        'pipe curl --binary' rfile '| fblock 80 00 | punch' ,
-          '| count bytes | var rbytes'
+        'pipe curl --binary' rfile '| fblock 80 00 | punch' pstat
+/*        '| count bytes | var rbytes'                                */
 Call Diag 08, 'CLOSE' paddr
 If rc /= 0 Then Do
   Call Diag 08, 'SP' raddr 'CL' rcl rcont rhold rkeep
@@ -154,11 +178,10 @@ If rc /= 0 Then Do
   Exit rc
 End
 
-Say "#" kbytes "bytes kernel," pbytes "bytes parm data," rbytes "bytes root FS"
+/* Say "#" kbytes "bytes kernel," pbytes "bytes parm data," rbytes "bytes root FS" */
 Say "# booting the kernel now ..."
 Say "+" 'IPL' raddr 'CLEAR'
         'IPL' raddr 'CLEAR' ; _rc = rc
-
 
 /* if somehow the IPL failed then restore reader and punch settings */
 'CP SP' raddr 'CL' rcl rcont rhold rkeep
