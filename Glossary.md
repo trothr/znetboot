@@ -1,12 +1,13 @@
+# Glossary
 
-Many terms used by 'maniframers' are acronyms, assumed to be already 
-known and in the daily working 'lingo' of end users.  For people coming to 
-the 'mainframe' world, this can be quite confusing, and so this 'Rosetta Stone'
+Many terms used by maniframers are acronyms, assumed to be already 
+known and in the daily working language of end users.  For people coming to 
+the mainframe world, this can be quite confusing. This document serves as a
+'Rosetta Stone' for translating mainframe-speak.
 
 
-Distributed
-- IBM's term for non-mainframe stand-alone computer, usually derived from 
-'desktop' PC architectures:
+Distributed -- term for non-mainframe stand-alone computers,
+often derived from 'desktop' PC architectures:
 
 --- Intel and AMD x86 
     [a largely obsolete 32 bit processors, but still commonly found in use]
@@ -17,20 +18,20 @@ Distributed
 
 --- Intel IA64 (Itanium II) [obsolete early 64 bit processor family]
 
-
-Mainframe
-- IBM's term for its Z, and P class server families
+Mainframe -- informal term for IBM "Z" class architecture.
+Other architectures include "I" and "P", which have mostly merged,
+and "X" for PC class systems.
 
 --- Z is a succession of mostly backward conmpatible designs, originating 
 from the early System/360 instruction set (with that early subset of 
 implemented binary Machine Language instructions still supported, and 
 represented in a human-readible form in Basic Assembly Language LINK 
-and surrounding 'ecosystem' of I/O Channel Co-Processor design 
+and surrounding ecosystem of I/O Channel Co-Processor design 
 (similarly programmed in a CCP language).  An I/O co-processor is 
 designed to receive at high rate, commands and content data, and so to 
-permit 'off-loading' by the central computation hardware 
-and RAM store to be able to 'hand off substantially all I/O tasks to 
-the proper 'CCP', and then to 'task switch' to another 'ready to go' 
+permit off-loading by the central computation hardware 
+and RAM store to be able to hand off substantially all I/O tasks to 
+the proper 'CCP', and then to task switch to another ready-to-go 
 computational job in its 'runnable' job queue.  
 
 The switch in context permitted a processor  to engage in multi-task 
@@ -42,17 +43,15 @@ ever since.
 
 --- P is the 'Power' RISC -- Reduced Instruction Set Computer --
 architecture redesign.  RISC represented a trend in the hardware
-'processing' the instructions, to 'shrink' the nunber of instruction
+processing the instructions, to shrink the nunber of instruction
 primitives which given semiconductor die or processor chipset  needed to 
 implement, and so, to get a net increase of speed, reduction of power 
 needs, and so, more cost effective performance.
 
-----
+## Glossary
 
-- Glossary
-/*  keep alpha */
-
--- ASCII: see: EBCDIC, infra
+-- ASCII: American Standard Code for Information Interchange;
+see: EBCDIC, infra
 
 -- BAL: Basic Assembly Language 
 
@@ -61,21 +60,33 @@ predecessor (discrete transistors and plugboards based), proposed to
 transition off of Hollerith 'tab' cards encoding a 12 rows, 
 called: A B, and 0 through 9 
 
--- CMS: FIXME
+-- CMS: officially the Conversational Monitor System,
+a single user operating system packaged with z/VM
+and used for the majority of housekeeping work in z/VM.
+CMS provides the interactive environment which defines the user experience
+when z/VM is employed as an operating system product.
 
 -- CURL: local convention, after the network file transfer utility; another
 example might be 'wget'
 
--- DASD: Direct Access Ssytem <?> Device <?>
+-- DASD: Direct Access Storage Device, i.e., disk
 
--- EBCDIC: IBM's preferred character set for s/390. Extended Binary Coded 
-Decimal Interhange Code; a 'not invented here' response to ASCII, which was 
-was the alternative character set encoding conpetition of the era; successor to 
-BCD encoding on the 1401 series
+-- EBCDIC: Extended Binary Coded Decimal Interchange Code,
+IBM's preferred character set for S/390 and AS/400 and successor to BCD.
+EBCDIC is a character encoding conceptually similar to ASCII but with different
+(and incompatible) character-to-bit-pattern assignments. Translation between 
+EBCDIC and ASCII is usually done transparently, but some differences
+occasionally leak out.
 
--- EXEC: similar to Unix' _fork_, _exec_ and friends
+-- EXEC: in CMS is the filetype for a scripted command. (think shell script)
+CMS provides three interpreters, the preferred being REXX. To indicate that an
+EXEC should be interpreted as REXX, the file must start with a REXX comment
+and thus begin with slash asterisk /*.
 
 -- FOSS: Free and Open Source Software
+
+-- FLOSS: Free/Libre Open Source Software, a variant of FOSS
+with essentially the same meaning.
 
 -- GPLv2: one of several licenses documented by the Free Software
 Foundation, providing generaly that if one transfers a binary form of
@@ -87,9 +98,9 @@ transferee to any later successor or sub-transferee
 chassis, as to a punch card reader (1402), line printer (1403), hard drive
 (3390), console device (3270).  FIXME -0- what is a network connection
 
--- IFL: Instance For Linux; an older term used by IBM for describing Linux
-Virtual Machines, with certain favorable pricing, compared to more general
-purpose IBM hardware hosted Virtual Machine environments
+-- IFL: Integrated Facility for Linux; a ham-strung mainframe processor
+which can boot Linux and can boot z/VM but cannot boot z/OS or other
+operating systems. IFLs are priced lower than general purpose engines.
 
 -- Linux: specifically, a computer core executive program developed
 initially by Linus Torvalds, and as time passes a commuinity of developers,
@@ -99,7 +110,7 @@ shorthand way to refer to an ecosystem of libraries and programs which make
 that core executive useful in performing general computing tasks
 
 -- LPAR: a Logical PARtition is a section of persistent storage (usually in
-a hard disk like DASD) reserved for a perticular user
+a hard disk like DASD) reserved for a perticular operating system instance.
 
 -- OSA-Express: Open Systems Adapter; a networking interconnect method
 used by IBM hardware, and dynamically managable under software control,
@@ -114,7 +125,10 @@ to 'tap' into and 'tee' content off of (passively6 or via active 'spoofing')
 
 -- RISC: Reduced Instruction Set Computer
 
--- SFS: FIXME
+-- SFS: Shared FileSystem; in CMS, SFS is a filesystem which can be used
+by several virtual machines simultaneously. Historical CMS filesystems
+reside on virtual disks which cannot be shared without side-channel
+locking and related coordination.
 
 -- TCP/IP: one of several protocols for of data transfer between computing
 -- devices (Mainframes, CCP devices, remote systems)
@@ -134,7 +148,7 @@ over-type, or use minimal in-field edit commands
 
 -- wget: see: CURL
 
--- XEDIT: FIXME
+-- XEDIT: the primary file editor in CMS
 
 -- z/VM: 'Z' for Virtual Machines; at time of preparation, at revision level
 	6.4 (November 2017) FIXME; discuss the prediliction of IBM to
@@ -165,4 +179,5 @@ IBM document:  GC24-6195-05
 
 There is an excellent and curated 'link-farm' at PDF page 152 (document
 pagination 143)
+
 
