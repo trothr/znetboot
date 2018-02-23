@@ -38,8 +38,8 @@ Support for the following Linux distributions are wanted:
 
 * SUSE (and/or OpenSUSE)
 * CentOS
-* RedHat (and/or Fedora)
-* Gentoo
 * Slack/390
+* Gentoo
+* RedHat (and/or Fedora)
 
 
