@@ -18,6 +18,7 @@
       CLEFOS   ZNETBOOT *  -- example config for ClefOS installation
       UBUNTU   ZNETBOOT *  -- example config for Ubuntu, requires z12
       DEBIAN   ZNETBOOT *  -- example config for Debian installation
+      ALPINE   ZNETBOOT *  -- example config for Alpine installation
       NORD     ZNETBOOT *  -- example config for NORD installation
 * Note: kernels requiring z12 exhibit 0BADCCCC abend when IPLed on z10
 *
