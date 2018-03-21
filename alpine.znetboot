@@ -11,13 +11,12 @@ ZNETBOOT_INITRD=http://vm.flatglobe.org/alpine/kernel/initramfs-vanilla
 ZNETBOOT_PROGRESS=1M
 
 modprobe.blacklist=lcs
-ip=148.100.88.35
-gw=148.100.88.1
+ip=192.168.0.100
+gw=192.168.0.1
 netmask=255.255.255.0
-dns=148.100.88.27
+dns=8.8.8.8
 qethl2=0.0.0340,0.0.0341,0.0.0342
 dasd=0.0.01b0,0.0.01b1
-#dasd=01b0-01b1
 passwd=alpine
 
 
