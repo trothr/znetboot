@@ -5,10 +5,10 @@ known and in the daily working language of end users.  For people coming to
 the mainframe world, this can be quite confusing. This document serves as a
 'Rosetta Stone' for translating mainframe-speak.
 
--- Distributed: term for non-mainframe stand-alone computers,
+* Distributed: term for non-mainframe stand-alone computers,
 often derived from 'desktop' PC architectures:
 
---- Intel and AMD x86
+** Intel and AMD x86
     [a largely obsolete 32 bit processors, but still commonly found in use]
 
 --- Intel and AMD x86_64
