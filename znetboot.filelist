@@ -1,4 +1,4 @@
-* Copyright © 2016, 2017, Richard M. Troth, all rights reserved.   <plaintext>                                                                                                                                     "width holder" because this is a wide file *
+* Copyright © 2016, 2017, 2018, Richard M. Troth, all rights reserved.   <plaintext>                                                                                                                               "width holder" because this is a wide file *
 *
 *         Name: ZNETBOOT FILELIST
 *         Date: 2015-Dec and following
@@ -7,8 +7,9 @@
 *               a one-shot command utility for booting Linux on z/VM.
 *
       ZNETBOOT FILELIST *  -- this file
-      ZNETBOOT README   *  -- do what it says, read it
+      ZNETBOOT README   *  -- do what the name says, read it
       ZNETBOOT LICENSE  *  -- simplified legal stuff
+      ZNETBOOT MD       *  -- "markdown" doc
 *
       ZNETBOOT EXEC     *  -- the 'znetboot' command
       ZNETBOOT HELPCMS  *  -- brief help
