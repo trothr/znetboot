@@ -8,6 +8,8 @@ to boot Linux on a VM/CMS system. It should make things much easier
 for non-VM and non-mainframe users. After nearly two decades of Linux
 on z/VM, mainframe Linux should be at least this easy.
 
+## running znetboot
+
 ZNETBOOT reads an installation file and retrieves the kernel
 and initrd indicated. Other statements in the installation file
 are passed to the kernel as boot parameters. For example ...
@@ -22,5 +24,22 @@ are passed to the kernel as boot parameters. For example ...
     GATEWAY=192.168.0.1
 
 Then enter `znetboot` from the CMS "Ready;" prompt. Next stop, Linux.
+
+## working znetboot distributions
+
+Installers for the following Linux distributions are known to work with ZNETBOOT:
+
+* ClefOS
+* Ubuntu
+* Debian
+* NORD  
+
+Support for the following Linux distributions are wanted:
+
+* SUSE (and/or OpenSUSE)
+* CentOS
+* Slack/390
+* Gentoo
+* RedHat (and/or Fedora)
 
 
