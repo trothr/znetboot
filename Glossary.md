@@ -17,6 +17,27 @@ often derived from 'desktop' PC architectures:
 
 --- Intel IA64 (Itanium II) [obsolete early 64 bit processor family]
 
+-- Other Distributed: non-PC and non-mainframe architectures
+
+--- P is the 'Power' RISC -- Reduced Instruction Set Computer --
+architecture redesign. RISC represented a trend in the hardware
+processing the instructions, to shrink the nunber of instruction
+primitives which given semiconductor die or processor chipset needed to
+implement, and so, to get a net increase of speed, reduction of power
+needs, and so, more cost effective performance.
+
+--- SPARC (Scalable Processor Architecture)
+is the RISC architecture from Sun Microsystems (now Oracle)
+
+
+--- PA-RISC (Precision Architecture - reduced instruction set computer)
+is the RISC architecture from Hewlett Packard (now HPE)
+
+
+--- ARM (Advanced RISC Machine, originally Acorn RISC Machine)
+is the RISC architecture developed by Arm Holdings
+
+
 -- Mainframe: informal term for IBM "Z" class architecture.
 Other architectures include "I" and "P", which have mostly merged,
 and "X" for PC class systems.
@@ -40,13 +61,6 @@ spaces (called BG, F1 and F2 -- the Background task, and Foreground 1
 and 2 tasks) which was in use in the late 1960's, and has been extended
 ever since.
 
---- P is the 'Power' RISC -- Reduced Instruction Set Computer --
-architecture redesign. RISC represented a trend in the hardware
-processing the instructions, to shrink the nunber of instruction
-primitives which given semiconductor die or processor chipset needed to
-implement, and so, to get a net increase of speed, reduction of power
-needs, and so, more cost effective performance.
-
 ## Glossary
 
 -- ASCII: American Standard Code for Information Interchange;
@@ -65,10 +79,14 @@ and used for the majority of housekeeping work in z/VM.
 CMS provides the interactive environment which defines the user experience
 when z/VM is employed as an operating system product.
 
--- CURL: local convention, after the network file transfer utility; another
+-- cURL: local convention, after the network file transfer utility; another
 example might be 'wget'
 
 -- DASD: Direct Access Storage Device, i.e., disk
+
+-- DCSS: Discontiguous Shared Segment;
+a memory segment, commonly contiguous, which can be shared across
+virtual machines on z/VM. DCSS provides a sort-of virtual ROM.
 
 -- EBCDIC: Extended Binary Coded Decimal Interchange Code,
 IBM's preferred character set for S/390 and AS/400 and successor to BCD.
@@ -101,6 +119,12 @@ chassis, as to a punch card reader (1402), line printer (1403), hard drive
 which can boot Linux and can boot z/VM but cannot boot z/OS or other
 operating systems. IFLs are priced lower than general purpose engines.
 
+-- IUCV: Inter-User Communication Vehicle; a service of z/VM
+for communicating between virtual machines, so named because
+a "user" on z/VM is a virtual machine and a virtual machine is a user.
+IUCV is operationally much like named sockets,
+which is process-to-process, but is VM-to-VM.
+
 -- Linux: specifically, a computer core executive program developed
 initially by Linus Torvalds, and as time passes a commuinity of developers,
 some completely unpaid, others sponsored by an employer; It is copyrighted,
@@ -111,6 +135,9 @@ that core executive useful in performing general computing tasks
 -- LPAR: a Logical PARtition is a section of persistent storage (usually in
 a hard disk like DASD) reserved for a perticular operating system instance.
 
+-- NSS: Named Saved System; related to DCSS, a kernel which can be
+booted by name (rather than booted from a device by address).
+
 -- OSA-Express: Open Systems Adapter; a networking interconnect method
 used by IBM hardware, and dynamically managable under software control,
 rather than by setting up a physical Ethernet network of interfaces, patch
@@ -120,7 +147,7 @@ mainframe, it removes the potential for covert interception of network
 traffic, as there is no point of attack available to a person lacking rights
 to 'tap' into and 'tee' content off of (passively6 or via active 'spoofing')
 
--- REXX: a scripting language widely use by IBM products
+-- Rexx: a scripting language widely use by IBM products
 
 -- RISC: Reduced Instruction Set Computer
 
@@ -145,25 +172,17 @@ the remote server for processing as a transaction.  Until ENTER is selected,
 one may cycle and wrap around through all editable fields, and either
 over-type, or use minimal in-field edit commands
 
--- wget: see: CURL
+-- wget: see: cURL
 
 -- XEDIT: the primary file editor in CMS
 
--- z/VM: 'Z' for Virtual Machines; at time of preparation, at revision level
-	6.4 (November 2017) FIXME; discuss the prediliction of IBM to
-	renaming the same product over time, and so causing confusion.
-
-	Described fully at:
-
-    IBM document: z/VM (product number 5741-A07)
-
-	more generally in
-
-     z/VM: General Information, IBM document GC24-6193
+-- z/VM: IBM's hypervisor product for mainframe (z series) architecture,
+formerly known as VM/ESA, VM/XA, VM/SP and VM/HPO, VM/370, CP/67, CP/40.
+See also IBM documents 5741-A07 and GC24-6193
 
      http://publibz.boulder.ibm.com/epubs/pdf/hcsf8c30.pdf
 
--- Z: a shorthand way to rever to the 's390x' hardware processor architure
+-- Z: a shorthand way to refer to the 's390x' hardware processor architure
 
 ====
 
@@ -177,5 +196,18 @@ IBM document:  GC24-6195-05
 
 There is an excellent and curated 'link-farm' at PDF page 152 (document
 pagination 143)
+
+
+====
+
+Links
+
+https://en.wikipedia.org/wiki/SPARC
+
+https://en.wikipedia.org/wiki/PA-RISC
+
+https://en.wikipedia.org/wiki/ARM_architecture
+
+
 
 
