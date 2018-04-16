@@ -45,13 +45,15 @@ on their systems so any CMS user will have ready access.
 
 The CMS package is defined by ...
 
-    http://www.casita.net/pub/znetboot/znetboot.filelist
+http://www.casita.net/pub/znetboot/znetboot.filelist
 
 and is available as ...
 
-    http://www.casita.net/pub/znetboot/znetboot.vmarc
- -or-
-    http://www.casita.net/pub/znetboot/znetboot.tar.gz
+http://www.casita.net/pub/znetboot/znetboot.vmarc
+
+or
+
+http://www.casita.net/pub/znetboot/znetboot.tar.gz
 
 There is also a help file. Enter 'help cms znetboot'
 after the VMARC (or TAR) bundle has been exploded.
@@ -72,12 +74,9 @@ The only reason these files are not included in the CMS package
 is to avoid limitations in traditional CMS filesystems. Everything
 essential to the package is included in the VMARC and TAR files.
 
-    znetboot.md
-    clefonvm.md
-
 The GitHub project is found at ...
 
-    https://github.com/trothr/znetboot
+https://github.com/trothr/znetboot/
 
 ##
 
