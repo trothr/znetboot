@@ -1,4 +1,4 @@
-#
+#                                                                                                                                                                                                                  "width holder" because this is a wide file #
 #         Name: CLEFONVM ZNETBOOT
 #         Date: 2016-Jun-25 (Sat)
 #               2017-Oct-23 (Mon) for RPH
@@ -7,16 +7,16 @@
 #
 
 # where to find the kernel ...
-ZNETBOOT_KERNEL=http://download.sinenomine.net/clefos/7.4/images/kernel.img
-ZNETBOOT_INITRD=http://download.sinenomine.net/clefos/7.4/images/initrd.img
+ZNETBOOT_KERNEL=http://download.sinenomine.net/clefos/7/images/kernel.img
+ZNETBOOT_INITRD=http://download.sinenomine.net/clefos/7/images/initrd.img
 ZNETBOOT_PROGRESS=1M
 
 # where to find the installer ...
-root=live:http://download.sinenomine.net:/clefos/7.4/images/install.img
+root=live:http://download.sinenomine.net:/clefos/7/images/install.img
 
 # minimal ClefOS boot params ...
 ramdisk_size=40000 cio_ignore=all,!condev
-# see http://download.sinenomine.net/clefos/7.4/images/generic.prm
+# see http://download.sinenomine.net/clefos/7/images/generic.prm
 
 # additional ClefOS boot params ...
 ZNETBOOT_TOFILE=NETTYPE=qeth
