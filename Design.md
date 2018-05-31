@@ -12,7 +12,7 @@ ZNETBOOT uses CMS Pipelines to streamline all of its operation.
 ## cURL
 
 ZNETBOOT uses a `curl` stage to handle the network side of its work.
-The point of using `curl` is that the pipelines for fetching
+The reason for using `curl` is that the pipelines for fetching
 and punching can be similar to counterpart pipelines on other platforms.
 
 The `curl` stage used is taken from CMS Make
@@ -23,16 +23,17 @@ CMS Pipelines can do TLS/SSL, this `curl` will follow shortly.
 
 ## FILELIST
 
-ZNETBOOT uses stock CMS methods as much as possible.
-The package is defined by ZNETBOOT FILELIST which is a flat file
-with filename, filetype, and filemode of the components.
+CMS components are listed in ZNETBOOT FILELIST.
+As a project, ZNETBOOT uses stock CMS methods whenever possible
+so ZNETBOOT FILELIST is a plain text file containing the standard
+filename, filetype, and filemode of each component file.
 ZNETBOOT FILELIST can be used directly by the `filelist` utility in CMS.
 
 ## VMARC
 
 ZNETBOOT is packaged for CMS in two forms: a VMARC file and a TAR file.
 VMARC is a common utility in the z/VM world. ZNETBOOT VMARC can be
-uploaded to any VM/CMS system and "exploded", writing its contents.
+uploaded to any VM/CMS system and "exploded" by the VMARC utility.
 
 To create the VMARC package, ZNETBOOT FILELIST is fed to `vmarc`
 in such a way that all files listed go directly into the archive.
