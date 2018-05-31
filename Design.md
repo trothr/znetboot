@@ -55,7 +55,7 @@ There are other files which are part of the ZNETBOOT project
 but which are not part of the ZNETBOOT package. This file is one.
 
 More files from the project may be added to the package,
-but uniqueness in CMS space is important. Files from the project
+but uniqueness in CMS name space is important. Files from the project
 shall be added to the package by inclusion in ZNETBOOT FILELIST
 and must therefore have a filename/filetype which is unique and
 meaningful in CMS. (Because ZNETBOOT is a CMS utility.)
