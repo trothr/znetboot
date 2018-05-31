@@ -158,6 +158,8 @@ that core executive useful in performing general computing tasks
 * LPAR: a Logical PARtition is a section of persistent storage (usually in
 a hard disk like DASD) reserved for a perticular operating system instance.
 
+* VMARC: define me
+
 * NSS: Named Saved System; related to DCSS, a kernel which can be
 booted by name (rather than booted from a device by address).
 
