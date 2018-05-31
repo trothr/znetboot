@@ -3,7 +3,7 @@
 ZNETBOOT is a CMS application.
 There is no specific equivalent for other environments.
 
-There may be a ZNETBOOT work-alike for Linux-on-z/VM ... someday.
+There *may* be a ZNETBOOT work-alike for Linux-on-z/VM ... someday.
 
 ## CMS Pipelines
 
