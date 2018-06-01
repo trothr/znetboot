@@ -41,6 +41,6 @@ Support for the following Linux distributions are wanted:
 * CentOS
 * Slack/390
 * Gentoo
-* RedHat (and/or Fedora)
+* Red Hat (and/or Fedora)
 
 
