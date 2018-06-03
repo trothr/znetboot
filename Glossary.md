@@ -140,8 +140,8 @@ operating systems. IFLs are priced lower than general purpose engines.
 * IUCV: Inter-User Communication Vehicle; a service of z/VM
 for communicating between virtual machines, so named because
 a "user" on z/VM is a virtual machine and a virtual machine is a user.
-IUCV is operationally much like named sockets,
-which is process-to-process, but is VM-to-VM.
+IUCV is operationally much like named sockets which is process-to-process,
+but IUCV is VM-to-VM.
 
 VM/CMS and z/Linux support AF_IUCV sockets.
 On Linux, AF_IUCV is defined across all architectures
