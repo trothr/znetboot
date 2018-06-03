@@ -140,8 +140,8 @@ operating systems. IFLs are priced lower than general purpose engines.
 * IUCV: Inter-User Communication Vehicle; a service of z/VM
 for communicating between virtual machines, so named because
 a "user" on z/VM is a virtual machine and a virtual machine is a user.
-IUCV is operationally much like named sockets,
-which is process-to-process, but is VM-to-VM.
+IUCV is operationally much like named sockets which is process-to-process,
+but IUCV is VM-to-VM.
 
 VM/CMS and z/Linux support AF_IUCV sockets.
 On Linux, AF_IUCV is defined across all architectures
@@ -157,6 +157,8 @@ that core executive useful in performing general computing tasks
 
 * LPAR: a Logical PARtition is a section of persistent storage (usually in
 a hard disk like DASD) reserved for a perticular operating system instance.
+
+* VMARC: define me
 
 * NSS: Named Saved System; related to DCSS, a kernel which can be
 booted by name (rather than booted from a device by address).

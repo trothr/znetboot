@@ -30,9 +30,9 @@ Then enter `znetboot` from the CMS "Ready;" prompt. Next stop, Linux.
 Installers for the following Linux distributions are known to work with ZNETBOOT:
 
 * ClefOS
-* Ubuntu
-* Debian
 * Alpine
+* Debian
+* Ubuntu
 * NORD  
 
 Support for the following Linux distributions are wanted:
@@ -41,6 +41,6 @@ Support for the following Linux distributions are wanted:
 * CentOS
 * Slack/390
 * Gentoo
-* RedHat (and/or Fedora)
+* Red Hat (and/or Fedora)
 
 
