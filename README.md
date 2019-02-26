@@ -32,6 +32,7 @@ Installers for the following Linux distributions are known to work with ZNETBOOT
 * ClefOS
 * Alpine
 * Debian
+* Fedora
 * Ubuntu
 * NORD  
 
@@ -41,6 +42,6 @@ Support for the following Linux distributions are wanted:
 * CentOS
 * Slack/390
 * Gentoo
-* Red Hat (and/or Fedora)
+* Red Hat
 
 
