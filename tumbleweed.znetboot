@@ -1,0 +1,25 @@
+#                                                                                                                                                                                                                  "width holder" because this is a wide file #
+#         Name: TUMBLEWEED ZNETBOOT
+#         Date: 2020-Mar-26 (Thu)
+#               This is the ZNETBOOT file for OpenSUSE Tumbleweed on z/VM.
+#               Put this file on your 191 A disk before booting.
+#
+
+# where to find the kernel and INITRD ...
+ZNETBOOT_KERNEL=http://download.opensuse.org/ports/zsystems/tumbleweed/repo/oss/boot/s390x/linux
+ZNETBOOT_INITRD=http://download.opensuse.org/ports/zsystems/tumbleweed/repo/oss/boot/s390x/initrd
+
+#
+# sample VM boot parameters
+TERM=dumb manual=1
+dasd=1b0-1b1
+HOST=ltroth3.casita.net:eth0:148.100.88.35:1500
+NETWORK=148.100.88.0:255.255.255.0:148.100.88.255:148.100.88.1
+DNS=1.1.1.1
+SEARCHDNS=casita.net
+CHANDEV=qeth0,0x340,0x341,0x342
+#
+#
+#
+
+
