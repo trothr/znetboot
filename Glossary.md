@@ -42,6 +42,9 @@ is the RISC architecture from Hewlett Packard (now HPE)
 * ARM (Advanced RISC Machine, originally Acorn RISC Machine)
 is the RISC architecture developed by Arm Holdings
 
+AMD/Intel, POWER, and ARM are all supported by the KVM hypervisor,
+along with Z (mainframe, see below).
+
 ## Mainframe
 
 "mainframe" is the informal term for IBM "Z" class architecture.
@@ -67,10 +70,15 @@ spaces (called BG, F1 and F2 -- the Background task, and Foreground 1
 and 2 tasks) which was in use in the late 1960's, and has been extended
 ever since.
 
+Z architecture is supported by the KVM hypervisor,
+along with AMD/Intel, POWER, and ARM (see above).
+Z architecture is also supported by IBM's z/VM hypervisor,
+which is the platform for which ZNETBOOT was designed.
+
 ## Glossary
 
 * ASCII: American Standard Code for Information Interchange;
-see: EBCDIC, infra
+see: EBCDIC
 
 * BAL: Basic Assembly Language
 
@@ -79,29 +87,30 @@ predecessor (discrete transistors and plugboards based), proposed to
 transition off of Hollerith 'tab' cards encoding a 12 rows,
 called: A B, and 0 through 9
 
-* CMS: officially the Conversational Monitor System,
-a single user operating system packaged with z/VM
-and used for the majority of housekeeping work in z/VM.
-CMS provides the interactive environment which defines the user experience
-when z/VM is employed as an operating system product.
+* CMS: officially the Conversational Monitor System, a single user
+operating system packaged with z/VM and used for the majority of
+housekeeping work in z/VM. CMS provides the interactive environment
+which defines the user experience when z/VM is employed as an
+operating system product. CMS includes XEDIT, Rexx, and CMS Pipelines.
 
-* cURL: local convention, after the network file transfer utility; another
-example might be 'wget'
+* cURL: local convention, after the network file transfer utility;
+another example might be `wget`
 
 * DASD: Direct Access Storage Device, i.e., "disk"
 
-The majority of DASD for IBM Z systems allows traditional
-track and record geometry as the more common fixed-block disk geometry.
+The majority of DASD for IBM Z systems allows traditional track and
+record geometry (see "count key data" or CKD or ECKD), but DASD may
+alternatively be of the more common fixed-block architecture (FBA).
 Most other computer architectures use fixed-block geometry for all disk
-types except floppies. Ironically, major DASD vendors provide
-track and record geometry by emulation, using fixed-block devices
-for the physical backing store.
+types (except floppies). Ironically, major DASD vendors provide track
+and record geometry (ECKD) by emulation, using fixed-block devices
+under the covers for the physical backing store.
 
 * DCSS: Discontiguous Shared Segment; a memory segment
 (commonly contiguous, despite the name) which can be shared across
 virtual machines on z/VM. DCSS provides an effective sort-of virtual ROM
 for z/VM virtual machines. A DCSS can contain a filesystem, and z/Linux
-has drivers which take advantage of this.
+has drivers which take advantage of that.
 
 * EBCDIC: Extended Binary Coded Decimal Interchange Code,
 IBM's preferred character set for S/390 and AS/400 and successor to BCD.
@@ -112,6 +121,7 @@ but some differences occasionally leak out.
 
 * ECKD: Extended Count-Key-Data is a disk recording format which adds
 counts and keys to track-and-record disk format. It is derived from CKD.
+See "count key data".
 
 * EXEC: in CMS is the filetype for a scripted command. (think shell script)
 CMS provides three interpreters, the preferred being REXX. To indicate
@@ -120,8 +130,8 @@ a REXX comment and thus begin with slash asterisk /*.
 
 * FOSS: Free and Open Source Software
 
-* FLOSS: Free/Libre Open Source Software, a variant of FOSS
-with essentially the same meaning.
+* FLOSS: Free/Libre Open Source Software,
+a variant of "FOSS" with essentially the same meaning.
 
 * GPLv2: one of several licenses documented by the Free Software
 Foundation, providing generaly that if one transfers a binary form of
@@ -137,6 +147,8 @@ drive (3390), console device (3270 or 3215), network connection (OSA)
 which can boot Linux and can boot z/VM but cannot boot z/OS or other
 operating systems. IFLs are priced lower than general purpose engines.
 
+* IPL: Initial Program Load. This is the IBM mainframe term for "boot".
+
 * IUCV: Inter-User Communication Vehicle; a service of z/VM
 for communicating between virtual machines, so named because
 a "user" on z/VM is a virtual machine and a virtual machine is a user.
@@ -145,23 +157,30 @@ but IUCV is VM-to-VM.
 
 VM/CMS and z/Linux support AF_IUCV sockets.
 On Linux, AF_IUCV is defined across all architectures
-but is only effective when the architecture is Z and Linux is
+but is only effective when the architecture is Z *and* Linux is
 hosted by z/VM.
 
-* Linux: specifically, a computer core executive program developed
+* Linux: specifically, a computer core executive program (kernel)
+developed
 initially by Linus Torvalds, and as time passes a commuinity of developers,
 some completely unpaid, others sponsored by an employer; It is copyrighted,
 but freely available on terms of a license known as the GPLv2.  Generally a
 shorthand way to refer to an ecosystem of libraries and programs which make
 that core executive useful in performing general computing tasks
 
-* LPAR: a Logical PARtition is a section of persistent storage (usually in
-a hard disk like DASD) reserved for a perticular operating system instance.
+Linux itself is just the kernel, but the name implies also a "userland",
+a collection of utilities and programs to make the kernel useful.
+Various Linux distributions (SUSE, RedHat, Debian) provide such utilities,
+with the exception of Android which uses the Linux kernel to host its own
+Java-based environment.
 
-* VMARC: define me
+* LPAR: a Logical PARtition is a sectioned-off collection of computing
+resources reserved for a perticular operating system instance. Think of
+an LPAR as the hardware work-alike to a virtual machine.
 
 * NSS: Named Saved System; related to DCSS, a kernel which can be
 booted by name (rather than booted from a device by address).
+An NSS can be booted (see `IPL`), unlike a DCSS which cannot.
 
 * OSA-Express: Open Systems Adapter; a networking interconnect method
 used by IBM hardware, and dynamically managable under software control,
@@ -184,26 +203,53 @@ locking and related coordination.
 * TCP/IP: one of several protocols for of data transfer between computing
 devices (Mainframes, CCP devices, remote systems)
 
-* Unit Record equipment; 'tab' card based computing; 026 keypunch, 029
-key verified, 082 sorter, 5xx series plugboard and patch cable' programmed
+* Unit Record (UR) equipment; 'tab' card based computing; 026 keypunch, 
+029 key verified, 082 sorter, 5xx series plugboard and patch cable programmed
 relay based electronic computing devices; successor was the 1401 family and BCD
 
-* X3270: a IP network console with a variant form of the 'telnet' type
+* X3270: an IP network console with a variant form of the 'telnet' type
 of interface; As it dates from an earlier era, there are areas of the screen,
 called 'fields' in which input mat be typed; the TAB key will advance to the
 next available field (some fields may be 'display only') after the present
-cursor position. ENTER customarily submits all of the 'fill-in' fields to
+cursor position. ENTER customarily submits all of the 'filled-in' fields to
 the remote server for processing as a transaction.  Until ENTER is selected,
-one may cycle and wrap around through all editable fields, and either
+one may cycle (tab) and wrap around through all editable fields, and either
 over-type, or use minimal in-field edit commands
+
+* VMARC: short for "VM ARChive", is a customer-developed utility for
+sharing collections of files among z/VM systems, and the format of
+the collection. It is similar to ZIP and TAR.
 
 * wget: see: cURL
 
 * XEDIT: the primary file editor in CMS
 
-* z/VM: IBM's hypervisor product for mainframe (z series) architecture,
+* z/Linux: Linux for Z architecture, a compilation of the Linux kernel
+and associated "userland" for use on Z series computers, either virtual
+or physical. It is often said, "Linux is Linux", and the environment
+seen in z/Linux is nearly identical to that seen in Linux on AMD/Intel
+or Linux on POWER or Linux on ARM or Linux on MIPS or Linux on SPARC.
+
+Linux on Z series is an ASCII based system.
+
+Linux for Z series is *not* "Linux for z/OS". z/OS is an operating system.
+"Linux for z/OS" is a common misnomer and very misleading.
+
+* z/OS: a.k.a., MVS, IBM's flagship mainframe operating system
+
+* z/TPF: Transaction Processing Facility, an IBM operating system
+for extreme transactional workloads
+
+IBM modified z/TPF to support the z/Linux ABI (application binary
+interface). z/TPF modules can be created on z/Linux and then deployed
+on z/TPF improving on the development cycle for many programmers.
+
+* z/VM: IBM's hypervisor product for mainframe (Z series) architecture,
 formerly known as VM/ESA, VM/XA, VM/SP and VM/HPO, VM/370, CP/67, CP/40.
 See also IBM documents 5741-A07 and GC24-6193
+
+* z/VSE: "Virtual Storage Extended", an IBM operating system
+historically lighter weight than MVS (z/OS), commonly hosted by z/VM
 
      http://publibz.boulder.ibm.com/epubs/pdf/hcsf8c30.pdf
 
@@ -219,9 +265,8 @@ http://publibz.boulder.ibm.com/epubs/pdf/hcsl9c30.pdf
 
 IBM document:  GC24-6195-05
 
-There is an excellent and curated 'link-farm' at PDF page 152 (document
-pagination 143)
-
+There is an excellent and curated 'link-farm' at PDF page 152
+(document pagination 143)
 
 ====
 
@@ -234,7 +279,5 @@ https://en.wikipedia.org/wiki/PA-RISC
 https://en.wikipedia.org/wiki/ARM_architecture
 
 https://en.wikipedia.org/wiki/Count_key_data
-
-
 
 
