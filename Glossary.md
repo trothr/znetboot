@@ -237,8 +237,12 @@ Linux for Z series is *not* "Linux for z/OS". z/OS is an operating system.
 
 * z/OS: a.k.a., MVS, IBM's flagship mainframe operating system
 
+    https://en.wikipedia.org/wiki/Z/OS
+
 * z/TPF: Transaction Processing Facility, an IBM operating system
 for extreme transactional workloads
+
+    https://en.wikipedia.org/wiki/Transaction_Processing_Facility
 
 IBM modified z/TPF to support the z/Linux ABI (application binary
 interface). z/TPF modules can be created on z/Linux and then deployed
@@ -248,36 +252,38 @@ on z/TPF improving on the development cycle for many programmers.
 formerly known as VM/ESA, VM/XA, VM/SP and VM/HPO, VM/370, CP/67, CP/40.
 See also IBM documents 5741-A07 and GC24-6193
 
+    http://publibz.boulder.ibm.com/epubs/pdf/hcsf8c30.pdf
+
+    https://en.wikipedia.org/wiki/VM_(operating_system)
+
 * z/VSE: "Virtual Storage Extended", an IBM operating system
 historically lighter weight than MVS (z/OS), commonly hosted by z/VM
 
-     http://publibz.boulder.ibm.com/epubs/pdf/hcsf8c30.pdf
+    https://en.wikipedia.org/wiki/VSE_(operating_system)
 
 * Z: a shorthand way to refer to the 's390x' hardware processor architure
 
-====
+## Other Glossaries
 
 IBM also publishes several Glossaries:
 
 z/VM Glossary
 
-http://publibz.boulder.ibm.com/epubs/pdf/hcsl9c30.pdf
+    http://publibz.boulder.ibm.com/epubs/pdf/hcsl9c30.pdf
 
 IBM document:  GC24-6195-05
 
 There is an excellent and curated 'link-farm' at PDF page 152
 (document pagination 143)
 
-====
+Wikipedia Links
 
-Links
+    https://en.wikipedia.org/wiki/SPARC
 
-https://en.wikipedia.org/wiki/SPARC
+    https://en.wikipedia.org/wiki/PA-RISC
 
-https://en.wikipedia.org/wiki/PA-RISC
+    https://en.wikipedia.org/wiki/ARM_architecture
 
-https://en.wikipedia.org/wiki/ARM_architecture
-
-https://en.wikipedia.org/wiki/Count_key_data
+    https://en.wikipedia.org/wiki/Count_key_data
 
 
