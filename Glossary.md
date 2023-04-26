@@ -51,19 +51,19 @@ along with Z (mainframe, see below).
 Other architectures include "I" and "P", which have mostly merged,
 and "X" for PC class systems.
 
-* Z is a succession of mostly backward conmpatible designs, originating
-from the early System/360 instruction set (with that early subset of
-implemented binary Machine Language instructions still supported, and
-represented in a human-readible form in Basic Assembly Language LINK
-and surrounding ecosystem of I/O Channel Co-Processor design
-(similarly programmed in a CCP language).  An I/O co-processor is
-designed to receive at high rate, commands and content data, and so to
-permit off-loading by the central computation hardware
-and RAM store to be able to hand off substantially all I/O tasks to
-the proper 'CCP', and then to task switch to another ready-to-go
-computational job in its 'runnable' job queue.
+* Z is a succession of mostly backward conmpatible designs
+originating from the early System/360 instruction set,
+represented in a human-readible form in Basic Assembly Language (BAL),
+and su0rounding ecosystem of I/O Channel Co-Processor design.
 
-The switch in context permitted a processor to engage in multi-task
+An I/O co-processor is
+designed to receive, at high rate, commands and content data,
+and so to permit off-loading by the CPU and RAM so that almost
+all I/O is handled apart from ordinary computation. Regular work
+(in other runnable queues) can proceed in parallel with the I/O.
+(CPU workloads are not blocked by I/O workloads.)
+
+The switch in context permits a processor to engage in multi-task
 processing. This was used in release 360/VM to have a very early
 (pre Unix) form of three seeming virtual, but seperate task processor
 spaces (called BG, F1 and F2 -- the Background task, and Foreground 1
