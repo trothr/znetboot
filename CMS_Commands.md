@@ -1,26 +1,28 @@
 # CMS Commands
 
-This document discusses CMS commands available on z/VM.
+This document discusses some CMS commands available on z/VM.
 
 CMS is the "Conversational Monitor System",
 a single user operating system exclusive to the z/VM environment.
 (CMS cannot run without "CP", the z/VM hypervisor.)
 
 CMS provides a very efficient interactive environment.
-For ZNETBOOT, CMS provides the essential functions needed
-to retrieve Linux kernels and supporting files from the network,
-arrange them in proper order, and then direct CP to boot Linux.
+For ZNETBOOT, CMS provides the essential functions needed to retrieve
+a Linux kernels and supporting files from the network, arrange them
+in proper order, and then direct the CP hypervisor to boot Linux.
 
 You cannot issue CMS commands when running Linux.
 You cannot have Linux running when CMS is booted.
 They are distinct operating systems.
 
 Whether running CMS or Linux, you still have CP, the Control Program.
-CP commands on z/VM are common between CMS and Linux. To further
-confuse matters, CMS passes commands it does not recognize to CP
-with the result that many users do not know if a z/VM command is a
-CP command (also available to Linux) or a CMS command (not available
-in Linux).
+CP commands on z/VM are common between CMS and Linux. That is to say,
+the same CP commands available when you are running CMS are still
+available when you are running Linux, but invoking them is different.
+To confuse matters, CMS passes commands it does not recognize to CP.
+This is ostensibly for convenience, but has the unfortunate effect
+that many users do not know if a z/VM command is a CP command
+(also available to Linux) or a CMS command (not available in Linux).
 
 Some common CMS commands follow.
 
@@ -31,7 +33,7 @@ It attempts to download and boot Linux (or any operating system)
 using a kernel and related files retrieved from the network.
 
 `znetboot` takes an optional argument, the name of a configuration file.
-If you wanted to boot Linux according to the "`clefonvm`" configuration
+If you wanted to boot Linux according to the `clefonvm` configuration
 then you would enter
 
     znetboot clefonvm
@@ -47,7 +49,8 @@ and obviating the usual z/VM screen layout.
 
 `filelist` can be abbreviated `fl`.
 
-Within most CMS full-screen utilities, \<PF3\> exits to the command line.
+Within `filelist`, same as most CMS full-screen utilities,
+\<PF3\> exits to the command prompt.
 
 ## listfile
 
@@ -74,6 +77,24 @@ or
 
 Either form lists all files on your "A disk" with a filetype of ZNETBOOT.
 
+## xedit
+
+XEDIT is the CMS text file editor.
+
+`xedit` can be abbreviated `x`.
+
+The details of using XEDIT are beyond the scope of this document,
+but an example use of XEDIT is to modify your ZNETBOOT file.
+Suppose you have a `clefonvm` configuration file for ZNETBOOT.
+
+    x clefonvm znetboot
+
+This command will invoke the editor on your configuration file.
+
+XEDIT is a full-screen text editor, so you may simply overtype
+to make changes. XEDIT is a command oriented editor, so you would
+save your changes with a `save` command, or save-and-exit with `file`.
+
 ## rdrlist
 
 `rdrlist` is a standard CMS utility presenting your "reader list".
@@ -86,7 +107,8 @@ from the `rdrlist` utility.
 
 `rdrlist` can be abbreviated `rl`.
 
-Within most CMS full-screen utilities, \<PF3\> exits to the command line.
+Within `rdrlist`, same as most CMS full-screen utilities,
+\<PF3\> exits to the command prompt.
 
 ## help
 
@@ -96,7 +118,8 @@ CMS `help` is extensive, if daunting.
 It is conceptually just like the Unix `man` command
 but is a full-screen utility like `filelist` and `rdrlist`.
 
-Within most CMS full-screen utilities, \<PF3\> exits to the command line.
+Within `help`, same as most CMS full-screen utilities,
+\<PF3\> exits to the command prompt.
 
 
 

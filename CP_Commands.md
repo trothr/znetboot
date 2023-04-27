@@ -20,8 +20,8 @@ of any command and its arguments.
 From a privileged shell, you can issue CP commands using the `vmcp`
 command. From the virtual console of a 3270 session, you can issue
 CP commands using the `#cp` prefix. (3270 console input is otherwise
-delivered to Linux for processing.) In this document, CP commands are
-presented both ways.
+delivered to the running guest operating system, either CMS or Linux.)
+In this document, CP commands are presented both ways.
 
 Keep in mind that the shell treats any word starting with "`#`"
 as a comment. If you enter the "`#cp`" form of these commands
@@ -243,6 +243,5 @@ If you really don't want to wait AT ALL for output to be held
 By default, z/VM uses very different reserved characters
 for terminal entry. "#" as seeen in `#cp` is actually line end.
 Escape is double quote ("). These can be changed
-
 
 
