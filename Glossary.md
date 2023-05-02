@@ -213,7 +213,7 @@ areas of the screen, called 'fields' in which input mat be typed;
 the TAB key will advance to the next available field (some fields may be
 "display only") after the present cursor position. \<Enter\> customarily
 submits all of the filled-in fields to the remote server for processing
-as a transaction.  Until ENTER is selected, one may cycle (tab) and wrap
+as a transaction.  Until \<Enter\> is selected, one may cycle (tab) and wrap
 around through all editable fields, and either over-type, or use minimal
 in-field edit commands
 
