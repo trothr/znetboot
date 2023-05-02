@@ -207,14 +207,15 @@ devices (Mainframes, CCP devices, remote systems)
 029 key verified, 082 sorter, 5xx series plugboard and patch cable programmed
 relay based electronic computing devices; successor was the 1401 family and BCD
 
-* X3270: an IP network console with a variant form of the 'telnet' type
-of interface; As it dates from an earlier era, there are areas of the screen,
-called 'fields' in which input mat be typed; the TAB key will advance to the
-next available field (some fields may be 'display only') after the present
-cursor position. ENTER customarily submits all of the 'filled-in' fields to
-the remote server for processing as a transaction.  Until ENTER is selected,
-one may cycle (tab) and wrap around through all editable fields, and either
-over-type, or use minimal in-field edit commands
+* [X3270](X3270.md): an IP network console with a variant form of the
+'telnet' type of interface; As it dates from an earlier era, there are
+areas of the screen, called 'fields' in which input mat be typed;
+the TAB key will advance to the next available field (some fields may be
+"display only") after the present cursor position. \<Enter\> customarily
+submits all of the filled-in fields to the remote server for processing
+as a transaction.  Until ENTER is selected, one may cycle (tab) and wrap
+around through all editable fields, and either over-type, or use minimal
+in-field edit commands
 
 * VMARC: short for "VM ARChive", is a customer-developed utility for
 sharing collections of files among z/VM systems, and the format of
