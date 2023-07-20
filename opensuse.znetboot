@@ -1,0 +1,27 @@
+#                                                                                                                                                                                                                  "width holder" because this is a wide file #
+#         Name: OPENSUSE ZNETBOOT
+#         Date: 2023-07-19 (Wed)
+#               This is the ZNETBOOT file for OpenSUSE on z/VM.
+#               Put this file on your 191 A disk before booting.
+#
+
+# where to find the kernel and INITRD ...
+#ZNETBOOT_KERNEL=http://download.opensuse.org/ports/zsystems/tumbleweed/repo/oss/boot/s390x/linux
+ZNETBOOT_KERNEL=file:///opensuse.kernel
+#ZNETBOOT_INITRD=http://download.opensuse.org/ports/zsystems/tumbleweed/repo/oss/boot/s390x/initrd
+ZNETBOOT_INITRD=file:///opensuse.initrd
+
+# sample VM boot parameters
+TERM=dumb manual=1
+dasd=1b0-1b1
+
+HOST=ltroth3.casita.net:eth0:148.100.88.35:1500
+NETWORK=148.100.88.0:255.255.255.0:148.100.88.255:148.100.88.1
+DNS=8.8.8.8
+SEARCHDNS=casita.net
+CHANDEV=qeth0,0x340,0x341,0x342
+#
+#
+#
+
+

@@ -43,12 +43,6 @@ Do While Left(arg1,1) = "-"
     When Abbrev("--use-ascii",arg1,11) Then trans = 1
     When Abbrev("-B",arg1,2) Then trans = 1
 
-
-
-
-
-
-
     When Abbrev("--text",arg1,6) Then trans = 1
     When Abbrev("--output",arg1,8) Then Parse Var args outfile args
     When Abbrev("-h",arg1,2) | Abbrev("--help",arg1,6) Then Do
@@ -129,6 +123,8 @@ Do While args /= ""
       url_http(user,pass,host,port,file,outfile,trans) With rc rs
     When mode = "FTP" Then Parse Value ,
       url_ftp(user,pass,host,port,file,outfile,trans) With rc rs
+    When mode = "FILE" Then Parse Value ,
+      url_file(user,pass,host,port,file,outfile,trans) With rc rs
     Otherwise Do
 /*    Address "COMMAND" 'XMITMSG 15 MODE (ERRMSG CALLER URL'          */
       Address "COMMAND" 'XMITMSG 475 MODE (ERRMSG CALLER URL'
@@ -142,8 +138,8 @@ End
 
 Exit
 
-
 /* ------------------------------------------------------------ URL_HTTP
+ *  This routine is for files fetched via HTTP.
  */
 url_http: Procedure Expose tcp. ;  a2e = tcp.2 ;  e2a = tcp.3
 Parse Arg user,pass,host,port,file,outfile,trans,.
@@ -257,8 +253,9 @@ If fn /= "-" & lm /= "" Then Address "COMMAND" 'DMSPLU' fn ft 'A' lm
 
 Return _rc
 
-
 /* ------------------------------------------------------------- URL_FTP
+ *  This routine is for files fetched using FTP.
+ *  We punt to VM TCP/IP FTP utility wrapping it in a 'MAKEBUF'.
  */
 url_ftp: Procedure Expose tcp. ;  a2e = tcp.2 ;  e2a = tcp.3
 Parse Arg user,pass,host,port,file,outfile,trans,.
@@ -328,6 +325,20 @@ End
 
 Return ftprc
 
+/* ------------------------------------------------------------ URL_FILE
+ *  This routine is for local files.
+ */
+url_file: Procedure Expose tcp. ;  a2e = tcp.2 ;  e2a = tcp.3
+Parse Arg user,pass,host,port,file,outfile,trans,.
+Parse Var file file ";" flag      /* look for ";type=A" to mean ASCII */
+Upper flag
+If flag = "TYPE=A" Then trans = 1
+
+file = Strip(file,"L","/")
+Parse Var file fn "." ft "." .
+'CALLPIPE <' fn ft '| *.OUTPUT:'
+
+Return rc
 
 /* ------------------------------------------------------------ VIAROVER
  *  For some URLs, just punt to WEBROVER, assuming it is present.
@@ -358,15 +369,14 @@ Else 'CALLPIPE VAR F | WEBROVER |' pipe
 
 Return rc
 
-
 /* ------------------------------------------------------------ BASENAME
+ *  This routine returns the basename of the path supplied.
  */
 basename: Procedure
 Parse Arg file . , .
 file = Reverse(file)
 Parse Var file file '/' .
 Return Reverse(file)
-
 
 /* ---------------------------------------------------------------------
  *  Convert Last-Modified HTTP header to FULLDATE format.
@@ -396,7 +406,6 @@ If rc /= 0 Then Return ""
 Parse Var rs rd rt .
 Parse Var rt rt "." .
 Return rd rt
-
 
 /* ------------------------------------------------------------ TZOFFSET
  *  Compute timezone offset based on timezone string from 'CP Q TIME'.
@@ -437,7 +446,6 @@ Select /* denom */
   When denom = "M" Then Return zo * 60           /* offset in minutes */
   Otherwise Return zo
 End /* Select denom */
-
 
 /*
  * There are many more options defined for 'curl' and 'wget' than this

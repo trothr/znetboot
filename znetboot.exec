@@ -2,6 +2,7 @@
  *        Name: ZNETBOOT EXEC
  *        Date: 2014-Dec-10 (Wed) and following
  *              2017-Oct-21 (Sat) for RPH
+ *              2023-07-19 (Wed) for AJE
  *
  */
 
@@ -64,7 +65,6 @@ Do i = 1 to na.0
 End
 bparm = bparm parms
 
-
 /* check CMS support files for consistency -- this is ONLY a check */
 Do While check /= ""
   Parse Var check cfile check
@@ -87,8 +87,13 @@ End
 /* conditionally save a CMS "conffile" and set boot parms for it */
 If nc.0 > 0 Then Do
   Say "# creating" vmid "CONFFILE for supplemental parameters"
+  nf.1 = "#" vmid "CONFFILE created by ZNETBOOT EXEC" Date("S") Time()
+  nf.2 = "# This file is used when the boot parameters string is"
+  nf.3 = "# too large to fit into the usual three-card parm deck."
+  nf.0 = 3
+  'pipe stem nc. | stem nf. append'
   'vmlink * 191 (w invoke' ,
-    'pipe stem nc. 1 | >' vmid 'CONFFILE .fm1'
+    'pipe stem nf. 1 | >' vmid 'CONFFILE .fm1'
   If rc /= 0 Then Exit rc
   bparm = bparm "CMSDASD=191" ,
     "CMSCONFFILE=" || vmid || ".CONFFILE"
