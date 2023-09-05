@@ -2,6 +2,10 @@
 
 This document discusses some CMS commands available on z/VM.
 
+*NOTE: CMS is unavailable when your virtual machine is running a guest
+operating system such as Linux.* CMS is itself an operating system.
+(This can be confusing at first.)
+
 CMS is the "Conversational Monitor System",
 a single user operating system exclusive to the z/VM environment.
 (CMS cannot run without "CP", the z/VM hypervisor.)
@@ -38,7 +42,7 @@ then you would enter
 
     znetboot clefonvm
 
-`znetboot` is NOT a standard CMS utility.
+`znetboot` requires CMS but is not a standard CMS utility.
 
 ## filelist
 
@@ -120,6 +124,5 @@ but is a full-screen utility like `filelist` and `rdrlist`.
 
 Within `help`, same as most CMS full-screen utilities,
 \<PF3\> exits to the command prompt.
-
 
 

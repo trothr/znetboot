@@ -3,6 +3,11 @@
 This document discusses
 z/VM "Control Program" commands for use with Linux.
 
+*NOTE: CP is unique to z/VM. CP commands remain available even when your
+virtual machine is running a guest operating system such as Linux.*
+No other hypervisor has a command processor, so CP commands are unlike
+the interface to KVM or VMware or Parallels or Xen or any other.
+
 Linux on z/VM can issue "CP commands" by way of the `vmcp` utility.
 The number and nature of all CP commands is far beyond scope
 of this document, so only the most relevant for Linux are listed.
