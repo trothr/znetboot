@@ -1,9 +1,8 @@
-# znetboot
+# ZNETBOOT
 
 ZNETBOOT makes it easy to bring up Linux on z/VM.
 Just enter the command `znetboot` from the CMS "Ready;" prompt.
 
-									<
 ZNETBOOT is designed to simplify things for those hosting Linux on z/VM
 who are unfamiliar with z/VM.
 
@@ -12,7 +11,7 @@ to boot Linux on a VM/CMS system. It should make things much easier
 for non-VM and non-mainframe users. After more than two decades of
 Linux on z/VM, mainframe Linux should be *at least* this easy.
 
-## running znetboot
+## Running ZNETBOOT
 
 ZNETBOOT reads an installation file and retrieves the kernel
 and initrd indicated. Other statements in the installation file
@@ -30,7 +29,7 @@ upload to CMS a file like ...
 
 Then enter `znetboot` from the CMS "Ready;" prompt. Next stop, Linux.
 
-## working znetboot distributions
+## Working ZNETBOOT Distributions
 
 Installers for the following Linux distributions are known to work with ZNETBOOT:
 
@@ -39,14 +38,21 @@ Installers for the following Linux distributions are known to work with ZNETBOOT
 * Debian
 * Fedora
 * Ubuntu
+* OpenSUSE
 * NORD
 
 Support for the following Linux distributions are wanted:
 
-* SUSE (and/or OpenSUSE)
 * CentOS
 * Slack/390
 * Gentoo
 * Red Hat
+
+## z/VM Community Tools
+
+This project is duplicated as a sub-folder of the z/VM Community Tools
+repository.
+
+https://github.com/openmainframeproject/zvm-community-tools/tree/main/znetboot/
 
 

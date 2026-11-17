@@ -9,7 +9,6 @@ The underlying z/VM environment is approachable described in:
 
 Which is IBM document  SC24-6194-06 (August 2017)
 
-									<
 In one of the discussion and community mailing lists, that work
 was described by an IBM professional on one the mailing lists thus:
 

@@ -1,0 +1,41 @@
+/* #!/bin/sh
+# ** the next line restarts using regina \
+exec regina "$0" "$@" # */
+
+/* this script issues CP commands and works on CMS or on Linux */
+
+/* what platform are we running on? do we need to load DIAG func? */
+Parse Source sys . fn .
+If sys = "CMS" Then nl = '15'x
+Else Do
+  Parse Value Rxfuncadd('DiagRC','rxdiagrc','DiagRC') With rc rs
+  If rc ^= 0 Then Do
+    Say "### load failed! RC =" rc "###"
+    Exit rc
+  End
+  nl = '0A'x
+End
+
+/* load succeeded or we have a built-in DIAG() and DIAGRC() */
+
+/* parse args and optionally convert to upper case */
+Parse Arg args
+args = Strip(args)
+urgs = args ;  Upper urgs
+If Left(args,1) ^= Left(urgs,1) Then args = urgs
+
+/* issue a CP command via DIAGnose function */
+Parse Value DiagRC(08,args) With 1 rc 10 . 11 cc 12 . 17 rs
+
+/* report result or command output */
+rs = Strip(rs,'T',nl)
+Do While rs ^= ""
+  Parse Var rs r1 (nl) rs
+  Say r1
+End /* Do While */
+
+/* pass return code of CP command to our caller */
+Exit rc
+
+
+
